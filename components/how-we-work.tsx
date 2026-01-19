@@ -1,8 +1,7 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import { MessageCircle, Hammer, Rocket, Sparkles } from "lucide-react"
+import { motion } from "framer-motion"
+import { MessageCircle, Hammer, Rocket } from "lucide-react"
 
 const processSteps = [
     {
@@ -30,65 +29,56 @@ const processSteps = [
 
 export function HowWeWork() {
     return (
-        <section className="section-spacing relative bg-[#fafafa] overflow-hidden border-t border-black/5">
+        <section className="section-spacing relative bg-transparent overflow-hidden">
             <div className="container mx-auto">
 
                 {/* Section Header */}
-                <div className="mb-20 text-center space-y-6">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm mx-auto">
+                <div className="mb-12 text-center space-y-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-[10px] font-bold tracking-[0.3em] text-white/60 uppercase border border-white/5 backdrop-blur-sm mx-auto">
                         <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                         OUR PROCESS
                     </span>
-                    <h2 className="editorial-heading text-black uppercase">
+                    <h2 className="text-6xl md:text-8xl font-condensed font-bold text-white uppercase tracking-tight leading-[0.9]">
                         FROM <span className="text-primary italic">VISION</span><br />
-                        <span className="text-black/10 stroke-text">TO REALITY.</span>
+                        <span className="text-white/10 stroke-text">TO REALITY.</span>
                     </h2>
-                    <p className="max-w-2xl mx-auto text-xl md:text-2xl text-black/60 font-medium leading-relaxed">
+                    <p className="max-w-xl mx-auto text-xl text-white/50 font-medium leading-relaxed">
                         Our streamlined three-step phase ensures your project moves from
                         concept to deployment with precision and speed.
                     </p>
                 </div>
 
-                {/* Process Timeline */}
-                <div className="relative">
-                    {/* Desktop Timeline Line */}
-                    <div className="hidden lg:block absolute top-[120px] left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0" />
-
-                    {/* Mobile Timeline Line */}
-                    <div className="lg:hidden absolute left-10 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-black/5 to-transparent z-0 ml-[0.5px] max-md:block hidden" />
-
-                    {/* Steps */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
-                        {processSteps.map((step, index) => {
-                            const Icon = step.icon
-                            return (
-                                <motion.div
-                                    key={step.number}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="relative z-10 space-y-8 group text-center lg:text-left"
-                                >
-                                    <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto lg:mx-0 rounded-[2rem] bg-black flex items-center justify-center group-hover:bg-primary transition-all duration-500 shadow-xl">
-                                        <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white group-hover:text-black transition-transform group-hover:scale-110" />
+                {/* Steps */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
+                    {processSteps.map((step, index) => {
+                        const Icon = step.icon
+                        return (
+                            <motion.div
+                                key={step.number}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="relative z-10 space-y-10 group text-center lg:text-left"
+                            >
+                                <div className="w-20 h-20 mx-auto lg:mx-0 rounded-[2.5rem] bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary transition-all duration-500 shadow-2xl relative">
+                                    <Icon className="w-10 h-10 text-white group-hover:text-black transition-transform group-hover:scale-110" />
+                                    <div className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xs ring-4 ring-background">
+                                        {step.number}
                                     </div>
+                                </div>
 
-                                    <div className="space-y-4">
-                                        <div className="inline-block px-4 py-1.5 rounded-full bg-black/5 text-black/40 text-[10px] font-black tracking-[0.2em] uppercase border border-black/5">
-                                            Phase {step.number}
-                                        </div>
-                                        <h3 className="text-3xl font-black tracking-tight text-black group-hover:text-primary transition-colors uppercase">
-                                            {step.title}
-                                        </h3>
-                                        <p className="text-black/60 leading-relaxed font-medium text-lg">
-                                            {step.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            )
-                        })}
-                    </div>
+                                <div className="space-y-6">
+                                    <h3 className="text-4xl font-condensed font-bold tracking-tight text-white group-hover:text-primary transition-colors uppercase">
+                                        {step.title}
+                                    </h3>
+                                    <p className="text-white/40 leading-relaxed font-medium text-lg">
+                                        {step.description}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        )
+                    })}
                 </div>
 
             </div>

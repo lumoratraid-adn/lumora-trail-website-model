@@ -1,5 +1,5 @@
-import { GlobeHero } from "@/components/globe-hero"
-import { MainHero } from "@/components/editorial-hero"
+import { NetworkHero } from "@/components/network-hero"
+import { MissionVision } from "@/components/mission-vision"
 import { WhatWeDo } from "@/components/what-we-do"
 import { ShowcaseSection } from "@/components/showcase-section"
 import { HowWeWork } from "@/components/how-we-work"
@@ -10,35 +10,23 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Lumora Triad | Web Development, UI/UX Design & Branding",
+  title: "Lumora Triad | Premium Digital Studio",
   description:
-    "Lumora Triad provides professional web development, UI/UX design, and branding services for startups and businesses. Transform your ideas into digital reality.",
+    "We design and build digital experiences that move businesses forward. Lumora Triad is a multidisciplinary digital studio specializing in design, development, and scalability.",
 }
 
 export default function Home() {
   return (
-    <main className="bg-[#fafafa]">
-      <GlobeHero />
-      <MainHero />
+    <main className="relative">
+      <NetworkHero />
 
-      {/* Main Content Sections */}
-      <div className="relative bg-[#fafafa]">
-        {/* What We Do - Services Overview */}
+      <div className="relative z-10">
+        <MissionVision />
         <WhatWeDo />
-
-        {/* Showcase - Mockups */}
         <ShowcaseSection />
-
-        {/* How We Work - Process */}
         <HowWeWork />
-
-        {/* Testimonials - Social Proof */}
         <Testimonials />
-
-        {/* CTA Section */}
         <CTASection />
-
-        {/* Contact Form */}
         <ConnectForm />
       </div>
 

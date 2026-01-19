@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import { Instagram, Twitter, Linkedin, Mail, Phone } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function Footer() {
@@ -18,34 +18,33 @@ export function Footer() {
     "UI / UX Design",
     "Web Development",
     "App Development",
-    "Branding & Motion",
+    "Product Strategy",
   ]
 
   return (
-    <footer className="bg-[#fafafa] pt-24 pb-12 overflow-hidden border-t border-black/5 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+    <footer className="pt-20 pb-12 overflow-hidden border-t border-white/5 relative z-10">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-20">
 
           {/* BRAND COLUMN */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="space-y-8"
           >
             <Link href="/" className="inline-block">
-              <img src="/logo.svg" alt="Lumora Triad" className="h-10 w-auto" />
+              <img src="/logo.svg" alt="Lumora Triad" className="h-8 w-auto brightness-200" />
             </Link>
-            <p className="text-black/40 text-xs font-black uppercase tracking-[0.2em] leading-loose max-w-xs">
-              Architecting high-performance digital solutions for visionaries.
+            <p className="text-white/40 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose max-w-xs">
+              Architecting high-performance digital solutions for the next generation of visionaries.
             </p>
             <div className="flex gap-4">
               {[Instagram, Twitter, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="w-12 h-12 border border-black/5 flex items-center justify-center text-black/40 hover:bg-black hover:text-white transition-all duration-500"
+                  className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/30 hover:bg-primary hover:text-white transition-all duration-300"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -57,17 +56,17 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ delay: 0.1 }}
+            className="space-y-10"
           >
-            <h5 className="font-bebas text-2xl uppercase tracking-wider text-primary">Capabilities</h5>
+            <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Capabilities</h5>
             <ul className="space-y-4">
               {serviceLinks.map((item) => (
                 <li key={item}>
                   <Link
                     href="/services"
-                    className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
+                    className="text-xs font-bold uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
                   >
                     {item}
                   </Link>
@@ -80,17 +79,17 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ delay: 0.2 }}
+            className="space-y-10"
           >
-            <h5 className="font-bebas text-2xl uppercase tracking-wider text-primary">Sitemap</h5>
+            <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Explore</h5>
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
+                    className="text-xs font-bold uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -103,25 +102,25 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ delay: 0.3 }}
+            className="space-y-10"
           >
-            <h5 className="font-bebas text-2xl uppercase tracking-wider text-primary">Contact</h5>
-            <div className="space-y-4">
+            <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Get in touch</h5>
+            <div className="space-y-6">
               <a
-                href="mailto:hello@lumoratriad.com"
-                className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
+                href="mailto:hello@lumoratriad.in"
+                className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary" />
-                hello@lumoratriad.com
+                hello@lumoratriad.in
               </a>
               <a
-                href="tel:+91994788418"
-                className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
+                href="tel:+919947878418"
+                className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary" />
-                +91 99478 84418
+                +91 99478 78418
               </a>
             </div>
           </motion.div>
@@ -129,26 +128,23 @@ export function Footer() {
         </div>
 
         {/* LARGE DISPLAY TEXT */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="relative mb-16 select-none pointer-events-none"
-        >
-          <span className="editorial-heading text-black/5 block text-center uppercase tracking-[0.05em] stroke-text">
+        <div className="relative mb-24 select-none pointer-events-none">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-[clamp(2.5rem,15vw,12rem)] font-bold text-white/[0.02] text-center leading-none tracking-tighter uppercase stroke-text whitespace-nowrap"
+          >
             LUMORA TRIAD
-          </span>
-        </motion.div>
+          </motion.h2>
+        </div>
 
         {/* BOTTOM BAR */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-black/5">
-          <p className="text-[10px] font-black text-black/20 tracking-[0.3em] uppercase">
-            © {currentYear} <span className="text-primary">Lumora Triad</span>. Built for the bold.
-          </p>
-          <div className="flex gap-8 mt-6 md:mt-0 text-[10px] font-black text-black/20 tracking-[0.3em] uppercase">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
+        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-white/5 text-[10px] font-bold text-white/20 tracking-[0.2em] uppercase">
+          <p>© {currentYear} <span className="text-primary/50">Lumora Triad</span>. All rights reserved.</p>
+          <div className="flex gap-8 mt-6 md:mt-0">
+            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
 

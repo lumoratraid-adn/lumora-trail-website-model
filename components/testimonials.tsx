@@ -1,13 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 
 export function Testimonials() {
   return (
-    <section className="section-spacing bg-[#fafafa] overflow-hidden border-t border-black/5">
+    <section className="section-spacing relative bg-transparent overflow-hidden">
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -16,17 +15,17 @@ export function Testimonials() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-white/60 uppercase border border-white/5 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              OUR IMPACT
+              OUR STORY
             </span>
-            <h2 className="editorial-heading text-black uppercase">
-              STORIES OF <span className="text-primary italic">GROWTH</span><br />
-              <span className="text-black/10 stroke-text">AND SUCCESS.</span>
+            <h2 className="text-5xl md:text-7xl font-condensed font-bold text-white uppercase leading-[0.9]">
+              FRIENDS. FOUNDERS. <br />
+              <span className="text-primary italic">INNOVATORS.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-black/60 font-medium leading-relaxed max-w-lg">
-              We don&apos;t just deliver projects; we build long-term partnerships
-              that drive real-world value and digital transformation.
+            <p className="text-xl md:text-2xl text-white/50 font-medium leading-relaxed max-w-lg">
+              We started as a team of friends with a shared dream: to build a unique space
+              in the tech world where everything is possible.
             </p>
           </motion.div>
 
@@ -36,24 +35,30 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="p-10 md:p-14 rounded-[3rem] bg-white border border-black/5 shadow-[0_50px_100px_rgba(0,0,0,0.05)] relative z-10">
-              <p className="text-xl md:text-2xl font-black leading-[1.4] mb-10 italic text-black/80">
-                &quot;Lumora Triad has been instrumental in our digital evolution.
-                Their attention to detail and technical prowess transformed our
-                brand into a modern digital powerhouse.&quot;
+            <div className="p-8 md:p-10 rounded-[3rem] bg-white/[0.02] border border-white/10 shadow-2xl backdrop-blur-xl relative z-10 overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-10">
+                <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.4 45C6.4 45 0 38.6 0 30.6C0 22.6 6.4 16.2 14.4 16.2V0H28.8V30.6C28.8 38.6 22.4 45 14.4 45ZM45.6 45C37.6 45 31.2 38.6 31.2 30.6C31.2 22.6 37.6 16.2 45.6 16.2V0H60V30.6C60 38.6 53.6 45 45.6 45Z" fill="white" />
+                </svg>
+              </div>
+
+              <p className="text-lg md:text-2xl font-bold leading-[1.3] mb-12 italic text-white/90 font-heading">
+                &quot;Lumora Triad began as a circle of friends with a single dream: to carve out our own space in the tech landscape. We built this studio to prove that everything is possible when you&apos;re in the right group of innovators. We&apos;re here to turn your biggest ideas into digital reality.&quot;
               </p>
-              <div className="flex items-center gap-5 pt-10 border-t border-black/5">
-                <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center font-black text-white shadow-lg">
+
+              <div className="flex items-center gap-6 pt-10 border-t border-white/5">
+                <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center font-black text-white text-xl shadow-[0_0_30px_rgba(99,102,241,0.5)]">
                   LT
                 </div>
                 <div>
-                  <h4 className="font-black text-xl tracking-tight text-black uppercase">Lumora Core</h4>
-                  <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Digital Strategy</p>
+                  <h4 className="font-condensed font-bold text-2xl tracking-tight text-white uppercase">Lumora Triad</h4>
+                  <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">Founding Team</p>
                 </div>
               </div>
             </div>
             {/* Background Aura */}
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 blur-[100px] rounded-full z-0" />
+            <div className="absolute -top-12 -right-12 w-80 h-80 bg-primary/10 blur-[120px] rounded-full z-0" />
+            <div className="absolute -bottom-12 -left-12 w-80 h-80 bg-accent/5 blur-[120px] rounded-full z-0" />
           </motion.div>
 
         </div>

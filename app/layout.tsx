@@ -1,13 +1,19 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Bebas_Neue, Syne, Plus_Jakarta_Sans } from "next/font/google"
+import { Space_Grotesk, Inter, Bebas_Neue } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { WhatsAppChatbot } from "@/components/whatsapp-chatbot"
 import { Header } from "@/components/header"
 import "./globals.css"
 
-const geistSans = Geist({
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+})
+
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"],
@@ -15,20 +21,8 @@ const geistSans = Geist({
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  variable: "--font-bebas",
+  variable: "--font-condensed",
   weight: "400",
-})
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
-  weight: ["400", "500", "600", "700", "800"],
-})
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  weight: ["400", "500", "600", "700", "800"],
 })
 
 const baseUrl = "https://www.lumoratriad.in"
@@ -121,6 +115,7 @@ export const metadata: Metadata = {
 }
 
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { SceneBackground } from "@/components/scene-background"
 
 export default function RootLayout({
   children,
@@ -130,11 +125,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${bebasNeue.variable} ${syne.variable} ${jakarta.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable}`}
       suppressHydrationWarning
     >
-      <body className="font-sans antialiased selection:bg-primary selection:text-white">
+      <body className="font-sans antialiased bg-[#0E0F13] text-white selection:bg-primary selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+          <SceneBackground />
           <ScrollToTop />
           <Header />
           {children}
@@ -157,7 +153,7 @@ export default function RootLayout({
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+91 99478 84418",
+                "telephone": "+91 99478 78418",
                 "contactType": "customer service",
                 "areaServed": "IN",
                 "availableLanguage": "en"

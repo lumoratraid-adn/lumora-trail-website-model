@@ -1,8 +1,8 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion } from "framer-motion"
 import * as React from "react"
-import { useRef, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -13,7 +13,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Sparkles, Send, CheckCircle2, Loader2 } from "lucide-react"
+import { Send, CheckCircle2, Loader2 } from "lucide-react"
 
 export function ConnectForm() {
     const [mounted, setMounted] = useState(false)
@@ -24,13 +24,15 @@ export function ConnectForm() {
         setMounted(true)
     }, [])
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        company: "",
-        service: "",
-        message: "",
-    })
+    const services = [
+        "UI / UX Design",
+        "Web & Software Development",
+        "Brand Identity",
+        "Mobile Solutions",
+        "Motion Design",
+        "Personal Branding",
+        "Others"
+    ]
 
     if (!mounted) return null;
 
@@ -43,70 +45,71 @@ export function ConnectForm() {
     }
 
     return (
-        <section className="section-spacing relative bg-[#fafafa] overflow-hidden border-t border-black/5">
+        <section className="section-spacing relative bg-transparent overflow-hidden">
             <div className="container mx-auto">
                 <div className="max-w-4xl mx-auto">
 
                     {/* Section Header */}
-                    <div className="mb-20 text-center space-y-6">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm mx-auto">
+                    <div className="mb-12 text-center space-y-6">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-[10px] font-bold tracking-[0.3em] text-white/60 uppercase border border-white/5 backdrop-blur-sm mx-auto">
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                             GET IN TOUCH
                         </span>
-                        <h2 className="editorial-heading text-black uppercase">
+                        <h2 className="text-6xl md:text-8xl font-condensed font-bold text-white uppercase tracking-tight leading-[0.9]">
                             LET&apos;S <span className="text-primary italic">BUILD</span><br />
-                            <span className="text-black/10 stroke-text">YOUR NEXT BIG THING.</span>
+                            <span className="text-white/10 stroke-text">YOUR NEXT BIG THING.</span>
                         </h2>
-                        <p className="max-w-2xl mx-auto text-xl md:text-2xl text-black/60 font-medium leading-relaxed">
+                        <p className="max-w-xl mx-auto text-xl text-white/50 font-medium leading-relaxed">
                             Have an idea or a project in mind? We respond to all
                             inquiries within 24 hours.
                         </p>
                     </div>
 
                     {/* Form Container */}
-                    <div className="p-8 md:p-16 rounded-[3rem] bg-white border border-black/5 shadow-[0_50px_100px_rgba(0,0,0,0.05)] relative overflow-hidden">
+                    <div className="p-6 md:p-10 rounded-[3rem] bg-white/[0.02] border border-white/10 shadow-2xl relative overflow-hidden backdrop-blur-xl">
                         <div className="relative z-10">
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-10">
                                     <div className="space-y-3">
-                                        <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Your Name</label>
+                                        <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Your Name</label>
                                         <Input
                                             placeholder="John Doe"
-                                            className="h-16 bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-black font-bold"
+                                            className="h-16 bg-white/[0.03] rounded-2xl border-white/10 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-white font-bold"
                                             required
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Email Address</label>
+                                        <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Email Address</label>
                                         <Input
                                             type="email"
                                             placeholder="john@example.com"
-                                            className="h-16 bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-black font-bold"
+                                            className="h-16 bg-white/[0.03] rounded-2xl border-white/10 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-white font-bold"
                                             required
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Interested In</label>
+                                    <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Interested In</label>
                                     <Select>
-                                        <SelectTrigger className="h-16 bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary font-bold text-black uppercase tracking-widest">
+                                        <SelectTrigger className="h-16 bg-white/[0.03] rounded-2xl border-white/10 focus:border-primary font-bold text-white uppercase tracking-widest">
                                             <SelectValue placeholder="Select a service" />
                                         </SelectTrigger>
-                                        <SelectContent className="bg-white border-black/5">
-                                            <SelectItem value="web">Web Development</SelectItem>
-                                            <SelectItem value="design">UI/UX Design</SelectItem>
-                                            <SelectItem value="brand">Branding</SelectItem>
-                                            <SelectItem value="mobile">Mobile App</SelectItem>
+                                        <SelectContent className="bg-[#0E0F13] border-white/10 text-white">
+                                            {services.map((service) => (
+                                                <SelectItem key={service} value={service.toLowerCase().replace(/ /g, '-')} className="hover:bg-primary/20 focus:bg-primary/20">
+                                                    {service}
+                                                </SelectItem>
+                                            ))}
                                         </SelectContent>
                                     </Select>
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Message</label>
+                                    <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Message</label>
                                     <Textarea
                                         placeholder="Briefly describe your project..."
-                                        className="min-h-[150px] bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-black font-bold pt-4"
+                                        className="min-h-[150px] bg-white/[0.03] rounded-2xl border-white/10 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-white font-bold pt-4"
                                         required
                                     />
                                 </div>
@@ -114,7 +117,7 @@ export function ConnectForm() {
                                 <Button
                                     type="submit"
                                     disabled={isSubmitting || isSuccess}
-                                    className="w-full h-18 py-6 rounded-2xl bg-black text-white font-black text-lg uppercase tracking-[0.2em] shadow-2xl transition-all hover:bg-primary hover:text-black hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
+                                    className="w-full h-18 py-8 rounded-2xl bg-primary text-white font-black text-lg uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
                                 >
                                     {isSubmitting ? <Loader2 className="animate-spin" /> : isSuccess ? <CheckCircle2 /> : (
                                         <>
@@ -131,21 +134,17 @@ export function ConnectForm() {
                                 )}
                             </form>
                         </div>
-
-                        {/* Background Aura */}
-                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full" />
-                        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent/5 blur-[100px] rounded-full" />
                     </div>
 
                     {/* Direct Links */}
-                    <div className="mt-16 flex flex-wrap justify-center gap-12">
-                        <a href="mailto:hello@lumoratriad.in" className="text-xs font-black uppercase tracking-[0.2em] text-black/40 hover:text-primary transition-colors flex items-center gap-2 group">
+                    <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+                        <a href="mailto:hello@lumoratriad.in" className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors flex items-center gap-2 group">
                             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                             HELLO@LUMORATRIAD.IN
                         </a>
-                        <a href="tel:+919947884418" className="text-xs font-black uppercase tracking-[0.2em] text-black/40 hover:text-primary transition-colors flex items-center gap-2 group">
+                        <a href="tel:+919947878418" className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors flex items-center gap-2 group">
                             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            +91 99478 84418
+                            +91 99478 78418
                         </a>
                     </div>
 

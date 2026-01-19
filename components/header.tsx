@@ -4,7 +4,7 @@ import Link from "next/link"
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ArrowUpRight } from "lucide-react"
+import { Menu, X, ArrowUpRight, ArrowRight } from "lucide-react"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -15,17 +15,13 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-
-      // Scrolled state for styling
       setScrolled(currentScrollY > 20)
 
-      // Visibility logic - hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        if (!mobileMenuOpen) setVisible(false) // Scrolling down
+        if (!mobileMenuOpen) setVisible(false)
       } else {
-        setVisible(true) // Scrolling up
+        setVisible(true)
       }
-
       setLastScrollY(currentScrollY)
     }
 
@@ -33,13 +29,8 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY, mobileMenuOpen])
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "unset"
-    }
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset"
   }, [mobileMenuOpen])
 
   const navItems = [
@@ -51,13 +42,13 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 px-6 py-4 ${scrolled ? "pt-2" : "pt-4"
-        } ${visible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full opacity-0"}`}
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 px-6 py-4 ${visible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full opacity-0"
+        }`}
     >
       <div
-        className={`container mx-auto flex items-center justify-between transition-all duration-500 rounded-2xl px-6 relative z-[110] ${scrolled || mobileMenuOpen
-          ? "h-14 bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
-          : "h-16 bg-transparent"
+        className={`container mx-auto flex items-center justify-between transition-all duration-500 rounded-full px-8 relative z-[110] ${scrolled || mobileMenuOpen
+          ? "h-16 bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-2xl"
+          : "h-20 bg-transparent"
           }`}
       >
         {/* Logo Section */}
@@ -69,106 +60,90 @@ export function Header() {
             }
             setMobileMenuOpen(false);
           }}
-          className="group relative z-[120] transition-all duration-300"
+          className="relative z-[120]"
         >
           <img
             src="/logo.svg"
             alt="Lumora Triad"
-            className={`h-6 sm:h-8 w-auto transition-all duration-300 group-hover:scale-105 ${!scrolled && !mobileMenuOpen ? "invert contrast-125" : "brightness-110"}`}
+            className="h-6 sm:h-7 w-auto brightness-200"
           />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`text-sm font-bold transition-all duration-300 tracking-tight ${scrolled || mobileMenuOpen ? "text-white/70 hover:text-primary" : "text-black/60 hover:text-black"}`}
+              className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </nav>
 
-        {/* Actions Section */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        {/* Actions */}
+        <div className="flex items-center gap-6">
           <Link
             href="/contact"
-            className={`hidden sm:flex items-center justify-center px-6 py-2 rounded-lg font-bold text-sm tracking-tight transition-all active:scale-95 shadow-lg ${scrolled || mobileMenuOpen
-              ? "bg-primary text-black hover:brightness-110 shadow-primary/20"
-              : "bg-black text-white hover:bg-primary hover:text-black shadow-black/10"}`}
+            className="hidden sm:flex px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95"
           >
-            Get Started
+            Start Project
           </Link>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`p-2 rounded-xl transition-all z-[120] lg:hidden ${scrolled || mobileMenuOpen ? "text-white hover:bg-white/10" : "text-black hover:bg-black/5"}`}
-            aria-label="Toggle Menu"
+            className="p-2 text-white lg:hidden z-[120]"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "circOut" }}
-            className="lg:hidden fixed inset-0 bg-black z-[100] flex flex-col pt-32 px-6 h-[100dvh] overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lg:hidden fixed inset-0 bg-[#0E0F13] z-[100] flex flex-col pt-32 px-10 h-screen"
           >
-            {/* Background Texture for Mobile Menu */}
-            <div className="absolute inset-0 dot-pattern opacity-[0.1] -z-10" />
-
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-8">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
                 >
                   <Link
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-4xl xs:text-5xl font-black tracking-tighter text-white hover:text-primary transition-colors flex items-center justify-between group"
+                    className="text-5xl font-bold tracking-tighter text-white hover:text-primary transition-colors flex items-center justify-between group"
                   >
-                    <span>{item.name}</span>
-                    <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0" />
+                    {item.name}
+                    <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all" />
                   </Link>
                 </motion.div>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mt-auto mb-12 flex flex-col gap-8"
-            >
+            <div className="mt-auto pb-12 space-y-8">
               <div className="h-px bg-white/10 w-full" />
-
               <div className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.2em] font-bold text-white/40">Quick Contact</p>
-                <a href="mailto:hello@lumoratriad.in" className="text-xl font-bold text-white hover:text-primary transition-colors">
-                  hello@lumoratriad.in
-                </a>
+                <p className="text-[10px] font-black tracking-widest text-white/20 uppercase">Get in touch</p>
+                <a href="mailto:hello@lumoratriad.in" className="text-xl font-bold text-white">hello@lumoratriad.in</a>
               </div>
-
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-5 bg-primary text-black rounded-2xl font-black text-xl shadow-[0_10px_30px_rgba(255,95,0,0.2)] flex items-center justify-center gap-3 active:scale-95 transition-all"
+                className="w-full py-6 bg-primary text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3"
               >
-                START A PROJECT
-                <ArrowUpRight className="w-6 h-6" />
+                Let&apos;s Talk
+                <ArrowRight className="w-5 h-5" />
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

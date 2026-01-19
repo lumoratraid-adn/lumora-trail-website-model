@@ -1,126 +1,86 @@
 "use client"
 
 import { motion } from "framer-motion"
-import {
-    Code2,
-    Palette,
-    Layers,
-    TrendingUp,
-} from "lucide-react"
+import { Layout, Globe2, Layers, Smartphone, PlayCircle, UserCircle } from "lucide-react"
 
-const services = [
+const capabilities = [
     {
-        category: "Web & Software Development",
-        icon: Code2,
-        image: "/modern-clean-code-on-a-sleek-monitor.jpg",
-        items: [
-            "Business Websites",
-            "Full-Stack Web Applications",
-            "Cloud-Based Software Systems",
-            "Admin Dashboards & APIs",
-        ],
+        title: "UI / UX Design",
+        desc: "We create intuitive, user-centric interfaces that balance aesthetic beauty with functional clarity.",
+        icon: Layout,
+        color: "bg-violet-500/20",
     },
     {
-        category: "UI / UX & Product Design",
-        icon: Palette,
-        image: "/minimalist-designer-hands-working-with-color-swatc.jpg",
-        items: [
-            "Website & App UI Design",
-            "UX Flows & Wireframes",
-            "Design Systems",
-            "Figma → Code",
-        ],
+        title: "Web & Software Development",
+        desc: "We engineer high-performance web applications and custom software solutions using cutting-edge technologies.",
+        icon: Globe2,
+        color: "bg-indigo-500/20",
     },
     {
-        category: "Graphic & Brand Design",
+        title: "Brand Identity",
+        desc: "Crafting memorable brand stories through strategic visual identities and logo design.",
         icon: Layers,
-        image: "/minimalist-designer-working-on-a-modern-workspace-.jpg",
-        items: [
-            "Branding & Identity",
-            "Logo & Marketing Design",
-            "Social Media Creatives",
-            "Posters & Visual Assets",
-        ],
+        color: "bg-cyan-500/20",
     },
     {
-        category: "Digital Growth & Support",
-        icon: TrendingUp,
-        image: "/premium-abstract-geometric-network-dots-pattern.jpg",
-        items: [
-            "SEO-Ready Setup",
-            "Landing Page Optimization",
-            "Analytics Integration",
-            "Maintenance & Support",
-        ],
+        title: "Mobile Solutions",
+        desc: "Building seamless cross-platform mobile experiences for iOS and Android.",
+        icon: Smartphone,
+        color: "bg-rose-500/20",
+    },
+    {
+        title: "Motion Design",
+        desc: "Bringing brands to life with high-impact animations and motion graphics.",
+        icon: PlayCircle,
+        color: "bg-amber-500/20",
+    },
+    {
+        title: "Personal Branding",
+        desc: "Defining and elevating individual professional identities in the digital space.",
+        icon: UserCircle,
+        color: "bg-emerald-500/20",
     },
 ]
 
 export function WhatWeDo() {
     return (
-        <section className="section-spacing relative bg-[#fafafa] border-t border-black/5">
-            <div className="container mx-auto">
-
-                {/* Section Header */}
-                <div className="mb-20 space-y-6">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                        OUR CAPABILITIES
-                    </span>
-                    <h2 className="editorial-heading text-black uppercase">
-                        CRAFTING <span className="text-primary italic">SOLUTIONS</span><br />
-                        <span className="text-black/10 stroke-text">FOR MODERN BRANDS.</span>
+        <section className="section-spacing relative bg-transparent overflow-hidden">
+            <div className="container mx-auto relative z-10">
+                <div className="mb-12 space-y-4">
+                    <h2 className="text-5xl md:text-7xl font-condensed font-bold text-white uppercase tracking-tight">
+                        Our <span className="text-primary italic">Capabilities</span>
                     </h2>
-                    <p className="max-w-2xl text-xl md:text-2xl text-black/60 font-medium leading-relaxed">
-                        We merge technical precision with aesthetic excellence to deliver
-                        world-class digital products that scale with your vision.
+                    <p className="text-white/50 text-xl font-medium max-w-2xl">
+                        Comprehensive digital solutions tailored to elevate your visionary ideas.
                     </p>
                 </div>
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {services.map((service, index) => {
-                        const Icon = service.icon
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {capabilities.map((item, index) => {
+                        const Icon = item.icon
                         return (
                             <motion.div
-                                key={service.category}
+                                key={item.title}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group relative rounded-[2.5rem] bg-white border border-black/5 hover:border-black/20 hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col h-full"
+                                whileHover={{ y: -10, rotateX: 2, rotateY: 2 }}
+                                className="glass-card p-8 group relative flex flex-col items-start gap-6 rounded-[2rem] transition-all perspective-1000 border border-white/5 hover:border-primary/20"
                             >
-                                {/* Background Image Overlay */}
-                                <div className="absolute inset-0 z-0">
-                                    <img
-                                        src={service.image}
-                                        alt={service.category}
-                                        className="w-full h-full object-cover opacity-[0.05] group-hover:opacity-10 group-hover:scale-105 transition-all duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white" />
+                                <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center mb-2 transition-all group-hover:scale-110 group-hover:rotate-6`}>
+                                    <Icon className="w-7 h-7 text-white" />
                                 </div>
 
-                                <div className="relative z-10 p-8 sm:p-10 flex flex-col h-full">
-                                    <div className="w-14 h-14 rounded-2xl bg-black flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
-                                        <Icon className="w-6 h-6 text-white group-hover:text-black transition-colors" />
-                                    </div>
+                                <h3 className="text-2xl font-bold tracking-tight text-white uppercase font-condensed">
+                                    {item.title}
+                                </h3>
 
-                                    <h3 className="text-2xl font-black mb-4 tracking-tight text-black group-hover:text-primary transition-colors uppercase leading-tight">
-                                        {service.category}
-                                    </h3>
+                                <p className="text-white/40 text-base leading-relaxed font-medium">
+                                    {item.desc}
+                                </p>
 
-                                    <ul className="space-y-4 flex-1 pt-6 border-t border-black/5">
-                                        {service.items.slice(0, 4).map((item) => (
-                                            <li key={item} className="flex items-center gap-3 text-xs text-black/40 font-black uppercase tracking-[0.15em]">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    <button className="mt-8 text-xs font-black uppercase tracking-[0.2em] text-black opacity-40 group-hover:opacity-100 transition-all flex items-center gap-2">
-                                        Learn More <span className="text-primary">→</span>
-                                    </button>
-                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
                             </motion.div>
                         )
                     })}

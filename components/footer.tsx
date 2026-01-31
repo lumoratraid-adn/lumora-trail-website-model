@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Instagram, Twitter, Linkedin, Mail, Phone } from "lucide-react"
+import { Instagram, Twitter, Linkedin, Mail, Phone, MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function Footer() {
@@ -15,10 +15,10 @@ export function Footer() {
   ]
 
   const serviceLinks = [
-    "UI / UX Design",
-    "Web Development",
-    "App Development",
-    "Product Strategy",
+    "Web & Software Development",
+    "UI / UX Design & Figma",
+    "Branding, Logo & Posters",
+    "Animations & Creative",
   ]
 
   return (
@@ -34,7 +34,7 @@ export function Footer() {
             className="space-y-8"
           >
             <Link href="/" className="inline-block">
-              <img src="/logo.svg" alt="Lumora Triad" className="h-8 w-auto brightness-200" />
+              {/* Logo removed */}
             </Link>
             <p className="text-white/40 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose max-w-xs">
               Architecting high-performance digital solutions for the next generation of visionaries.
@@ -109,11 +109,11 @@ export function Footer() {
             <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Get in touch</h5>
             <div className="space-y-6">
               <a
-                href="mailto:hello@lumoratriad.in"
+                href="mailto:lumoratraid@gmail.com"
                 className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary" />
-                hello@lumoratriad.in
+                lumoratraid@gmail.com
               </a>
               <a
                 href="tel:+919947878418"
@@ -121,6 +121,13 @@ export function Footer() {
               >
                 <Phone className="w-4 h-4 text-primary" />
                 +91 99478 78418
+              </a>
+              <a
+                href="tel:+919562276639"
+                className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+              >
+                <Phone className="w-4 h-4 text-primary" />
+                +91 95622 76639
               </a>
             </div>
           </motion.div>

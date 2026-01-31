@@ -16,11 +16,11 @@ export function ShowcaseSection() {
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                             CASE STUDIES
                         </span>
-                        <h2 className="text-5xl md:text-7xl font-bold text-white uppercase tracking-tight leading-none">
+                        <h2 className="text-4xl md:text-7xl font-bold text-white uppercase tracking-tight leading-none">
                             PRECISION <span className="text-primary italic">MOCKUPS</span><br />
                             <span className="text-white/10 stroke-text">DRIVING RESULTS.</span>
                         </h2>
-                        <p className="text-xl md:text-2xl text-white/50 font-medium leading-relaxed max-w-xl">
+                        <p className="text-lg md:text-2xl text-white/50 font-medium leading-relaxed max-w-xl">
                             We translate your business goals into a visual language that converts.
                             Our designs aren&apos;t just aesthetic; they are built for strategic impact.
                         </p>

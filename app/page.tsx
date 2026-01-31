@@ -15,15 +15,16 @@ export const metadata: Metadata = {
     "We design and build digital experiences that move businesses forward. Lumora Triad is a multidisciplinary digital studio specializing in design, development, and scalability.",
 }
 
+import { WhyChooseUs } from "@/components/why-choose-us"
+
 export default function Home() {
   return (
     <main className="relative">
       <NetworkHero />
 
       <div className="relative z-10">
-        <MissionVision />
         <WhatWeDo />
-        <ShowcaseSection />
+        <WhyChooseUs />
         <HowWeWork />
         <Testimonials />
         <CTASection />

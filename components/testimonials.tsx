@@ -19,11 +19,11 @@ export function Testimonials() {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               OUR STORY
             </span>
-            <h2 className="text-5xl md:text-7xl font-condensed font-bold text-white uppercase leading-[0.9]">
+            <h2 className="text-4xl md:text-7xl font-condensed font-bold text-white uppercase leading-[0.9]">
               FRIENDS. FOUNDERS. <br />
               <span className="text-primary italic">INNOVATORS.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-white/50 font-medium leading-relaxed max-w-lg">
+            <p className="text-lg md:text-2xl text-white/50 font-medium leading-relaxed max-w-lg">
               We started as a team of friends with a shared dream: to build a unique space
               in the tech world where everything is possible.
             </p>

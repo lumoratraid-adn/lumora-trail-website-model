@@ -2,158 +2,132 @@
 
 import { motion } from "framer-motion"
 import { Footer } from "@/components/footer"
-import { Layout, Globe, Layers, Smartphone, PlayCircle, UserCircle, ArrowRight, CheckCircle2 } from "lucide-react"
+import { Layout, Globe, Layers, PlayCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 const services = [
   {
-    title: "UI / UX Design",
-    desc: "We create intuitive, user-centric interfaces that balance aesthetic beauty with functional clarity.",
-    items: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-    icon: Layout,
+    title: "Web & Software Development",
+    problem: "Slow, Unreliable websites cost businesses revenue and trust.",
+    solution: "We build high-speed, scalable web applications and software using Next.js and React that deliver flawless performance and absolute reliability.",
+    items: ["Next.js/React Apps", "Custom CMS", "Performance Optimization", "E-commerce Solutions", "API Architectures", "Secure Databases"],
+    icon: Globe,
     visual: (
-      <div className="relative w-full h-full flex items-center justify-center">
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-48 h-32 glass-card rounded-xl border-primary/20 flex flex-col p-4 gap-2"
-        >
-          <div className="w-1/2 h-2 bg-primary/20 rounded-full" />
-          <div className="w-full h-2 bg-white/5 rounded-full" />
-          <div className="w-full h-2 bg-white/5 rounded-full" />
-          <div className="mt-2 flex gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary/20" />
-            <div className="flex-1 h-8 rounded-lg bg-white/5" />
+      <div className="relative w-full h-full flex items-center justify-center p-4">
+        <div className="w-full bg-[#0E0F13]/50 rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+          <div className="flex gap-1.5 p-3 border-b border-white/5 bg-white/5">
+            <div className="w-2 h-2 rounded-full bg-red-500/50" />
+            <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+            <div className="w-2 h-2 rounded-full bg-green-500/50" />
           </div>
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 right-0 w-40 h-24 glass-card rounded-xl border-accent/20 flex flex-col p-4 gap-2 -translate-y-1/2 translate-x-12 blur-[1px]"
-        >
-          <div className="w-3/4 h-2 bg-accent/20 rounded-full" />
-          <div className="w-full h-2 bg-white/5 rounded-full" />
-        </motion.div>
+          <div className="p-4 font-mono text-[10px] space-y-1.5 overflow-hidden">
+            <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-primary">import &#123; Lumora &#125; from &apos;triad&apos;;</motion.div>
+            <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-white/40">const studio = Lumora.init(&#123;</motion.div>
+            <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.6 }} className="pl-4 text-white/60">performance: &apos;ultra&apos;,</motion.div>
+            <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 }} className="pl-4 text-white/60">design: &apos;bespoke&apos;</motion.div>
+            <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 1.0 }} className="text-white/40">&#125;);</motion.div>
+          </div>
+        </div>
       </div>
     )
   },
   {
-    title: "Web & Software Development",
-    desc: "We engineer high-performance web applications and custom software solutions using cutting-edge technologies like Next.js, React, and Node.js.",
-    items: ["Custom Software", "Enterprise Web Apps", "E-commerce Systems", "Performance Optimization"],
-    icon: Globe,
+    title: "UI / UX Design & Figma",
+    problem: "Poor design leads to high bounce rates and user frustration.",
+    solution: "We create intuitive, research-driven interfaces in Figma that enhance user engagement and guide your customers with precision.",
+    items: ["User Research", "Wireframing & Prototyping", "UI Design Systems", "UX Audit", "Interactive Prototypes", "Developer Handoff"],
+    icon: Layout,
     visual: (
       <div className="relative w-full h-full flex items-center justify-center">
-        <div className="w-full max-w-sm font-mono text-[10px] text-white/30 space-y-2">
-          <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 3, repeat: Infinity }}>const app = express();</motion.div>
-          <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}>app.use(secureMiddleware);</motion.div>
-          <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 3, repeat: Infinity, delay: 1 }} className="text-primary/40 leading-relaxed pl-4 line-clamp-3">
-            {"{ deploy: { cluster: 'edge' } }"}
-          </motion.div>
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          {Array.from({ length: 3 }).map((_, i) => (
+        <div className="relative w-48 h-48">
+          {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              animate={{ scaleX: [0, 1, 0], x: [-100, 100] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
-              className="absolute h-px w-32 bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-              style={{ top: `${30 + i * 20}%` }}
-            />
+              className="absolute inset-0 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-2xl"
+              animate={{
+                x: i * 15,
+                y: i * 10,
+                z: i * -50,
+                opacity: 1 - (i * 0.3)
+              }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: "mirror" }}
+            >
+              <div className="p-4 space-y-3">
+                <div className="w-1/2 h-2 bg-primary/20 rounded-full" />
+                <div className="w-full h-12 bg-white/5 rounded-lg" />
+                <div className="flex gap-2">
+                  <div className="w-8 h-8 rounded-full bg-white/5" />
+                  <div className="flex-1 h-8 rounded-lg bg-white/5" />
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
     )
   },
   {
-    title: "Brand Identity",
-    desc: "Crafting memorable brand stories through strategic visual identities and logo design.",
-    items: ["Logo Design", "Brand Guidelines", "Marketing Assets", "Corporate Identity"],
+    title: "Branding, Logo & Posters",
+    problem: "Generic branding fails to stand out in a crowded market.",
+    solution: "We craft unique brand stories and visual identities that establish authority and build lasting trust with your ideal audience.",
+    items: ["Logo Design", "Brand Guidelines", "Visual Identity", "Poster & Ad Design", "Typography Systems", "Color Strategy"],
     icon: Layers,
     visual: (
       <div className="relative w-full h-full flex items-center justify-center">
-        <div className="grid grid-cols-2 gap-4">
-          <motion.div
-            animate={{ scale: [1, 1.05, 1], rotate: [0, 3, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="w-24 h-24 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center text-primary font-bold text-4xl"
-          >
-            L
-          </motion.div>
-          <motion.div
-            animate={{ scale: [1, 1.05, 1], rotate: [0, -3, 0] }}
-            transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-            className="w-24 h-24 rounded-2xl bg-accent/20 border border-accent/30 flex items-center justify-center text-accent font-bold text-4xl"
-          >
-            T
-          </motion.div>
-        </div>
-        <div className="absolute inset-0 bg-white/[0.01] rounded-full blur-[100px]" />
-      </div>
-    )
-  },
-  {
-    title: "Mobile Solutions",
-    desc: "Building seamless cross-platform mobile experiences for iOS and Android.",
-    items: ["Native Apps", "Hybrid Solutions", "App UI Design", "API Integration"],
-    icon: Smartphone,
-    visual: (
-      <div className="relative w-full h-full flex items-center justify-center">
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-          className="w-32 h-64 border-4 border-white/10 rounded-[2.5rem] bg-black relative p-4"
-        >
-          <div className="w-1/3 h-1 bg-white/20 rounded-full mx-auto mb-4" />
-          <div className="space-y-4">
-            <div className="w-full h-12 rounded-xl bg-primary/10" />
-            <div className="w-full h-12 rounded-xl bg-white/5" />
-            <div className="w-full h-12 rounded-xl bg-white/5" />
+        <div className="grid grid-cols-3 gap-2 p-4">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.4 }}
+              transition={{ delay: i * 0.1, duration: 1, repeat: Infinity, repeatType: "mirror" }}
+              className="w-12 h-12 rounded-lg border border-primary/30 flex items-center justify-center font-bold text-primary text-[8px]"
+            >
+              L/T
+            </motion.div>
+          ))}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 180, 270, 360] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="w-24 h-24 border-2 border-primary rounded-full flex items-center justify-center bg-background"
+            >
+              <Layers className="w-10 h-10 text-primary" />
+            </motion.div>
           </div>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-1 bg-white/10 rounded-full" />
-        </motion.div>
+        </div>
       </div>
     )
   },
   {
-    title: "Motion Design",
-    desc: "Bringing brands to life with high-impact animations and motion graphics.",
-    items: ["UI Animation", "Explainer Videos", "3D Motion", "Micro-interactions"],
+    title: "Animations & Creative",
+    problem: "Static content often fails to capture human attention.",
+    solution: "We bring products to life through high-impact animations and motion graphics that tell a compelling story and win hearts.",
+    items: ["UI Animation", "Explainer Videos", "3D Motion Graphics", "Social Media Motion", "Interactive Animations", "Logo Animation"],
     icon: PlayCircle,
     visual: (
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="w-48 h-48 rounded-full border border-dashed border-primary/30 flex items-center justify-center"
-        >
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-12 h-12 bg-primary rounded-full"
-          />
-        </motion.div>
-      </div>
-    )
-  },
-  {
-    title: "Personal Branding",
-    desc: "Defining and elevating individual professional identities in the digital space.",
-    items: ["Portfolio Sites", "Social Strategy", "Content Curation", "Resume Growth"],
-    icon: UserCircle,
-    visual: (
-      <div className="relative w-full h-full flex items-center justify-center">
+          animate={{
+            scale: [1, 1.5, 1],
+            rotate: [0, 360],
+            borderRadius: ["30% 70% 70% 30% / 30% 30% 70% 70%", "50% 50% 20% 80% / 25% 80% 20% 75%"]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="w-40 h-40 bg-gradient-to-tr from-primary via-accent to-secondary blur-2xl opacity-30"
+        />
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="w-48 h-48 glass-card rounded-full border-primary/20 flex flex-col items-center justify-center gap-4"
-        >
-          <div className="w-16 h-16 rounded-full bg-primary/20" />
-          <div className="space-y-2 text-center">
-            <div className="w-24 h-2 bg-white/20 rounded-full" />
-            <div className="w-16 h-2 bg-white/10 rounded-full mx-auto" />
-          </div>
-        </motion.div>
+          animate={{
+            scale: [1.2, 0.8, 1.2],
+            rotate: [360, 0],
+            borderRadius: ["50% 50% 20% 80% / 25% 80% 20% 75%", "30% 70% 70% 30% / 30% 30% 70% 70%"]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-32 h-32 bg-gradient-to-bl from-accent via-secondary to-primary blur-xl opacity-20"
+        />
+        <div className="relative z-10">
+          <PlayCircle className="w-16 h-16 text-white/50" />
+        </div>
       </div>
     )
   }
@@ -167,52 +141,54 @@ export default function ServicesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-24"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-white mb-6 uppercase">Our Services</h1>
-            <p className="text-xl text-white/50 max-w-2xl mx-auto font-medium">
+            <h1 className="text-4xl md:text-8xl font-bold tracking-tight text-white mb-4 uppercase">Our Services</h1>
+            <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto font-medium px-4">
               We provide end-to-end digital solutions that help brands scale across the modern web.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-16 md:gap-32">
+          <div className="grid grid-cols-1 gap-16 md:gap-20">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className={`flex flex-col lg:flex-row items-center gap-16 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                className={`flex flex-col lg:flex-row items-center gap-10 md:gap-16 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
               >
-                <div className="flex-1 space-y-8">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <service.icon className="w-8 h-8 text-primary" />
+                <div className="flex-1 space-y-6 md:space-y-8 w-full">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                    <service.icon className="w-7 h-7 md:w-8 md:h-8 text-primary" />
                   </div>
-                  <div className="space-y-4">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">{service.title}</h2>
-                    <p className="text-xl text-white/50 leading-relaxed font-medium max-w-xl">
-                      {service.desc}
+                  <div className="space-y-4 md:space-y-6">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight leading-none">{service.title}</h2>
+                    <p className="text-base md:text-xl text-white/40 font-medium leading-relaxed max-w-xl">
+                      {service.solution}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-8">
+                  <div className="grid grid-cols-2 gap-y-4 gap-x-4 md:gap-y-6 md:gap-x-12 pb-6 md:pb-8 border-t border-white/5 pt-6 md:pt-8">
                     {service.items.map((item) => (
-                      <div key={item} className="flex items-center gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                        <span className="text-white/60 font-medium text-sm">{item}</span>
+                      <div key={item} className="flex items-center gap-2 md:gap-4 group/item">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover/item:bg-primary transition-all duration-300" />
+                        <span className="text-white/60 font-black uppercase tracking-[0.15em] text-[9px] sm:text-xs group-hover/item:text-white transition-colors">
+                          {item}
+                        </span>
                       </div>
                     ))}
                   </div>
 
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl text-white font-bold hover:bg-primary hover:border-primary transition-all transition-duration-300"
+                    className="group inline-flex items-center justify-center md:justify-start gap-4 px-8 py-4 md:px-10 md:py-5 bg-white/5 border border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-primary hover:border-primary transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:shadow-primary/20 w-full md:w-auto"
                   >
-                    Get Inquiry
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    Discuss Project
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
-                <div className="flex-1 w-full aspect-square md:aspect-video rounded-[2rem] md:rounded-[3rem] bg-white/[0.02] border border-white/5 flex items-center justify-center p-6 md:p-12 overflow-hidden relative">
+                <div className="flex-1 w-full aspect-[4/3] md:aspect-video rounded-3xl md:rounded-[3rem] bg-white/[0.02] border border-white/5 flex items-center justify-center p-4 md:p-12 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/5" />
                   <div className="relative z-10 w-full h-full flex items-center justify-center">
                     {service.visual}

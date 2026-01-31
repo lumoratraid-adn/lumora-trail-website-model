@@ -62,11 +62,7 @@ export function Header() {
           }}
           className="relative z-[120]"
         >
-          <img
-            src="/logo.svg"
-            alt="Lumora Triad"
-            className="h-6 sm:h-7 w-auto brightness-200"
-          />
+          {/* Logo removed */}
         </Link>
 
         {/* Desktop Nav */}
@@ -75,7 +71,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors"
+              className="text-[11px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors"
             >
               {item.name}
             </Link>
@@ -86,9 +82,9 @@ export function Header() {
         <div className="flex items-center gap-6">
           <Link
             href="/contact"
-            className="hidden sm:flex px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95"
+            className="hidden sm:flex px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95 items-center gap-2"
           >
-            Start Project
+            Let&apos;s Connect
           </Link>
 
           <button
@@ -133,14 +129,14 @@ export function Header() {
               <div className="h-px bg-white/10 w-full" />
               <div className="space-y-4">
                 <p className="text-[10px] font-black tracking-widest text-white/20 uppercase">Get in touch</p>
-                <a href="mailto:hello@lumoratriad.in" className="text-xl font-bold text-white">hello@lumoratriad.in</a>
+                <a href="mailto:lumoratraid@gmail.com" className="text-xl font-bold text-white">lumoratraid@gmail.com</a>
               </div>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-6 bg-primary text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3"
               >
-                Let&apos;s Talk
+                Let&apos;s Connect
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

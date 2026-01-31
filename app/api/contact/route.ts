@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
-const BREVO_API_KEY = process.env.BREVO_API_KEY;
-
 export async function POST(req: Request) {
+    const BREVO_API_KEY = process.env.BREVO_API_KEY;
+
     try {
         const body = await req.json();
         const { name, email, phone, company, service, message } = body;
@@ -12,9 +12,11 @@ export async function POST(req: Request) {
         }
 
         if (!BREVO_API_KEY) {
-            console.error('BREVO_API_KEY is not defined in environment variables');
+            console.error('CRITICAL: BREVO_API_KEY is not defined in process.env');
             return NextResponse.json({ error: 'Mail server configuration missing' }, { status: 500 });
         }
+
+        const SENDER_EMAIL = process.env.ADMIN_EMAIL || 'lumoratraid@gmail.com';
 
         // 1. Send Notification Email to Admin (Lumora Triad)
         const adminResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -25,19 +27,43 @@ export async function POST(req: Request) {
                 'content-type': 'application/json'
             },
             body: JSON.stringify({
-                sender: { name: 'Lumora Website', email: 'lumoratraid@gmail.com' },
-                to: [{ email: 'lumoratraid@gmail.com', name: 'Lumora Triad Team' }],
-                subject: `New Inquiry from ${name}`,
+                sender: { name: 'Lumora Website', email: SENDER_EMAIL },
+                to: [{ email: SENDER_EMAIL, name: 'Lumora Triad' }],
+                subject: `🚀 New Project Inquiry: ${name}`,
                 htmlContent: `
-          <h1>New Website Inquiry</h1>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-          <p><strong>Service Interested:</strong> ${service}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        `
+                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f9f9f9; padding: 40px; color: #333;">
+                    <div style="max-width: 600px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <div style="background: #0E0F13; padding: 30px; text-align: center;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 2px;">LUMORA TRIAD</h1>
+                            <p style="color: #888; margin: 10px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">New Website Lead</p>
+                        </div>
+                        <div style="padding: 40px;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 150px;">Name:</td>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee;">${name}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee;"><a href="mailto:${email}" style="color: #6366f1; text-decoration: none;">${email}</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee; font-weight: bold;">Phone:</td>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee;">${phone || 'N/A'}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee; font-weight: bold;">Interest:</td>
+                                    <td style="padding: 12px 0; border-bottom: 1px solid #eee;">${service}</td>
+                                </tr>
+                            </table>
+                            <div style="margin-top: 30px; padding: 20px; background: #f4f4f5; border-radius: 8px;">
+                                <p style="margin: 0 0 10px; font-weight: bold;">Message Brief:</p>
+                                <p style="margin: 0; line-height: 1.6; color: #555;">${message}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
             })
         });
 
@@ -56,21 +82,32 @@ export async function POST(req: Request) {
                 'content-type': 'application/json'
             },
             body: JSON.stringify({
-                sender: { name: 'Lumora Triad', email: 'lumoratraid@gmail.com' },
+                sender: { name: 'Lumora Triad', email: SENDER_EMAIL },
                 to: [{ email: email, name: name }],
-                subject: 'Thank you for contacting Lumora Triad',
+                subject: 'Message Received | Lumora Triad Digital Studio',
                 htmlContent: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #6d28d9;">Hello ${name},</h2>
-            <p>Thank you for reaching out to <strong>Lumora Triad</strong>.</p>
-            <p>We have received your message regarding <strong>${service}</strong> and our team is already reviewing it.</p>
-            <p>We typically reply within 24 hours to schedule a consultation or discuss your project in detail.</p>
-            <br/>
-            <p>Best Regards,</p>
-            <p><strong>The Lumora Triad Team</strong></p>
-            <p><a href="https://www.lumoratriad.in" style="color: #6d28d9;">www.lumoratriad.in</a></p>
-          </div>
-        `
+                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #333; line-height: 1.6;">
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <div style="margin-bottom: 40px;">
+                            <h2 style="font-size: 28px; margin: 0 0 20px; color: #000;">Hello ${name},</h2>
+                            <p style="font-size: 16px; color: #555;">Thank you for reaching out to <strong>Lumora Triad</strong>. We have received your inquiry regarding <strong>${service}</strong>.</p>
+                        </div>
+                        
+                        <div style="padding: 30px; border-left: 4px solid #6366f1; background: #f8fafc; margin-bottom: 40px;">
+                            <p style="margin: 0; font-weight: bold; color: #6366f1; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Update</p>
+                            <p style="margin: 10px 0 0; font-size: 18px; color: #0f172a;">A member of our team will review your project brief and get back to you within <strong>24 hours</strong>.</p>
+                        </div>
+
+                        <p style="font-size: 16px; color: #555;">In the meantime, feel free to visit our portfolio to see some of our latest architectural designs and software builds.</p>
+                        
+                        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #eee;">
+                            <p style="margin: 0; font-size: 14px; font-weight: bold; color: #000;">LUMORA TRIAD</p>
+                            <p style="margin: 4px 0 0; font-size: 12px; color: #888;">Modern Digital Studio | Engineering Excellence</p>
+                            <a href="https://lumoratriad.com" style="display: inline-block; margin-top: 15px; color: #6366f1; text-decoration: none; font-size: 14px; font-weight: bold;">Visit Website →</a>
+                        </div>
+                    </div>
+                </div>
+                `
             })
         });
 

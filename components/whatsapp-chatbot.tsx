@@ -5,38 +5,33 @@ import { motion, AnimatePresence } from "framer-motion"
 import { MessageCircle, X, Send } from "lucide-react"
 
 const services = [
-    "Website Development",
+    "Website & Software Development",
     "UI/UX Design & Figma",
-    "Branding & Logo Design",
+    "Branding, Logo & Posters",
     "Animations & Creative Design",
 ]
 
 export function WhatsAppChatbot() {
     const [isOpen, setIsOpen] = useState(false)
     const [showGreeting, setShowGreeting] = useState(true)
-    const [selectedService, setSelectedService] = useState<string | null>(null)
 
     useEffect(() => {
-        // Hide greeting after 3 seconds (+1s delay from motion)
         const timer = setTimeout(() => {
             setShowGreeting(false)
-        }, 4000)
+        }, 6000)
         return () => clearTimeout(timer)
     }, [])
 
     const handleServiceClick = (service: string) => {
-        setSelectedService(service)
-        // Construct WhatsApp message
-        const message = `Hi! I'm interested in ${service}. Can we discuss?`
-        const whatsappUrl = `https://wa.me/919947884418?text=${encodeURIComponent(message)}`
+        const message = `Hi! I'm interested in ${service}. Let's discuss my project!`
+        const whatsappUrl = `https://wa.me/919947878418?text=${encodeURIComponent(message)}`
         window.open(whatsappUrl, "_blank")
         setIsOpen(false)
-        setSelectedService(null)
     }
 
     const handleGeneralChat = () => {
-        const message = "Hi! I have an idea. Let's connect!"
-        const whatsappUrl = `https://wa.me/919947884418?text=${encodeURIComponent(message)}`
+        const message = "Hi Lumora Triad! I have an idea for a digital product. Can we connect?"
+        const whatsappUrl = `https://wa.me/919947878418?text=${encodeURIComponent(message)}`
         window.open(whatsappUrl, "_blank")
         setIsOpen(false)
     }
@@ -71,13 +66,16 @@ export function WhatsAppChatbot() {
                         className="fixed bottom-24 right-6 z-50 w-[90vw] sm:w-96 bg-background border border-border/50 rounded-2xl shadow-2xl overflow-hidden"
                     >
                         {/* Header */}
-                        <div className="bg-[#25D366] p-4 flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                                <MessageCircle className="w-6 h-6 text-[#25D366]" />
+                        <div className="bg-[#25D366] p-5 flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                                <MessageCircle className="w-7 h-7 text-[#25D366]" />
                             </div>
                             <div className="flex-1">
-                                <h3 className="text-white font-bold text-sm">Lumora Traid</h3>
-                                <p className="text-white/90 text-xs">Typically replies instantly</p>
+                                <h3 className="text-white font-bold text-base leading-none mb-1">Lumora Triad</h3>
+                                <div className="flex items-center gap-1.5">
+                                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                                    <p className="text-white/90 text-[10px] font-medium uppercase tracking-wider">Online & Active</p>
+                                </div>
                             </div>
                         </div>
 

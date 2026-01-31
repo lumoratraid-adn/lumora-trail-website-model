@@ -6,23 +6,23 @@ import { MessageCircle, Hammer, Rocket } from "lucide-react"
 const processSteps = [
     {
         number: "01",
-        title: "Connect",
+        title: "Discover",
         description:
-            "We understand your goals, business needs, target audience, and technical requirements through clear discussions.",
+            "We dive deep into your goals, business landscape, and user needs to create a strategic roadmap for success.",
         icon: MessageCircle,
     },
     {
         number: "02",
-        title: "Build",
+        title: "Design & Build",
         description:
-            "Our team designs, develops, and tests scalable digital solutions using modern tools, clean code, and best practices.",
+            "Our experts craft intuitive interfaces and engineer scalable software using modern tools and clean code.",
         icon: Hammer,
     },
     {
         number: "03",
         title: "Deliver",
         description:
-            "We launch, support, and continuously improve your product — ensuring performance, reliability, and long-term value.",
+            "We launch, optimize, and provide ongoing support — ensuring your digital product achieves lasting impact and value.",
         icon: Rocket,
     },
 ]
@@ -34,11 +34,7 @@ export function HowWeWork() {
 
                 {/* Section Header */}
                 <div className="mb-12 text-center space-y-6">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-[10px] font-bold tracking-[0.3em] text-white/60 uppercase border border-white/5 backdrop-blur-sm mx-auto">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                        OUR PROCESS
-                    </span>
-                    <h2 className="text-6xl md:text-8xl font-condensed font-bold text-white uppercase tracking-tight leading-[0.9]">
+                    <h2 className="text-4xl md:text-8xl font-condensed font-bold text-white uppercase tracking-tight leading-[0.9]">
                         FROM <span className="text-primary italic">VISION</span><br />
                         <span className="text-white/10 stroke-text">TO REALITY.</span>
                     </h2>

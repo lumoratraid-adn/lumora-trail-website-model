@@ -53,56 +53,57 @@ function NetworkGlobe() {
 
 export function NetworkHero() {
     return (
-        <section className="relative min-h-[80vh] md:h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-[80vh] md:h-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
                 <Canvas dpr={[1, 1.5]}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
+                    <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} intensity={1} color="#6366f1" />
                     <NetworkGlobe />
                 </Canvas>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 text-center h-full flex flex-col justify-center items-center">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
-                    className="w-full"
+            <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center justify-center h-full pt-32 md:pt-40">
+                <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="text-[12vw] md:text-[10vw] font-condensed font-bold tracking-[-0.04em] leading-[0.85] text-white uppercase text-center relative z-20 select-none whitespace-nowrap drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] mb-48 md:mb-32"
                 >
-                    <motion.h1
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
-                        className="text-[16vw] sm:text-[14vw] md:text-[12vw] font-condensed font-bold tracking-[-0.04em] leading-[0.8] text-white uppercase text-center relative z-20 select-none whitespace-nowrap"
-                    >
-                        LUMORA TRIAD
-                    </motion.h1>
-                </motion.div>
+                    LUMORA TRIAD
+                </motion.h1>
 
-                {/* Bottom Navigation - Hidden on Mobile */}
-                <div className="absolute bottom-10 md:bottom-16 left-0 right-0 hidden md:flex flex-col items-center">
+                <div className="w-full flex flex-col items-center space-y-8 md:space-y-12">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 1.2 }}
-                        className="flex flex-col md:flex-row items-center justify-center gap-4 px-8 w-full max-w-lg md:max-w-none"
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="flex flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-2xl px-4"
                     >
                         <Link
                             href="/contact"
-                            className="group w-full md:w-auto px-10 py-5 bg-white text-black rounded-full font-bold text-base flex items-center justify-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
+                            className="group flex-1 md:flex-none px-5 py-4 md:px-10 md:py-5 bg-white text-black rounded-full font-bold text-[10px] md:text-base flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.2)] whitespace-nowrap"
                         >
                             Get Started
-                            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="w-3.5 h-3.5 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
                         </Link>
 
                         <Link
                             href="/services"
-                            className="w-full md:w-auto px-10 py-5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md font-bold text-white text-base hover:bg-white/10 transition-all hover:border-white/40 flex justify-center"
+                            className="flex-1 md:flex-none px-5 py-4 md:px-10 md:py-5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md font-bold text-white text-[10px] md:text-base hover:bg-white/10 transition-all hover:border-white/40 flex justify-center items-center whitespace-nowrap"
                         >
                             View Services
                         </Link>
                     </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 1 }}
+                        className="text-[9px] md:text-sm text-white/40 max-w-xl mx-auto font-medium leading-relaxed tracking-[0.2em] uppercase text-center px-6"
+                    >
+                        Engineering excellence for the modern digital era.
+                    </motion.p>
                 </div>
             </div>
         </section>

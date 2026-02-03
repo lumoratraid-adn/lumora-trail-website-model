@@ -62,9 +62,11 @@ export function Header() {
           }}
           className="relative z-[120] flex items-center"
         >
-          <span className="text-lg md:text-xl font-sans font-semibold tracking-[-0.08em] text-white uppercase hover:opacity-80 transition-opacity">
-            LUMORA TRIAD
-          </span>
+          <img
+            src="/logo.svg"
+            alt="Lumora Triad"
+            className="h-25 sm:h-29 w-auto brightness-200"
+          />
         </Link>
 
         {/* Desktop Nav */}

@@ -145,11 +145,30 @@ export function Hero() {
         </div>
 
         {/* Overlay Content - Just scroll indicator */}
-        <div className="absolute inset-x-0 bottom-0 z-20 h-screen flex flex-col items-center justify-center pointer-events-none">
+        <div className="absolute inset-x-0 bottom-0 z-20 h-[100dvh] flex flex-col items-center justify-end pointer-events-none pb-8 px-6 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+          {/* Mobile CTA Buttons */}
+          <motion.div
+            style={{ opacity: useTransform(smoothProgress, [0, 0.1], [1, 0]) }}
+            className="lg:hidden w-full mb-4 flex gap-4 pointer-events-auto"
+          >
+            <a
+              href="#services"
+              className="flex-1 px-4 py-4 bg-primary text-white rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 active:scale-95 transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] border border-primary/50"
+            >
+              Get Started
+            </a>
+            <a
+              href="/services"
+              className="flex-1 px-4 py-4 bg-white/5 backdrop-blur-2xl border border-white/10 text-white rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 active:scale-95 transition-all hover:bg-white/10"
+            >
+              Services
+            </a>
+          </motion.div>
+
           {/* Scroll Indicator */}
           <motion.div
             style={{ opacity: useTransform(smoothProgress, [0, 0.1], [1, 0]) }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-400 text-sm flex flex-col items-center gap-2"
+            className="hidden lg:flex text-gray-400 text-sm flex-col items-center gap-2"
           >
             <span>Scroll to explore</span>
             <div className="w-5 h-8 border border-gray-500 rounded-full flex justify-center p-1">

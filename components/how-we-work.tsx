@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageCircle, Hammer, Rocket } from "lucide-react"
 
@@ -29,10 +29,19 @@ const processSteps = [
 ]
 
 export function HowWeWork() {
-    const [activeIndex, setActiveIndex] = useState(0)
+    const [activeStep, setActiveStep] = useState(0)
 
-    const handleNext = () => {
-        setActiveIndex((prev) => (prev + 1) % processSteps.length)
+    const handleNext = (index: number) => {
+        // Loop back to first step if the last step is reached
+        if (index === processSteps.length - 1) {
+            setActiveStep(0)
+        } else if (index === activeStep) {
+            setActiveStep(activeStep + 1)
+        }
+    }
+
+    const isStepLit = (index: number) => {
+        return activeStep >= index
     }
 
     return (
@@ -65,72 +74,166 @@ export function HowWeWork() {
                     </p>
                 </motion.div>
 
-                {/* Steps */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                {/* Mobile Swiper View */}
+                <div className="lg:hidden relative">
+                    <div className="overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeStep}
+                                initial={{ opacity: 0, x: 100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -100 }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                className="w-full"
+                            >
+                                {(() => {
+                                    const step = processSteps[activeStep]
+                                    const Icon = step.icon
+                                    const isLit = true
+
+                                    return (
+                                        <div
+                                            className={`group relative p-8 md:p-12 transition-all duration-700 overflow-hidden flex flex-col items-center justify-center text-center rounded-[2.5rem] min-h-[500px] border-primary/80 bg-primary/[0.08] shadow-[0_0_60px_rgba(139,92,246,0.25)] opacity-100 border`}
+                                        >
+                                            {/* Glow Effect Behind Card */}
+                                            <div className={`absolute -bottom-20 -right-20 w-48 h-48 bg-primary/20 blur-[100px] opacity-100`} />
+
+                                            {/* Large Index Number Background */}
+                                            <div className={`absolute top-10 right-10 text-[5rem] md:text-[8rem] font-sans font-black leading-none select-none text-primary/10 pointer-events-none`}>
+                                                {step.number}
+                                            </div>
+
+                                            <div className="relative z-10 flex flex-col items-center h-full">
+                                                {/* Icon Container */}
+                                                <div
+                                                    className={`w-20 h-20 rounded-[1.8rem] border flex items-center justify-center mb-12 transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)] bg-primary border-primary shadow-[0_0_30px_rgba(139,92,246,0.4)] scale-110`}>
+                                                    <Icon className={`w-9 h-9 text-white`} strokeWidth={1.5} />
+                                                </div>
+
+                                                <div className="space-y-6">
+                                                    <div className="flex items-center gap-3 justify-center">
+                                                        <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border text-white bg-primary border-primary`}>
+                                                            Step {step.number}
+                                                        </span>
+                                                    </div>
+                                                    <h3 className={`text-2xl md:text-3xl font-sans font-bold tracking-[-0.04em] text-primary uppercase leading-[0.9]`}>
+                                                        {step.title}
+                                                    </h3>
+                                                    <p className={`leading-relaxed font-medium text-xs md:text-sm text-white duration-500 max-w-[280px]`}>
+                                                        {step.description}
+                                                    </p>
+                                                </div>
+
+                                                {/* Navigation Arrow */}
+                                                <div className="mt-auto pt-10 flex w-full justify-center">
+                                                    <motion.button
+                                                        whileHover={{ scale: 1.2 }}
+                                                        whileTap={{ scale: 0.9 }}
+                                                        onClick={() => handleNext(activeStep)}
+                                                        className="w-12 h-12 rounded-full border bg-primary border-primary flex items-center justify-center text-xl text-white shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all"
+                                                    >
+                                                        →
+                                                    </motion.button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })()}
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+
+                </div>
+
+                {/* Desktop Grid View */}
+                <div className="hidden lg:grid grid-cols-3 gap-8 md:gap-12 items-stretch">
                     {processSteps.map((step, index) => {
                         const Icon = step.icon
-                        const isActive = activeIndex === index
+                        const isLit = isStepLit(index)
+
                         return (
                             <motion.div
                                 key={step.number}
-                                onClick={handleNext}
+                                layout
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.7, delay: index * 0.2 }}
+                                transition={{
+                                    opacity: { duration: 0.7, delay: index * 0.2 },
+                                    y: { duration: 0.7, delay: index * 0.2 },
+                                    layout: { duration: 0.8, ease: "circInOut" }
+                                }}
                                 viewport={{ once: true }}
-                                className={`group relative p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] bg-white/[0.02] backdrop-blur-3xl border transition-all duration-700 cursor-pointer overflow-hidden ${isActive
-                                    ? "border-primary/60 bg-primary/[0.05] shadow-[0_0_50px_rgba(139,92,246,0.2)]"
-                                    : "border-white/5 hover:border-primary/40 hover:bg-primary/[0.03]"
+                                onClick={() => handleNext(index)}
+                                className={`group relative p-8 md:p-12 transition-all duration-700 cursor-pointer overflow-hidden flex flex-col items-center justify-center text-center rounded-[2.5rem] md:rounded-[3.5rem] lg:min-h-[600px] ${isLit
+                                    ? "border-primary/80 bg-primary/[0.08] shadow-[0_0_60px_rgba(139,92,246,0.25)] opacity-100 border"
+                                    : "border-white/5 opacity-40 hover:opacity-100 hover:border-primary/40 hover:bg-primary/[0.03] border"
                                     }`}
                             >
                                 {/* Glow Effect Behind Card */}
-                                <div className={`absolute -bottom-20 -right-20 w-48 h-48 bg-primary/20 blur-[100px] transition-opacity duration-1000 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                                <div className={`absolute -bottom-20 -right-20 w-48 h-48 bg-primary/20 blur-[100px] transition-opacity duration-1000 ${isLit ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                                     }`} />
 
                                 {/* Large Index Number Background */}
-                                <div className={`absolute top-10 right-10 text-[5rem] md:text-[8rem] font-sans font-black leading-none select-none transition-colors duration-700 pointer-events-none ${isActive ? "text-primary/10" : "text-white/[0.02] group-hover:text-primary/[0.05]"
+                                <div className={`absolute top-10 right-10 text-[5rem] md:text-[8rem] font-sans font-black leading-none select-none transition-colors duration-700 pointer-events-none ${isLit ? "text-primary/10" : "text-white/[0.02] group-hover:text-primary/[0.05]"
                                     }`}>
                                     {step.number}
                                 </div>
 
-                                <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left h-full">
-                                    {/* Icon Container */}
-                                    <div className={`w-20 h-20 rounded-[1.8rem] border flex items-center justify-center mb-12 transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)] ${isActive
-                                        ? "bg-primary border-primary shadow-[0_0_30px_rgba(139,92,246,0.4)]"
-                                        : "bg-white/[0.05] border-white/10 group-hover:bg-primary/20 group-hover:border-primary/40"
-                                        }`}>
-                                        <Icon className={`w-9 h-9 transition-colors ${isActive ? "text-white" : "text-white/40 group-hover:text-primary"
+                                <div className="relative z-10 flex flex-col items-center h-full">
+                                    {/* Icon Container - Make it a button area for the first step */}
+                                    <div
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleNext(index);
+                                        }}
+                                        className={`w-20 h-20 rounded-[1.8rem] border flex items-center justify-center mb-12 transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)] ${isLit
+                                            ? "bg-primary border-primary shadow-[0_0_30px_rgba(139,92,246,0.4)] scale-110"
+                                            : "bg-white/[0.05] border-white/10 group-hover:bg-primary/20 group-hover:border-primary/40"
+                                            }`}>
+                                        <Icon className={`w-9 h-9 transition-colors ${isLit ? "text-white" : "text-white/40 group-hover:text-primary"
                                             }`} strokeWidth={1.5} />
                                     </div>
 
                                     <div className="space-y-6">
-                                        <div className="flex items-center gap-3 justify-center lg:justify-start">
-                                            <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border transition-colors ${isActive
+                                        <div className="flex items-center gap-3 justify-center">
+                                            <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border transition-colors ${isLit
                                                 ? "text-white bg-primary border-primary"
                                                 : "text-primary bg-primary/10 border-primary/20"
                                                 }`}>
                                                 Step {step.number}
                                             </span>
                                         </div>
-                                        <h3 className={`text-3xl md:text-4xl font-sans font-bold tracking-[-0.04em] transition-colors uppercase leading-[0.9] ${isActive ? "text-primary" : "text-white group-hover:text-primary"
+                                        <h3 className={`text-2xl md:text-3xl font-sans font-bold tracking-[-0.04em] transition-colors uppercase leading-[0.9] ${isLit ? "text-primary" : "text-white group-hover:text-primary"
                                             }`}>
                                             {step.title}
                                         </h3>
-                                        <p className={`leading-relaxed font-medium text-base transition-colors duration-500 ${isActive ? "text-white/80" : "text-white/30 group-hover:text-white/60"
+                                        <p className={`leading-relaxed font-medium text-xs md:text-sm transition-colors duration-500 max-w-[280px] ${isLit ? "text-white" : "text-white/30 group-hover:text-white/60"
                                             }`}>
                                             {step.description}
                                         </p>
                                     </div>
 
-                                    {/* Link Decorator */}
-                                    <div className="mt-auto pt-10 flex w-full justify-center lg:justify-start">
-                                        <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${isActive
-                                            ? "bg-primary border-primary rotate-90 scale-110"
-                                            : "bg-white/5 border-white/10 group-hover:bg-primary group-hover:border-primary"
-                                            }`}>
-                                            <span className={`text-sm transition-opacity ${isActive ? "text-white opacity-100" : "text-white opacity-60 group-hover:opacity-100"
-                                                }`}>→</span>
-                                        </div>
+                                    {/* Link Decorator - Action button for progression */}
+                                    <div className="mt-auto pt-10 flex w-full justify-center">
+                                        <AnimatePresence>
+                                            {isLit && (
+                                                <motion.button
+                                                    initial={{ opacity: 0, scale: 0.5 }}
+                                                    animate={{ opacity: 1, scale: 1.1 }}
+                                                    exit={{ opacity: 0, scale: 0.5 }}
+                                                    whileHover={{ scale: 1.2 }}
+                                                    whileTap={{ scale: 0.9 }}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleNext(index);
+                                                    }}
+                                                    className="w-12 h-12 rounded-full border bg-primary border-primary flex items-center justify-center text-xl text-white shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all"
+                                                >
+                                                    →
+                                                </motion.button>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 </div>
                             </motion.div>

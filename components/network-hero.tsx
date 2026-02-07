@@ -68,8 +68,8 @@ export function NetworkHero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-none text-center text-white relative z-20 select-none mb-12 sm:mb-24 md:mb-32 px-4"
-                    style={{ letterSpacing: "-0.04em", wordSpacing: "0.15em" }}
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-none text-center text-white relative z-20 select-none mb-12 sm:mb-24 md:mb-32 px-4"
+                    style={{ letterSpacing: "0.05em", wordSpacing: "0.15em" }}
                 >
                     Lumora Triad
                 </motion.h1>

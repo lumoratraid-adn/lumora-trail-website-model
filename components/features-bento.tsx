@@ -1,119 +1,88 @@
 "use client"
 
-import { Compass, Cpu, Layers, ShieldCheck } from "lucide-react"
+import { Cpu, Palette, PenTool, Video } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function FeaturesBento() {
   const features = [
     {
-      title: "UX Research & Analysis",
-      desc: "Deep diving into user needs to ensure every design decision has a data-driven purpose.",
-      icon: Compass,
-      bgColor: "bg-[#053678] dark:bg-muted/10",
-      textColor: "text-white dark:text-foreground",
-      iconColor: "text-white",
-    },
-    {
-      title: "UI Design & Prototyping",
-      desc: "Crafting wireframes and high-fidelity interactive prototypes that feel real.",
-      icon: Layers,
-      bgColor: "bg-[#6A3A8F] dark:bg-muted/10",
-      textColor: "text-white dark:text-foreground",
-      iconColor: "text-white",
-    },
-    {
-      title: "Website & App Development",
-      desc: "From complex web platforms to sleek mobile apps, we build for performance and scale.",
+      title: "Website & Software Development",
+      desc: "We engineer high-performance web applications and custom software solutions designed to scale with your business.",
       icon: Cpu,
-      bgColor: "bg-[#F4F7FB] dark:bg-muted/10",
-      textColor: "text-[#053678] dark:text-foreground",
-      iconColor: "text-[#053678] dark:text-white",
     },
     {
-      title: "Branding & Poster Design",
-      desc: "Building a unique visual identity through logos, posters, and creative assets.",
-      icon: ShieldCheck,
-      bgColor: "bg-white dark:bg-muted/10",
-      textColor: "text-[#053678] dark:text-foreground",
-      iconColor: "text-[#6A3A8F] dark:text-white",
-      borderColor: "border-[#C7D3E5]",
+      title: "UI / UX Design & Figma Projects",
+      desc: "Precision-crafted user interfaces and seamless experiences that transform how users interact with your digital products.",
+      icon: Palette,
     },
     {
-      title: "Figma Design & Creative Assets",
-      desc: "Professional assets and systems designed within Figma for seamless handovers.",
-      icon: Compass,
-      bgColor: "bg-[#F4F7FB] dark:bg-muted/10",
-      textColor: "text-[#053678] dark:text-foreground",
-      iconColor: "text-[#053678] dark:text-white",
+      title: "Branding, Logo & Posters",
+      desc: "Compelling visual identities and high-impact marketing assets that establish trust and define your brand authority.",
+      icon: PenTool,
     },
     {
-      title: "Animations & Visual Storytelling",
-      desc: "Bringing products to life with custom motion graphics and storytelling animations.",
-      icon: Layers,
-      bgColor: "bg-[#6A3A8F] dark:bg-muted/10",
-      textColor: "text-white dark:text-foreground",
-      iconColor: "text-white",
-    },
-    {
-      title: "Database Management",
-      desc: "Designing secure, high-performance database architectures and optimizations.",
-      icon: Cpu,
-      bgColor: "bg-[#053678] dark:bg-muted/10",
-      textColor: "text-white dark:text-foreground",
-      iconColor: "text-white",
-    },
-    {
-      title: "Academic & Personal Projects",
-      desc: "Reliable support for final year academic projects and personal developer portfolios.",
-      icon: ShieldCheck,
-      bgColor: "bg-white dark:bg-muted/10",
-      textColor: "text-[#053678] dark:text-foreground",
-      iconColor: "text-[#053678] dark:text-white",
-      borderColor: "border-[#C7D3E5]",
+      title: "Animations & Creative Design",
+      desc: "Dynamic motion graphics and creative storytelling that bring your brand to life and capture audience attention.",
+      icon: Video,
     },
   ]
 
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-6">
+    <section className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-20"
         >
-          <span className="text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase bg-muted/20 border border-border px-4 py-1.5 rounded-full shadow-sm mb-6 inline-block">
+          <span className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase mb-6 inline-block">
             Our Expertise
           </span>
-          <h2 className="text-3xl sm:text-5xl md:text-7xl mb-8 leading-tight font-serif font-black">
-            Engineering <span className="text-primary italic font-medium">Digital Excellence.</span>
+          <h2 className="text-4xl sm:text-[10vw] md:text-[6vw] font-sans font-semibold tracking-[-0.085em] leading-[1] md:leading-[0.85] text-white uppercase mb-8 drop-shadow-sm">
+            ENGINEERING EXCELLENCE
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-medium px-4">
-            From UX research to full-stack development, we provide the technical foundation and creative vision for your growth.
+          <p className="text-[10px] md:text-sm text-white/30 max-w-3xl mx-auto font-bold tracking-[0.2em] uppercase px-4 whitespace-nowrap overflow-hidden">
+            Engineering excellence for the modern digital era.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.6, delay: i * 0.05, ease: [0.21, 0.47, 0.32, 0.98] }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] ${f.bgColor} flex flex-col gap-6 sm:gap-8 h-full border ${f.borderColor || "border-border/20"} dark:border-border/20 hover:shadow-xl transition-all duration-300 group`}
+              className="group relative p-8 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-white/[0.02] backdrop-blur-3xl border border-white/5 hover:border-primary/40 transition-all duration-700 hover:bg-primary/[0.03] overflow-hidden"
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/20 dark:bg-foreground/10 flex items-center justify-center shadow-sm backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                <f.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${f.iconColor} group-hover:text-white transition-colors`} />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h3 className={`text-lg sm:text-xl font-black mb-2 sm:mb-3 ${f.textColor} leading-tight`}>{f.title}</h3>
-                <p className={`text-[13px] sm:text-sm ${f.textColor} opacity-80 dark:opacity-80 font-medium leading-relaxed mt-auto`}>
+              {/* Animated Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="w-16 h-16 rounded-[1.5rem] bg-white/[0.05] border border-white/10 flex items-center justify-center mb-10 group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-500">
+                  <f.icon className="w-7 h-7 text-white/80 group-hover:text-primary transition-colors" />
+                </div>
+
+                <h3 className="text-sm md:text-base font-sans font-bold text-white uppercase tracking-[-0.04em] leading-tight mb-6 group-hover:text-primary transition-colors duration-500">
+                  {f.title}
+                </h3>
+
+                <p className="text-sm text-white/30 leading-relaxed font-medium group-hover:text-white/60 transition-colors duration-500">
                   {f.desc}
                 </p>
+
+                <div className="mt-12 flex justify-start">
+                  <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500">
+                    <span className="text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                  </div>
+                </div>
               </div>
+
+              {/* Decorative Corner Light */}
+              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/20 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </motion.div>
           ))}
         </div>

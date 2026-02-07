@@ -19,7 +19,7 @@ export function MissionVision() {
                         <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-[10px] font-bold tracking-[0.3em] text-primary uppercase border border-white/10">
                             Our Ambition
                         </span>
-                        <h2 className="text-4xl md:text-7xl font-condensed font-bold text-white uppercase leading-[0.9] tracking-tight">
+                        <h2 className="text-4xl md:text-[5vw] font-sans font-semibold text-white uppercase leading-[0.85] tracking-[-0.08em] drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
                             Designing <span className="text-primary italic">Experiences.</span> <br />
                             Developing <span className="text-white/20">Digital Solutions.</span>
                         </h2>

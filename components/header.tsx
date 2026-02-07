@@ -47,7 +47,7 @@ export function Header() {
     >
       <div
         className={`container mx-auto flex items-center justify-between transition-all duration-500 rounded-full px-8 relative z-[110] ${scrolled || mobileMenuOpen
-          ? "h-16 bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-2xl"
+          ? "h-16 bg-primary/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
           : "h-20 bg-transparent"
           }`}
       >
@@ -60,31 +60,39 @@ export function Header() {
             }
             setMobileMenuOpen(false);
           }}
-          className="relative z-[120]"
+          className="relative z-[120] flex items-center"
         >
-          {/* Logo removed */}
+          <span className="text-lg md:text-xl font-sans font-semibold tracking-[-0.08em] text-white uppercase hover:opacity-80 transition-opacity">
+            LUMORA TRIAD
+          </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-[11px] font-black uppercase tracking-[0.2em] text-white hover:text-primary transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
+        <nav className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">
+          <div className="flex items-center gap-16">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`text-[11px] font-bold uppercase tracking-[0.25em] text-white/90 hover:text-primary transition-all duration-300 hover:scale-110 ${index === 0 ? "-translate-x-6" : index === navItems.length - 1 ? "translate-x-6" : ""
+                  }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </nav>
 
         {/* Actions */}
         <div className="flex items-center gap-6">
           <Link
             href="/contact"
-            className="hidden sm:flex px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95 items-center gap-2"
+            className="hidden sm:flex group items-center gap-4 pl-8 pr-2 py-1.5 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full font-bold text-[10px] uppercase tracking-[0.2em] text-white hover:bg-primary/30 transition-all active:scale-95 shadow-[0_0_20px_rgba(139,92,246,0.15)]"
           >
-            Let&apos;s Connect
+            <span>Book Now</span>
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">
+              <ArrowUpRight className="w-4 h-4 text-black group-hover:text-white transition-colors" />
+            </div>
           </Link>
 
           <button
@@ -129,14 +137,14 @@ export function Header() {
               <div className="h-px bg-white/10 w-full" />
               <div className="space-y-4">
                 <p className="text-[10px] font-black tracking-widest text-white/20 uppercase">Get in touch</p>
-                <a href="mailto:lumoratraid@gmail.com" className="text-xl font-bold text-white">lumoratraid@gmail.com</a>
+                <a href="mailto:lumoratriad@gmail.com" className="text-xl font-bold text-white lowercase tracking-widest">lumoratriad@gmail.com</a>
               </div>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-6 bg-primary text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3"
+                className="w-full py-6 bg-primary text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 active:scale-95 transition-transform"
               >
-                Let&apos;s Connect
+                Book Now
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

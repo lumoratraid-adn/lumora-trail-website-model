@@ -9,17 +9,17 @@ function StarField() {
     const ref = useRef<THREE.Points>(null)
 
     const [positions, colors] = useMemo(() => {
-        const count = 1000
+        const count = 2000
         const pos = new Float32Array(count * 3)
         const col = new Float32Array(count * 3)
         for (let i = 0; i < count; i++) {
-            pos[i * 3] = (Math.random() - 0.5) * 50
-            pos[i * 3 + 1] = (Math.random() - 0.5) * 50
-            pos[i * 3 + 2] = (Math.random() - 0.5) * 50
+            pos[i * 3] = (Math.random() - 0.5) * 60
+            pos[i * 3 + 1] = (Math.random() - 0.5) * 60
+            pos[i * 3 + 2] = (Math.random() - 0.5) * 60
 
-            const r = 0.4 + Math.random() * 0.2 // More purple/blue control
-            const g = 0.2 + Math.random() * 0.2
-            const b = 0.8 + Math.random() * 0.2
+            const r = 0.5 + Math.random() * 0.2
+            const g = 0.4 + Math.random() * 0.2
+            const b = 1.0
             col[i * 3] = r
             col[i * 3 + 1] = g
             col[i * 3 + 2] = b
@@ -29,8 +29,8 @@ function StarField() {
 
     useFrame((state) => {
         if (ref.current) {
-            ref.current.rotation.y += 0.0003
-            ref.current.rotation.x += 0.0001
+            ref.current.rotation.y += 0.0004
+            ref.current.rotation.x += 0.0002
         }
     })
 

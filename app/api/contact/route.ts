@@ -16,7 +16,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Mail server configuration missing' }, { status: 500 });
         }
 
-        const SENDER_EMAIL = process.env.ADMIN_EMAIL || 'lumoratraid@gmail.com';
+        const SENDER_EMAIL = process.env.ADMIN_EMAIL || 'lumoratriad@gmail.com';
 
         // 1. Send Notification Email to Admin (Lumora Triad)
         const adminResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -103,7 +103,7 @@ export async function POST(req: Request) {
                         <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #eee;">
                             <p style="margin: 0; font-size: 14px; font-weight: bold; color: #000;">LUMORA TRIAD</p>
                             <p style="margin: 4px 0 0; font-size: 12px; color: #888;">Modern Digital Studio | Engineering Excellence</p>
-                            <a href="https://lumoratriad.com" style="display: inline-block; margin-top: 15px; color: #6366f1; text-decoration: none; font-size: 14px; font-weight: bold;">Visit Website →</a>
+                            <a href="https://www.lumoratriad.in" style="display: inline-block; margin-top: 15px; color: #6366f1; text-decoration: none; font-size: 14px; font-weight: bold;">Visit Website →</a>
                         </div>
                     </div>
                 </div>

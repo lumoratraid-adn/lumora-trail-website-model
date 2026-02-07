@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Eye } from "lucide-react"
 
 export function CTASection() {
     return (
         <section className="section-spacing bg-transparent">
             <div className="container mx-auto">
-                <div className="relative p-10 sm:p-14 md:p-28 rounded-[3rem] sm:rounded-[4rem] bg-white/[0.02] text-white overflow-hidden shadow-2xl border border-white/5">
+                <div className="relative p-8 sm:p-14 md:p-28 rounded-[2rem] sm:rounded-[4rem] bg-white/[0.02] text-white overflow-hidden shadow-2xl border border-white/5">
 
                     {/* Background Accents */}
                     <div className="absolute inset-0 z-0">
@@ -22,29 +22,34 @@ export function CTASection() {
                             GET STARTED
                         </span>
 
-                        <h2 className="text-5xl md:text-8xl font-bold text-white uppercase leading-[0.9] tracking-tighter">
+                        <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white uppercase leading-[1] md:leading-[0.9] tracking-tighter px-4">
                             READY TO BRING YOUR<br />
                             <span className="text-primary italic">VISION</span> <span className="text-white/10 stroke-text">TO LIFE?</span>
                         </h2>
 
-                        <p className="max-w-2xl mx-auto text-xl md:text-2xl text-white/50 font-medium leading-relaxed">
+                        <p className="max-w-2xl mx-auto text-base md:text-2xl text-white/50 font-medium leading-relaxed px-6">
                             We merge technical precision with aesthetic excellence to deliver
                             world-class digital products that scale with your vision.
                         </p>
 
-                        <div className="flex flex-wrap justify-center gap-6 pt-6">
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 pt-6 w-full max-w-2xl mx-auto">
                             <Link
                                 href="/contact"
-                                className="px-12 py-6 bg-primary text-white rounded-2xl font-bold text-sm uppercase tracking-[0.1em] hover:scale-105 active:scale-95 transition-all flex items-center gap-3 shadow-2xl"
+                                className="group w-full sm:w-auto pl-8 pr-2 py-2 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full font-bold text-xs uppercase tracking-[0.2em] text-white flex items-center justify-center gap-6 transition-all hover:bg-primary/30 active:scale-95 shadow-[0_0_20px_rgba(139,92,246,0.15)] whitespace-nowrap"
                             >
                                 Start a Project
-                                <ArrowUpRight className="w-6 h-6" />
+                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">
+                                    <ArrowUpRight className="w-5 h-5 text-black group-hover:text-white transition-colors" />
+                                </div>
                             </Link>
                             <Link
                                 href="/services"
-                                className="px-12 py-6 bg-white/5 border border-white/10 text-white rounded-2xl font-bold text-sm uppercase tracking-[0.1em] hover:bg-white/10 transition-all"
+                                className="group w-full sm:w-auto pl-8 pr-2 py-2 bg-white/5 border border-white/10 text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-6 transition-all hover:bg-white/10 active:scale-95 whitespace-nowrap"
                             >
                                 Our Services
+                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">
+                                    <Eye className="w-5 h-5 text-black group-hover:text-white transition-colors" />
+                                </div>
                             </Link>
                         </div>
                     </div>

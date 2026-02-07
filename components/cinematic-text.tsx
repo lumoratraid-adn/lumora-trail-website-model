@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { useFrame } from "@react-three/fiber"
+import { useFrame, useThree } from "@react-three/fiber"
 import { Text } from "@react-three/drei"
 import * as THREE from "three"
 
@@ -33,6 +33,9 @@ export function CinematicText({
     persistEnd = false
 }: CinematicTextProps) {
     const groupRef = useRef<THREE.Group>(null)
+    const { size } = useThree()
+    const isMobile = size.width < 768
+    const responsiveFontSize = isMobile ? fontSize * 0.6 : fontSize
 
     useFrame(() => {
         if (groupRef.current) {
@@ -86,7 +89,7 @@ export function CinematicText({
             {/* Primary High-Glow Layer */}
             <Text
                 font={fontPath}
-                fontSize={fontSize}
+                fontSize={responsiveFontSize}
                 maxWidth={12}
                 textAlign="center"
                 anchorX="center"
@@ -107,7 +110,7 @@ export function CinematicText({
             {/* Sub-glow / Shadow Layer for '3D Blending' */}
             <Text
                 font={fontPath}
-                fontSize={fontSize}
+                fontSize={responsiveFontSize}
                 maxWidth={12}
                 textAlign="center"
                 anchorX="center"

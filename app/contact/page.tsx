@@ -87,7 +87,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[9px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Email Us</p>
-                    <a href="mailto:lumoratraid@gmail.com" className="text-base md:text-xl font-bold text-white hover:text-primary transition-colors">lumoratraid@gmail.com</a>
+                    <a href="mailto:lumoratriad@gmail.com" className="text-base md:text-xl font-bold text-white hover:text-primary transition-colors lowercase">lumoratriad@gmail.com</a>
                   </div>
                 </div>
 
@@ -129,7 +129,7 @@ export default function ContactPage() {
                   {[
                     { label: "Website & Software Development", icon: Code },
                     { label: "UI/UX Design & Figma Projects", icon: Layout },
-                    { label: "Branding, Logo & Posters", icon: Palette },
+                    { label: "Branding, Logo, Poster & Digital Marketing", icon: Palette },
                     { label: "Animations & Creative Design", icon: PlayCircle }
                   ].map((item, i) => (
                     <motion.div
@@ -155,7 +155,7 @@ export default function ContactPage() {
             >
               <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black tracking-widest text-white/40 uppercase pl-4">Full Name</label>
+                  <label className="text-[12px] font-bold tracking-[0.15em] text-white/40 uppercase pl-4">Full Name</label>
                   <input
                     type="text"
                     required
@@ -167,7 +167,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black tracking-widest text-white/40 uppercase pl-4">Email Address</label>
+                  <label className="text-[12px] font-bold tracking-[0.15em] text-white/40 uppercase pl-4">Email Address</label>
                   <input
                     type="email"
                     required
@@ -179,7 +179,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black tracking-widest text-white/40 uppercase pl-4">Mobile Number</label>
+                  <label className="text-[12px] font-bold tracking-[0.15em] text-white/40 uppercase pl-4">Mobile Number</label>
                   <input
                     type="tel"
                     required
@@ -191,7 +191,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black tracking-widest text-white/40 uppercase pl-4">Interested In</label>
+                  <label className="text-[12px] font-bold tracking-[0.15em] text-white/40 uppercase pl-4">Interested In</label>
                   <div className="relative">
                     <select
                       value={service}
@@ -212,7 +212,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black tracking-widest text-white/40 uppercase pl-4">Message</label>
+                  <label className="text-[12px] font-bold tracking-[0.15em] text-white/40 uppercase pl-4">Message</label>
                   <textarea
                     required
                     value={message}
@@ -223,18 +223,20 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-6 bg-primary text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_30px_rgba(99,102,241,0.3)] disabled:opacity-50"
-                >
-                  {isSubmitting ? <Loader2 className="animate-spin" /> : (
-                    <>
-                      Send Inquiry
-                      <MessageSquare className="w-5 h-5" />
-                    </>
-                  )}
-                </button>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-20 py-5 bg-primary text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all shadow-[0_10px_20px_rgba(99,102,241,0.3)] disabled:opacity-50"
+                  >
+                    {isSubmitting ? <Loader2 className="animate-spin" /> : (
+                      <>
+                        Send Inquiry
+                        <MessageCircle className="w-5 h-5" />
+                      </>
+                    )}
+                  </button>
+                </div>
 
                 {error && <p className="text-red-400 text-center font-bold text-sm">{error}</p>}
               </form>

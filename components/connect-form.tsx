@@ -10,7 +10,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle2, Loader2, Send, X, ArrowRight } from "lucide-react"
+import { CheckCircle2, Loader2, MessageCircle, X, ArrowRight } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
@@ -108,7 +108,7 @@ export function ConnectForm() {
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-10">
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Your Name</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.15em] ml-1">Your Name</label>
                                         <Input
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
@@ -118,7 +118,7 @@ export function ConnectForm() {
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Email Address</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.15em] ml-1">Email Address</label>
                                         <Input
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
@@ -132,7 +132,7 @@ export function ConnectForm() {
 
                                 <div className="grid md:grid-cols-2 gap-10">
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Mobile Number</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.15em] ml-1">Mobile Number</label>
                                         <Input
                                             value={phone}
                                             onChange={(e) => {
@@ -146,7 +146,7 @@ export function ConnectForm() {
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Interested In</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.15em] ml-1">Interested In</label>
                                         <Select onValueChange={(val) => setServiceSelected(val)} value={serviceSelected}>
                                             <SelectTrigger className="h-16 bg-white/[0.03] rounded-2xl border-white/10 focus:border-primary font-bold text-white uppercase tracking-widest">
                                                 <SelectValue placeholder="Select a service" />
@@ -163,7 +163,7 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] ml-1">Message</label>
+                                    <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.15em] ml-1">Message</label>
                                     <Textarea
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
@@ -173,23 +173,25 @@ export function ConnectForm() {
                                     />
                                 </div>
 
-                                <Button
-                                    type="submit"
-                                    disabled={isSubmitting || isSuccess}
-                                    className="w-full h-18 py-8 rounded-2xl bg-primary text-white font-black text-lg uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
-                                >
-                                    {isSubmitting ? (
-                                        <div className="flex items-center gap-2">
-                                            <Loader2 className="animate-spin w-5 h-5" />
-                                            Processing...
-                                        </div>
-                                    ) : (
-                                        <>
-                                            Send Project Brief
-                                            <Send className="w-5 h-5" />
-                                        </>
-                                    )}
-                                </Button>
+                                <div className="flex justify-center">
+                                    <Button
+                                        type="submit"
+                                        disabled={isSubmitting || isSuccess}
+                                        className="px-20 h-16 rounded-2xl bg-primary text-white font-black text-sm uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(99,102,241,0.2)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
+                                    >
+                                        {isSubmitting ? (
+                                            <div className="flex items-center gap-2">
+                                                <Loader2 className="animate-spin w-5 h-5" />
+                                                Processing...
+                                            </div>
+                                        ) : (
+                                            <>
+                                                Send Inquiry
+                                                <MessageCircle className="w-5 h-5" />
+                                            </>
+                                        )}
+                                    </Button>
+                                </div>
 
                                 {error && (
                                     <p className="text-center text-red-400 font-bold animate-pulse">
@@ -200,21 +202,7 @@ export function ConnectForm() {
                         </div>
                     </div>
 
-                    {/* Direct Links */}
-                    <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-center">
-                        <a href="mailto:lumoratraid@gmail.com" className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors flex items-center gap-2 group">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            LUMORATRAID@GMAIL.COM
-                        </a>
-                        <a href="tel:+919947878418" className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors flex items-center gap-2 group">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            +91 99478 78418
-                        </a>
-                        <a href="tel:+919562276639" className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors flex items-center gap-2 group">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            +91 95622 76639
-                        </a>
-                    </div>
+
                 </div>
             </div>
 

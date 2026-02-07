@@ -137,7 +137,7 @@ export default function RootLayout({
               "alternateName": ["Lumora", "Lumora Triad Agency", "Lumora Tech"],
               "url": "https://www.lumoratriad.in",
               "logo": "https://www.lumoratriad.in/icon.svg",
-              "description": "Premium Digital Agency for Web Development, UI/UX Design, and strategic Branding.",
+              "description": "Premium Digital Agency for Web Development, UI/UX Design, and strategic Branding. Visit our website: https://www.lumoratriad.in",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN"

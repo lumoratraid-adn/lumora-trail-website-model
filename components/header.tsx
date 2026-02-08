@@ -65,7 +65,7 @@ export function Header() {
           <img
             src="/logo.svg"
             alt="Lumora Triad"
-            className="h-25 sm:h-29 w-auto brightness-200"
+            className="h-30 sm:h-33 w-auto brightness-200"
           />
         </Link>
 

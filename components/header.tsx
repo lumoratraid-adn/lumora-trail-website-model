@@ -66,9 +66,11 @@ export function Header() {
           }}
           className="relative z-[120] flex items-center group flex-1 lg:flex-none justify-start"
         >
-          <span className="text-xl md:text-2xl font-medium text-white transition-all duration-300 group-hover:text-primary tracking-tight whitespace-nowrap" style={{ letterSpacing: "-0.02em" }}>
-            Lumora Triad
-          </span>
+          <img
+            src="/logo.svg"
+            alt="Lumora Triad"
+            className="h-35 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Nav */}

@@ -66,11 +66,9 @@ export function Header() {
           }}
           className="relative z-[120] flex items-center group flex-1 lg:flex-none justify-start"
         >
-          <img
-            src="/logo.svg"
-            alt="Lumora Triad"
-            className="h-30 sm:h-33 w-auto brightness-200"
-          />
+          <span className="text-xl md:text-2xl font-medium text-white transition-all duration-300 group-hover:text-primary tracking-tight whitespace-nowrap" style={{ letterSpacing: "-0.02em" }}>
+            Lumora Triad
+          </span>
         </Link>
 
         {/* Desktop Nav */}

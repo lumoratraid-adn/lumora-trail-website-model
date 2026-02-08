@@ -68,7 +68,8 @@ export function NetworkHero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="text-6xl sm:text-[10vw] md:text-[8vw] font-sans font-semibold tracking-[-0.08em] md:tracking-[-0.10em] leading-[1] md:leading-[0.8] text-white text-center relative z-20 select-none mb-12 sm:mb-24 md:mb-32 drop-shadow-sm px-4"
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-none text-center text-white relative z-20 select-none mb-12 sm:mb-24 md:mb-32 px-4"
+                    style={{ letterSpacing: "0.05em", wordSpacing: "0.15em" }}
                 >
                     Lumora Triad
                 </motion.h1>
@@ -78,21 +79,23 @@ export function NetworkHero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-2xl px-4"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-2xl px-4"
                     >
                         <Link
                             href="/contact"
-                            className="group w-full sm:w-auto pl-6 pr-1.5 py-1.5 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] text-white flex items-center justify-center gap-4 transition-all hover:bg-primary/30 active:scale-95 shadow-[0_0_20px_rgba(139,92,246,0.15)] whitespace-nowrap"
+                            prefetch={true}
+                            className="group w-full sm:w-auto pl-8 pr-2 py-2 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] text-white flex items-center justify-center gap-6 transition-all hover:bg-primary/30 active:scale-95 shadow-[0_0_20px_rgba(139,92,246,0.15)] whitespace-nowrap min-w-[200px]"
                         >
                             Get Started
-                            <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">
-                                <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-black group-hover:text-white transition-colors" />
+                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">
+                                <ArrowUpRight className="w-4 h-4 text-black group-hover:text-white transition-colors" />
                             </div>
                         </Link>
 
                         <Link
                             href="/services"
-                            className="group w-full sm:w-auto pl-8 pr-2 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md font-bold text-white text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all hover:border-white/20 flex justify-center items-center gap-6 whitespace-nowrap"
+                            prefetch={true}
+                            className="group w-full sm:w-auto pl-8 pr-2 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md font-black text-white text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all hover:border-white/20 flex justify-center items-center gap-6 whitespace-nowrap min-w-[200px]"
                         >
                             View Services
                             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">
@@ -105,7 +108,7 @@ export function NetworkHero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1 }}
-                        className="text-[9px] md:text-[11px] text-white/40 max-w-2xl mx-auto font-bold leading-relaxed tracking-[0.3em] uppercase text-center px-6"
+                        className="text-[9px] md:text-[11px] text-white/40 max-w-2xl mx-auto font-black leading-relaxed tracking-[0.3em] uppercase text-center px-6"
                     >
                         Engineering excellence for the modern digital era.
                     </motion.p>

@@ -2,30 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Footer } from "@/components/footer"
-import { ShieldCheck, Cpu, Lightbulb, Instagram, Linkedin, Facebook, Mail, Phone, ExternalLink, Code, Layout, Palette, PlayCircle } from "lucide-react"
+import { ShieldCheck, Cpu, Lightbulb, Instagram, Linkedin, Facebook, Mail, Phone } from "lucide-react"
+import { ExpertiseSection } from "@/components/expertise-section"
 
-const specialties = [
-  {
-    title: "Website & Software Development",
-    desc: "Engineering high-performance web applications and custom software solutions designed for global scale.",
-    icon: Code,
-  },
-  {
-    title: "UI / UX Design & Figma Projects",
-    desc: "Crafting intuitive, user-centric interfaces through meticulous research and precision design systems.",
-    icon: Layout,
-  },
-  {
-    title: "Branding, Logo, Poster & Digital Marketing",
-    desc: "Developing powerful visual identities, high-impact marketing assets, and strategic digital campaigns that define your brand authority.",
-    icon: Palette,
-  },
-  {
-    title: "Animations & Creative Design",
-    desc: "Bringing stories to life with high-impact motion graphics and innovative creative storytelling.",
-    icon: PlayCircle,
-  },
-]
 
 const XIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -91,62 +70,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-spacing relative overflow-hidden bg-transparent">
-        {/* Background Accents */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/5 blur-[100px] rounded-full" />
-        </div>
-
-        <div className="container mx-auto relative z-10 px-6">
-          <div className="mb-16 text-center space-y-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="flex items-center justify-center gap-3 mb-6"
-            >
-              <span className="w-8 h-[2px] bg-primary rounded-full" />
-              <span className="text-primary text-[10px] font-bold tracking-[0.4em] uppercase">What We Offer</span>
-              <span className="w-8 h-[2px] bg-primary rounded-full" />
-            </motion.div>
-
-            <h2 className="text-4xl sm:text-[10vw] md:text-[6vw] font-sans font-semibold text-white uppercase tracking-[-0.08em] leading-[1] md:leading-[0.85] drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-              Our <span className="text-primary italic">Expertise</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {specialties.map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="glass-card p-8 group relative flex flex-col items-center text-center gap-6 rounded-[2.5rem] transition-all border border-white/5 hover:border-primary/20"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-2 transition-all group-hover:scale-110 group-hover:rotate-6">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-[22px] font-sans font-semibold tracking-[-0.06em] text-white uppercase group-hover:text-primary transition-colors duration-300 leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/40 text-[15px] leading-relaxed font-medium transition-colors group-hover:text-white/60">
-                      {item.desc}
-                    </p>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem]" />
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
+      <ExpertiseSection />
 
       {/* Philosophy Section */}
       <section className="section-spacing relative overflow-hidden">
@@ -172,9 +96,10 @@ export default function AboutPage() {
               Our <span className="text-primary italic">Philosophy</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
             {philosophies.map((item, index) => {
               const Icon = item.icon
+              const isFirstTwo = index < 2
               return (
                 <motion.div
                   key={item.title}
@@ -191,20 +116,21 @@ export default function AboutPage() {
                     },
                     delay: index * 0.1
                   }}
-                  className="glass-card p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] flex flex-col items-center text-center gap-6 group relative overflow-hidden transition-all border border-white/5 hover:border-primary/20"
+                  className={`glass-card p-4 md:p-10 rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center text-center gap-2 md:gap-6 group relative overflow-hidden transition-all border border-white/5 hover:border-primary/20 hover:bg-white/[0.04] ${isFirstTwo ? 'aspect-square' : 'col-span-2 md:col-span-1 w-full md:w-auto min-h-[200px] aspect-auto md:aspect-square'
+                    }`}
                 >
-                  <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-2 transition-all group-hover:scale-110 group-hover:rotate-6">
-                    <Icon className="w-10 h-10 text-primary" />
+                  <div className="w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center mb-1 md:mb-2 transition-all group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6 border border-white/5">
+                    <Icon className="w-6 h-6 md:w-10 md:h-10 text-white/70 group-hover:text-primary transition-colors duration-300" />
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-[22px] font-sans font-semibold tracking-[-0.06em] text-white uppercase group-hover:text-primary transition-colors duration-300 leading-tight">
+                  <div className="space-y-1 md:space-y-4 w-full">
+                    <h3 className="text-sm md:text-[22px] font-sans font-bold tracking-tight text-white uppercase group-hover:text-primary transition-colors duration-300 leading-tight">
                       {item.title}
                     </h3>
-                    <p className="text-white/40 text-[15px] leading-relaxed font-medium transition-colors group-hover:text-white/60">
+                    <p className="text-white/40 text-[10px] md:text-[15px] leading-relaxed font-medium transition-colors group-hover:text-white/60 line-clamp-3 md:line-clamp-none px-1">
                       {item.desc}
                     </p>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem] pointer-events-none" />
                 </motion.div>
               )
             })}

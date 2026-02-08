@@ -57,7 +57,7 @@ export function WhyChooseUs() {
                     </motion.h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {reasons.map((reason, index) => {
                         const Icon = reason.icon
                         return (
@@ -67,30 +67,28 @@ export function WhyChooseUs() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 md:p-10 rounded-[2.5rem] bg-white/[0.01] border border-white/5 hover:border-primary/30 transition-all duration-700 flex flex-col items-start min-h-[320px] relative overflow-hidden active:scale-[0.98]"
+                                className="group min-h-[260px] md:min-h-[300px] p-6 md:p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-primary/40 hover:bg-white/[0.04] transition-all duration-500 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
                             >
                                 {/* Decorative Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                                <div className="relative z-10 w-full h-full flex flex-col justify-between">
-                                    <div className="flex items-center justify-between w-full mb-8">
-                                        <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 transition-all group-hover:bg-primary/10 group-hover:border-primary/30 group-hover:scale-110">
-                                            <Icon className="w-6 h-6 text-primary/60 group-hover:text-primary transition-colors" />
-                                        </div>
-                                        <span className="text-[9px] font-black tracking-[0.3em] text-white/10 group-hover:text-primary/20 transition-colors uppercase">
-                                            {reason.label}
-                                        </span>
+                                <div className="relative z-10 flex justify-between items-start w-full mb-6">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 transition-all group-hover:bg-primary/20 group-hover:border-primary/30 group-hover:scale-110">
+                                        <Icon className="w-5 h-5 md:w-6 md:h-6 text-white/70 group-hover:text-primary transition-colors duration-300" />
                                     </div>
+                                    <span className="text-[10px] md:text-xs font-black tracking-[0.2em] text-white/20 group-hover:text-primary/40 transition-colors uppercase">
+                                        {reason.label}
+                                    </span>
+                                </div>
 
-                                    <div className="space-y-4">
-                                        <h3 className="text-2xl font-sans font-bold tracking-tight text-white uppercase group-hover:text-primary transition-colors duration-300">
-                                            {reason.title}
-                                        </h3>
-                                        <div className="w-8 h-[1.5px] bg-primary/20 group-hover:w-12 group-hover:bg-primary transition-all duration-500" />
-                                        <p className="text-[14px] text-white/30 font-medium leading-relaxed group-hover:text-white/50 transition-colors max-w-[200px]">
-                                            {reason.desc}
-                                        </p>
-                                    </div>
+                                <div className="relative z-10 space-y-3">
+                                    <h3 className="text-lg md:text-xl font-sans font-bold tracking-tight text-white uppercase group-hover:text-primary transition-colors duration-300">
+                                        {reason.title}
+                                    </h3>
+                                    <div className="w-6 h-[2px] bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500" />
+                                    <p className="text-[11px] md:text-[13px] text-white/40 font-medium leading-relaxed group-hover:text-white/70 transition-colors">
+                                        {reason.desc}
+                                    </p>
                                 </div>
                             </motion.div>
                         )

@@ -177,7 +177,7 @@ export function ConnectForm() {
                                     <Button
                                         type="submit"
                                         disabled={isSubmitting || isSuccess}
-                                        className="px-20 h-16 rounded-2xl bg-primary text-white font-black text-sm uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(99,102,241,0.2)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
+                                        className="px-32 h-16 rounded-2xl bg-primary text-white font-black text-sm uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(99,102,241,0.2)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
                                     >
                                         {isSubmitting ? (
                                             <div className="flex items-center gap-2">

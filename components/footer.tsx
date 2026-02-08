@@ -83,7 +83,12 @@ export function Footer() {
           >
             <h5 className="text-xs font-black uppercase tracking-[0.4em] text-primary">Our Services</h5>
             <ul className="space-y-4">
-              {serviceLinks.map((item) => (
+              {[
+                "Web & Software Development",
+                "UI / UX Design & Figma",
+                "Digital Marketing & SEO",
+                "Animations & Creative Design",
+              ].map((item) => (
                 <li key={item}>
                   <Link
                     href="/services"

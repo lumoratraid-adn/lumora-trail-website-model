@@ -73,7 +73,7 @@ export function Header() {
             width={400}
             height={120}
             priority
-            className="h-16 xs:h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-20 xs:h-24 sm:h-28 md:h-32 lg:h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </Link>
 
@@ -139,12 +139,12 @@ export function Header() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
-            className="lg:hidden fixed inset-0 bg-[#0E0F13] z-[100] flex flex-col pt-24 px-8 h-screen"
+            className="lg:hidden fixed inset-0 bg-[#0E0F13] z-[100] flex flex-col pt-24 px-8 h-screen overflow-y-auto"
           >
             {/* Background Decor */}
             <div className="absolute top-1/4 -right-20 w-80 h-80 bg-primary/10 blur-[130px] rounded-full" />
 
-            <div className="flex flex-col gap-6 relative z-10">
+            <div className="flex flex-col gap-4 relative z-10 pt-4">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.name}
@@ -156,29 +156,29 @@ export function Header() {
                     href={item.href}
                     prefetch={true}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-4xl sm:text-5xl font-bold tracking-tighter text-white hover:text-primary transition-colors flex items-center justify-between group py-2"
+                    className="text-4xl xs:text-5xl font-bold tracking-tighter text-white hover:text-primary transition-colors flex items-center justify-between group py-1"
                   >
                     {item.name}
-                    <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1 text-primary" />
                   </Link>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-auto pb-10 space-y-6 relative z-10">
+            <div className="mt-12 space-y-8 relative z-10 pb-10">
               <div className="h-px bg-white/10 w-full" />
-              <div className="flex flex-col gap-6">
-                <div className="space-y-2">
-                  <p className="text-[9px] font-black tracking-widest text-white/20 uppercase">Get in touch</p>
-                  <a href="mailto:lumoratriad@gmail.com" className="text-lg font-bold text-white lowercase tracking-tight block hover:text-primary transition-colors">lumoratriad@gmail.com</a>
+              <div className="flex flex-col gap-8">
+                <div className="space-y-3">
+                  <p className="text-[10px] font-black tracking-widest text-white/30 uppercase">Get in touch</p>
+                  <a href="mailto:lumoratriad@gmail.com" className="text-xl font-bold text-white lowercase tracking-tight block hover:text-primary transition-colors">lumoratriad@gmail.com</a>
                 </div>
                 <Link
                   href="/contact"
                   prefetch={true}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full px-10 py-5 bg-primary text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] flex items-center justify-center gap-3 active:scale-95 transition-all shadow-xl"
+                  className="w-full px-10 py-5 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] flex items-center justify-center gap-3 active:scale-95 transition-all shadow-xl shadow-primary/20"
                 >
-                  Book Now
+                  Book Your Project
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

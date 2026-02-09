@@ -77,42 +77,42 @@ export function ExpertiseSection() {
                                     ease: [0.16, 1, 0.3, 1]
                                 }}
                                 viewport={{ once: true }}
-                                className={`group relative flex flex-col p-10 bg-white/[0.02] border border-white/5 rounded-[3rem] overflow-hidden transition-all duration-700 hover:bg-white/[0.04] hover:border-primary/40 hover:-translate-y-4 ${isEven ? "lg:translate-y-12" : ""
+                                className={`group relative flex flex-col p-8 md:p-10 bg-white/[0.04] border border-white/10 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-primary/50 hover:-translate-y-2 md:hover:-translate-y-4 ${isEven ? "lg:translate-y-12" : ""
                                     }`}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                                 <div className="relative z-10 flex flex-col h-full">
-                                    <div className="flex justify-between items-start mb-14">
-                                        <div className="w-16 h-16 rounded-2xl bg-white/[0.03] flex items-center justify-center border border-white/5 transition-all group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40">
-                                            <Icon className="w-8 h-8 text-white/40 group-hover:text-primary transition-colors duration-500" />
+                                    <div className="flex justify-between items-start mb-10 md:mb-14">
+                                        <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-all group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40">
+                                            <Icon className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-primary transition-colors duration-500" />
                                         </div>
-                                        <span className="text-[10px] font-black text-white/10 uppercase tracking-[0.4em] group-hover:text-primary/20 transition-colors">
+                                        <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] group-hover:text-primary/30 transition-colors">
                                             0{index + 1}
                                         </span>
                                     </div>
 
-                                    <div className="flex-1 space-y-6">
-                                        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white uppercase tracking-tight leading-tight transition-all duration-500 group-hover:text-primary">
+                                    <div className="flex-1 space-y-4 md:space-y-6">
+                                        <h3 className="text-xl md:text-3xl font-sans font-bold text-white uppercase tracking-tight leading-tight transition-all duration-500 group-hover:text-primary">
                                             {item.title}
                                         </h3>
-                                        <p className="text-base text-white/30 font-medium leading-relaxed group-hover:text-white/60 transition-colors duration-500">
+                                        <p className="text-sm md:text-base text-white/80 font-medium leading-relaxed group-hover:text-white transition-colors duration-500">
                                             {item.desc}
                                         </p>
                                     </div>
 
-                                    <div className="mt-12 pt-8 border-t border-white/5">
+                                    <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10">
                                         <Link
                                             href={`/services/${item.id}`}
                                             prefetch={true}
-                                            className="inline-flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-white/40 group-hover:text-primary transition-all group/btn"
+                                            className="inline-flex items-center gap-4 text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-white/80 group-hover:text-primary transition-all group/btn"
                                         >
                                             <span className="relative">
-                                                Read More
-                                                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-500 group-hover/btn:w-full" />
+                                                Explore Service
+                                                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-primary transition-all duration-500 group-hover/btn:w-full" />
                                             </span>
-                                            <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:scale-110">
-                                                <ArrowRight className="w-4 h-4 text-white transition-transform group-hover/btn:translate-x-1" />
+                                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center transition-all group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:scale-110">
+                                                <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-white transition-transform group-hover/btn:translate-x-1" />
                                             </div>
                                         </Link>
                                     </div>

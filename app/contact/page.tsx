@@ -276,7 +276,7 @@ export default function ContactPage() {
 
                   <div className="relative z-10">
                     <div className="mb-10">
-                      <h3 className="text-3xl font-condensed font-bold text-white uppercase tracking-tight mb-2">Send Message</h3>
+                      <h3 className="text-3xl font-condensed font-bold text-blue-500 uppercase tracking-tight mb-2">Send Message</h3>
                       <p className="text-white/40 text-sm">Fill out the form below and we will get back to you.</p>
                     </div>
 

@@ -85,7 +85,7 @@ export function NetworkHero() {
                         <Link
                             href="/services"
                             prefetch={true}
-                            className="group w-full sm:w-auto pl-8 pr-2 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md font-black text-white text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all hover:border-white/20 flex justify-center items-center gap-6 whitespace-nowrap min-w-[200px]"
+                            className="group w-[220px] sm:w-auto pl-6 pr-2 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md font-black text-white text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all hover:border-white/20 flex justify-center items-center gap-4 whitespace-nowrap"
                         >
                             View Services
                             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-primary">

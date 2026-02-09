@@ -139,52 +139,92 @@ export default function ContactPage() {
                 </motion.p>
               </div>
 
-              {/* Contact Info Card - Restored Previous Style */}
+              {/* Contact Info Card - Synchronized with Form Style */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="glass-card p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border-white/5 bg-white/[0.02] space-y-4 md:space-y-8"
+                className="relative rounded-[2.5rem] p-[1px] bg-gradient-to-b from-white/10 via-white/5 to-transparent overflow-hidden shadow-2xl"
               >
-                <a href="mailto:lumoratriad@gmail.com" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
-                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
-                    <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-[9px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Email Us</p>
-                    <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors lowercase">lumoratriad@gmail.com</span>
-                  </div>
-                </a>
+                <div className="absolute inset-0 bg-white/5 blur-xl opacity-20" />
 
-                <a href="tel:+919947878418" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
-                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
-                    <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-[9px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Call Us (Primary)</p>
-                    <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors">+91 99478 78418</span>
-                  </div>
-                </a>
+                {/* Animated Background Elements inside the card */}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    x: [-20, 20, -20],
+                    y: [-20, 20, -20],
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute top-0 left-0 w-full h-full bg-[#6366f1]/10 blur-[80px] rounded-full pointer-events-none"
+                />
+                <motion.div
+                  animate={{
+                    scale: [1.3, 1, 1.3],
+                    x: [20, -20, 20],
+                    y: [20, -20, 20],
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2,
+                  }}
+                  className="absolute bottom-0 right-0 w-full h-full bg-[#7c3aed]/10 blur-[80px] rounded-full pointer-events-none"
+                />
 
-                <a href="tel:+919562276639" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
-                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
-                    <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                <div className="relative bg-[#0E0F13]/40 backdrop-blur-2xl p-6 md:p-10 rounded-[2.5rem] border border-white/5 space-y-4 md:space-y-8 overflow-hidden">
+                  {/* Subtle Texture */}
+                  <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+                    <div className="h-full w-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-150 contrast-150 mix-blend-overlay" />
                   </div>
-                  <div>
-                    <p className="text-[9px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Support Line</p>
-                    <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors">+91 95622 76639</span>
-                  </div>
-                </a>
 
-                <a href="https://www.lumoratriad.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
-                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
-                    <Globe className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                  <div className="relative z-10 space-y-4 md:space-y-8">
+                    <a href="mailto:lumoratriad@gmail.com" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                      <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
+                        <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] md:text-[10px] font-black text-white/50 uppercase tracking-[0.2em] mb-1">Email Us</p>
+                        <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors lowercase">lumoratriad@gmail.com</span>
+                      </div>
+                    </a>
+
+                    <a href="tel:+919947878418" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                      <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] md:text-[10px] font-black text-white/50 uppercase tracking-[0.2em] mb-1">Call Us (Primary)</p>
+                        <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors">+91 99478 78418</span>
+                      </div>
+                    </a>
+
+                    <a href="tel:+919562276639" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                      <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] md:text-[10px] font-black text-white/50 uppercase tracking-[0.2em] mb-1">Support Line</p>
+                        <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors">+91 95622 76639</span>
+                      </div>
+                    </a>
+
+                    <a href="https://www.lumoratriad.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                      <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
+                        <Globe className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] md:text-[10px] font-black text-white/50 uppercase tracking-[0.2em] mb-1">Website</p>
+                        <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors whitespace-nowrap overflow-hidden text-ellipsis block max-w-[200px] sm:max-w-none">www.lumoratriad.in</span>
+                      </div>
+                    </a>
                   </div>
-                  <div>
-                    <p className="text-[9px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Website</p>
-                    <span className="text-base md:text-xl font-bold text-white group-hover:text-primary transition-colors whitespace-nowrap overflow-hidden text-ellipsis block max-w-[200px] sm:max-w-none">www.lumoratriad.in</span>
-                  </div>
-                </a>
+                </div>
               </motion.div>
 
               {/* Prominent Contact Services Section - Restored */}

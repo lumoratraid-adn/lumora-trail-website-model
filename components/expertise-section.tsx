@@ -104,10 +104,11 @@ export function ExpertiseSection() {
                                     <div className="mt-12 pt-8 border-t border-white/5">
                                         <Link
                                             href={`/services/${item.id}`}
+                                            prefetch={true}
                                             className="inline-flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-white/40 group-hover:text-primary transition-all group/btn"
                                         >
                                             <span className="relative">
-                                                Learn More
+                                                Read More
                                                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-500 group-hover/btn:w-full" />
                                             </span>
                                             <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:scale-110">

@@ -57,7 +57,7 @@ export function WhyChooseUs() {
                     </motion.h2>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 max-w-6xl mx-auto">
                     {reasons.map((reason, index) => {
                         const Icon = reason.icon
                         return (
@@ -72,8 +72,8 @@ export function WhyChooseUs() {
                                 {/* Decorative Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                                <div className="relative z-10 flex justify-between items-start w-full mb-6">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 transition-all group-hover:bg-primary/20 group-hover:border-primary/30 group-hover:scale-110">
+                                <div className="relative z-10 flex flex-col items-center w-full mb-6">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 transition-all group-hover:bg-primary/20 group-hover:border-primary/30 group-hover:scale-110 mb-3">
                                         <Icon className="w-5 h-5 md:w-6 md:h-6 text-white/70 group-hover:text-primary transition-colors duration-300" />
                                     </div>
                                     <span className="text-[10px] md:text-xs font-black tracking-[0.2em] text-white/20 group-hover:text-primary/40 transition-colors uppercase">
@@ -81,12 +81,12 @@ export function WhyChooseUs() {
                                     </span>
                                 </div>
 
-                                <div className="relative z-10 space-y-3">
+                                <div className="relative z-10 space-y-3 text-center">
                                     <h3 className="text-lg md:text-xl font-sans font-bold tracking-tight text-white uppercase group-hover:text-primary transition-colors duration-300">
                                         {reason.title}
                                     </h3>
-                                    <div className="w-6 h-[2px] bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500" />
-                                    <p className="text-[11px] md:text-[13px] text-white/40 font-medium leading-relaxed group-hover:text-white/70 transition-colors">
+                                    <div className="w-6 h-[2px] bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500 mx-auto" />
+                                    <p className="text-[11px] md:text-[13px] text-white/40 font-medium leading-relaxed group-hover:text-white/70 transition-colors px-1">
                                         {reason.desc}
                                     </p>
                                 </div>

@@ -1,0 +1,12 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="64" cy="64" r="64" fill="#6366f1" />
+  <g transform="translate(14, 14) scale(1)">
+    <!-- Top two nodes connected -->
+    <path d="M25 65 L65 25" stroke="white" stroke-width="24" stroke-linecap="round" />
+    <circle cx="25" cy="65" r="14" fill="white" />
+    <circle cx="65" cy="25" r="14" fill="white" />
+    
+    <!-- Disconnected bottom node -->
+    <circle cx="75" cy="75" r="14" fill="white" />
+  </g>
+</svg>

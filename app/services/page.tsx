@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Layout, Globe, Palette, PlayCircle, ArrowRight, Search, RefreshCw, Target, Code, Cpu, Zap } from "lucide-react"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
+import { Canvas } from "@react-three/fiber"
+import { StarField } from "@/components/scene-background"
 
 const services = [
   {
@@ -27,11 +29,11 @@ const services = [
             />
           ))}
         </div>
-        <div className="relative h-full flex items-center justify-center p-6">
+        <div className="relative h-full flex items-center justify-center p-4 sm:p-6">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            className="w-full max-w-md bg-[#0E0F13]/80 rounded-2xl border border-white/10 overflow-hidden shadow-2xl backdrop-blur-xl"
+            className="w-full max-w-[90%] sm:max-w-md bg-[#0E0F13]/80 rounded-2xl border border-white/10 overflow-hidden shadow-2xl backdrop-blur-xl"
           >
             <div className="flex items-center justify-between p-4 border-b border-white/5 bg-white/5">
               <div className="flex gap-2">
@@ -72,7 +74,7 @@ const services = [
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.1)_0%,transparent_70%)]" />
         </div>
-        <div className="relative w-full h-full px-12 py-8 flex items-center justify-center">
+        <div className="relative w-full h-full px-4 sm:px-12 py-4 sm:py-8 flex items-center justify-center">
           <div className="grid grid-cols-2 gap-4 w-full h-full">
             {[1, 2, 3, 4].map((i) => (
               <motion.div
@@ -118,7 +120,7 @@ const services = [
             className="w-[80%] h-[80%] bg-primary rounded-full blur-[100px]"
           />
         </div>
-        <div className="relative h-full flex items-center justify-center p-8">
+        <div className="relative h-full flex items-center justify-center p-4 sm:p-8">
           <div className="grid grid-cols-3 gap-4 w-full max-w-md">
             {["#8B5CF6", "#C084FC", "#E879F9", "#F472B6", "#FB7185", "#38BDF8"].map((color, i) => (
               <motion.div
@@ -174,8 +176,8 @@ const services = [
             />
           ))}
         </div>
-        <div className="relative h-full flex items-center justify-center p-12">
-          <div className="w-full max-w-sm glass-card p-8 rounded-3xl border-white/10 space-y-6">
+        <div className="relative h-full flex items-center justify-center p-4 sm:p-12">
+          <div className="w-full max-w-[95%] sm:max-w-sm glass-card p-4 sm:p-8 rounded-2xl sm:rounded-3xl border-white/10 space-y-4 sm:space-y-6">
             <div className="flex justify-between items-center">
               <h4 className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase">Performance Metrics</h4>
               <Zap className="w-3 h-3 text-yellow-500 animate-pulse" />
@@ -278,8 +280,8 @@ const services = [
     items: ["Landing page design", "Lead capture forms", "Product launch pages", "Conversion-focused layouts", "Contact & inquiry pages"],
     icon: Target,
     visual: (
-      <div className="relative w-full h-full flex items-center justify-center p-8">
-        <div className="w-full max-w-sm h-full bg-[#0E0F13] rounded-[3rem] border border-white/10 overflow-hidden relative shadow-2xl">
+      <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-8">
+        <div className="w-full max-w-[90%] sm:max-w-sm h-full bg-[#0E0F13]/60 rounded-2xl sm:rounded-[3rem] border border-white/10 overflow-hidden relative shadow-2xl">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
           <div className="p-8 space-y-8 relative z-10">
             <div className="flex justify-between items-center">
@@ -468,9 +470,44 @@ export default function ServicesPage() {
                     </Link>
                   </div>
                 </div>
-                <div className="flex-1 w-full aspect-[4/3] md:aspect-video rounded-3xl md:rounded-[3rem] bg-white/[0.02] border border-white/5 overflow-hidden relative group/visual">
+                <div className="flex-1 w-full aspect-video rounded-3xl md:rounded-[3rem] bg-[#0E0F13]/20 border border-white/5 overflow-hidden relative group/visual backdrop-blur-2xl">
+                  {/* Animated Background Blobs */}
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      x: [-20, 20, -20],
+                      y: [-20, 20, -20],
+                    }}
+                    transition={{
+                      duration: 15,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute top-0 left-0 w-full h-full bg-[#6366f1]/10 blur-[100px] rounded-full pointer-events-none"
+                  />
+                  <motion.div
+                    animate={{
+                      scale: [1.2, 1, 1.2],
+                      x: [20, -20, 20],
+                      y: [20, -20, 20],
+                    }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 2,
+                    }}
+                    className="absolute bottom-0 right-0 w-full h-full bg-[#7c3aed]/10 blur-[80px] rounded-full pointer-events-none"
+                  />
+
+                  {/* Optimized Lightweight CSS Starfield */}
+                  <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05)_0%,transparent_70%)]" />
+                    <div className="h-full w-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-150 contrast-150 mix-blend-overlay" />
+                  </div>
+
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/5 opacity-50 group-hover/visual:opacity-100 transition-opacity duration-1000" />
-                  <div className="relative z-10 w-full h-full">
+                  <div className="relative z-10 w-full h-full scale-[0.85] flex items-center justify-center transform-gpu">
                     {service.visual}
                   </div>
                 </div>
@@ -496,17 +533,17 @@ export default function ServicesPage() {
                   Tell us about your project and we’ll help you build the right solution for your business.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-4 px-10 py-5 bg-white/5 border border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-xs hover:bg-primary hover:border-primary transition-all duration-500 shadow-2xl hover:shadow-primary/20 w-full sm:w-auto justify-center"
+                  className="group inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-10 py-5 bg-white/5 border border-white/10 rounded-2xl text-white font-black uppercase tracking-widest text-[10px] sm:text-xs hover:bg-primary hover:border-primary transition-all duration-500 shadow-2xl hover:shadow-primary/20 w-full sm:w-auto justify-center whitespace-nowrap"
                 >
                   Discuss Your Project
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-4 px-10 py-5 bg-primary text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(139,92,246,0.3)] w-full sm:w-auto justify-center"
+                  className="group inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-10 py-5 bg-primary text-white rounded-2xl font-black uppercase tracking-widest text-[10px] sm:text-xs hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(139,92,246,0.3)] w-full sm:w-auto justify-center whitespace-nowrap"
                 >
                   Get a Free Consultation
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />

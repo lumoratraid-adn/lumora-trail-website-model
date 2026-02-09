@@ -5,6 +5,9 @@ import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { WhatsAppChatbot } from "@/components/whatsapp-chatbot"
 import { Header } from "@/components/header"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { SceneBackground } from "@/components/scene-background"
+import { Preloader } from "@/components/preloader"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -99,16 +102,14 @@ export const metadata: Metadata = {
     icon: [
       {
         url: "/icon3.png",
-        type: "image/svg+xml",
-        sizes: "any",
+        type: "image/png",
+        sizes: "32x32",
       }
     ],
     apple: "/apple-icon.png",
   },
 }
 
-import { ScrollToTop } from "@/components/scroll-to-top"
-import { SceneBackground } from "@/components/scene-background"
 
 export default function RootLayout({
   children,
@@ -122,6 +123,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased bg-[#0E0F13] text-white selection:bg-primary selection:text-white">
+        <Preloader />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <SceneBackground />
           <ScrollToTop />

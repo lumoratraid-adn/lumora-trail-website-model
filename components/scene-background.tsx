@@ -5,11 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { Points, PointMaterial } from "@react-three/drei"
 import * as THREE from "three"
 
-function StarField() {
+export function StarField() {
     const ref = useRef<THREE.Points>(null)
 
     const [positions, colors] = useMemo(() => {
-        const count = 2000
+        const count = 1200
         const pos = new Float32Array(count * 3)
         const col = new Float32Array(count * 3)
         for (let i = 0; i < count; i++) {
@@ -27,10 +27,9 @@ function StarField() {
         return [pos, col]
     }, [])
 
-    useFrame((state) => {
+    useFrame(() => {
         if (ref.current) {
-            ref.current.rotation.y += 0.0004
-            ref.current.rotation.x += 0.0002
+            ref.current.rotation.y += 0.0003
         }
     })
 

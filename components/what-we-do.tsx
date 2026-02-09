@@ -8,44 +8,44 @@ import Link from "next/link"
 const capabilities = [
     {
         id: "website-web-app-development",
-        title: "Website & Software Development",
-        desc: "We build fast, secure, and scalable websites and custom software that grow with your business.",
+        title: "Web Design & Custom Software Development",
+        desc: "Engineering high-performance web applications and custom software solutions designed for global scalability and growth.",
         icon: Globe2,
     },
     {
         id: "ui-ux-design",
-        title: "UI / UX Design & Figma Projects",
-        desc: "We design clean, user-friendly interfaces and smooth experiences that make your digital products easy to use.",
+        title: "Premium UI / UX Design & Figma Projects",
+        desc: "Precision-crafted user interfaces and seamless user experiences that redefine digital interaction and engagement.",
         icon: Layout,
     },
     {
         id: "branding-logo-digital-marketing",
-        title: "Branding, Logo, Poster & Digital Marketing",
-        desc: "We create strong brand identities and marketing designs that help your business stand out and build trust.",
+        title: "Strategic Branding & Digital Marketing India",
+        desc: "We create strong brand identities and strategic marketing designs that help your business stand out and establish leadership.",
         icon: Layers,
     },
     {
         id: "seo-online-growth",
-        title: "SEO & Online Growth",
-        desc: "We improve your website’s visibility on Google and help you reach the right audience organically.",
+        title: "Advanced SEO & Organic Online Growth",
+        desc: "We improve your website's visibility on Google and search engines to help you reach the right audience organically.",
         icon: Search,
     },
     {
         id: "website-redesign-maintenance",
-        title: "Website Redesign & Maintenance",
-        desc: "We upgrade outdated websites and keep them running smoothly, securely, and efficiently.",
+        title: "Website Redesign & Technical Maintenance",
+        desc: "We upgrade outdated websites and provide regular updates to keep them running smoothly, securely, and efficiently.",
         icon: RefreshCw,
     },
     {
         id: "landing-pages-lead-generation",
-        title: "Landing Pages & Lead Generation",
-        desc: "We design focused pages that turn visitors into leads and customers.",
+        title: "Landing Pages & Lead Generation Agency",
+        desc: "We design conversion-focused landing pages that turn visitors into leads and loyal customers for your business.",
         icon: Target,
     },
     {
         id: "animations-creative",
-        title: "Animations & Creative Design",
-        desc: "We create engaging animations and visuals that bring your brand to life and capture attention.",
+        title: "Animations & Creative Motion Design",
+        desc: "We create engaging animations and motion graphics that bring your brand to life and capture customer attention.",
         icon: PlayCircle,
     },
 ]
@@ -164,7 +164,7 @@ export function WhatWeDo() {
                                             prefetch={true}
                                             className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.4em] text-white/40 group-hover:text-primary transition-all group/btn"
                                         >
-                                            Learn More
+                                            Read More
                                             <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:scale-110">
                                                 <ArrowRight className="w-3 h-3 text-white transition-transform group-hover/btn:translate-x-1" />
                                             </div>

@@ -5,6 +5,8 @@ import { Toast } from "../../components/ui/toast"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, Globe, MessageSquare, Code, Layout, Palette, PlayCircle, MessageCircle, X, CheckCircle2, ArrowRight, Loader2 } from "lucide-react"
 import { useState } from "react"
+import { Canvas } from "@react-three/fiber"
+import { StarField } from "@/components/scene-background"
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -235,97 +237,135 @@ export default function ContactPage() {
               <div className="relative rounded-[3rem] p-[1px] bg-gradient-to-b from-white/10 via-white/5 to-transparent overflow-hidden">
                 <div className="absolute inset-0 bg-white/5 blur-xl opacity-20" />
 
-                <div className="relative bg-[#080808]/90 backdrop-blur-3xl rounded-[3rem] p-8 md:p-12 border border-white/5 shadow-2xl">
-                  <div className="mb-10">
-                    <h3 className="text-3xl font-condensed font-bold text-white uppercase tracking-tight mb-2">Send Message</h3>
-                    <p className="text-white/40 text-sm">Fill out the form below and we will get back to you.</p>
+                {/* Animated Background Element inside the form card - Matched with global background style */}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.4, 1],
+                    x: [-30, 30, -30],
+                    y: [-30, 30, -30],
+                  }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute top-0 left-0 w-full h-full bg-[#6366f1]/15 blur-[120px] rounded-full pointer-events-none"
+                />
+                <motion.div
+                  animate={{
+                    scale: [1.4, 1, 1.4],
+                    x: [30, -30, 30],
+                    y: [30, -30, 30],
+                  }}
+                  transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2,
+                  }}
+                  className="absolute bottom-0 right-0 w-full h-full bg-[#7c3aed]/10 blur-[100px] rounded-full pointer-events-none"
+                />
+
+                <div className="relative bg-[#0E0F13]/20 backdrop-blur-2xl rounded-[3rem] p-8 md:p-12 border border-white/5 shadow-2xl overflow-hidden">
+
+                  {/* Optimized Lightweight Background Effects */}
+                  <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08)_0%,transparent_70%)]" />
+                    <div className="h-full w-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-150 contrast-150 mix-blend-overlay" />
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                  <div className="relative z-10">
+                    <div className="mb-10">
+                      <h3 className="text-3xl font-condensed font-bold text-white uppercase tracking-tight mb-2">Send Message</h3>
+                      <p className="text-white/40 text-sm">Fill out the form below and we will get back to you.</p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2 group">
+                          <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Your Name</label>
+                          <input
+                            type="text"
+                            required
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="John Doe"
+                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all"
+                          />
+                        </div>
+                        <div className="space-y-2 group">
+                          <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Phone Number</label>
+                          <input
+                            type="tel"
+                            required
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder="+91 99999 99999"
+                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all"
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-2 group">
-                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Your Name</label>
+                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Email Address</label>
                         <input
-                          type="text"
+                          type="email"
                           required
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="John Doe"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="john@company.com"
                           className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all"
                         />
                       </div>
+
                       <div className="space-y-2 group">
-                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Phone Number</label>
-                        <input
-                          type="tel"
+                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Service Interest</label>
+                        <div className="relative">
+                          <select
+                            value={service}
+                            onChange={(e) => setService(e.target.value)}
+                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all appearance-none cursor-pointer"
+                          >
+                            <option className="bg-[#0E0F13]">Website & Software Development</option>
+                            <option className="bg-[#0E0F13]">UI / UX Design & Figma</option>
+                            <option className="bg-[#0E0F13]">Digital Marketing & SEO</option>
+                            <option className="bg-[#0E0F13]">Animations & Creative Design</option>
+                            <option className="bg-[#0E0F13]">Other Inquiries</option>
+                          </select>
+                          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/20">▼</div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2 group">
+                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Project Details</label>
+                        <textarea
                           required
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+91 99999 99999"
-                          className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all"
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          placeholder="Tell us about your project..."
+                          rows={4}
+                          className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all resize-none"
                         />
                       </div>
-                    </div>
 
-                    <div className="space-y-2 group">
-                      <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Email Address</label>
-                      <input
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="john@company.com"
-                        className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all"
-                      />
-                    </div>
-
-                    <div className="space-y-2 group">
-                      <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Service Interest</label>
-                      <div className="relative">
-                        <select
-                          value={service}
-                          onChange={(e) => setService(e.target.value)}
-                          className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all appearance-none cursor-pointer"
+                      <div className="pt-4">
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full py-5 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:opacity-90 active:scale-[0.99] transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <option className="bg-[#0E0F13]">Website & Software Development</option>
-                          <option className="bg-[#0E0F13]">UI / UX Design & Figma</option>
-                          <option className="bg-[#0E0F13]">Digital Marketing & SEO</option>
-                          <option className="bg-[#0E0F13]">Animations & Creative Design</option>
-                          <option className="bg-[#0E0F13]">Other Inquiries</option>
-                        </select>
-                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/20">▼</div>
+                          {isSubmitting ? <Loader2 className="animate-spin" /> : (
+                            <>
+                              Send Message
+                              <ArrowRight className="w-5 h-5" />
+                            </>
+                          )}
+                        </button>
                       </div>
-                    </div>
 
-                    <div className="space-y-2 group">
-                      <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Project Details</label>
-                      <textarea
-                        required
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Tell us about your project..."
-                        rows={4}
-                        className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/5 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all resize-none"
-                      />
-                    </div>
-
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full py-5 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:opacity-90 active:scale-[0.99] transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {isSubmitting ? <Loader2 className="animate-spin" /> : (
-                          <>
-                            Send Message
-                            <ArrowRight className="w-5 h-5" />
-                          </>
-                        )}
-                      </button>
-                    </div>
-
-                    {error && <p className="text-red-400 text-center text-sm font-medium mt-4 bg-red-400/10 py-2 rounded-lg">{error}</p>}
-                  </form>
+                      {error && <p className="text-red-400 text-center text-sm font-medium mt-4 bg-red-400/10 py-2 rounded-lg">{error}</p>}
+                    </form>
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -92,6 +92,7 @@ export function Footer() {
                 <li key={item}>
                   <Link
                     href="/services"
+                    prefetch={true}
                     className="text-xs font-bold uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
                   >
                     {item}
@@ -115,6 +116,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    prefetch={true}
                     className="text-xs font-bold uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -161,12 +163,12 @@ export function Footer() {
         </div>
 
         {/* LARGE DISPLAY TEXT */}
-        <div className="relative mb-24 select-none pointer-events-none">
+        <div className="relative mb-24 select-none pointer-events-none w-full flex justify-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-[clamp(2.5rem,15vw,12rem)] font-bold text-white/[0.08] text-center leading-none tracking-tighter uppercase stroke-text whitespace-nowrap drop-shadow-[0_0_80px_rgba(255,255,255,0.05)]"
+            className="text-[clamp(1.5rem,14vw,12rem)] font-bold text-white/[0.18] text-center leading-none tracking-tighter uppercase whitespace-nowrap drop-shadow-[0_0_80px_rgba(255,255,255,0.08)] px-4"
           >
             LUMORA TRIAD
           </motion.h2>

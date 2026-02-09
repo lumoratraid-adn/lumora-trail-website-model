@@ -35,6 +35,7 @@ export function CTASection() {
                         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 pt-6 w-full max-w-2xl mx-auto">
                             <Link
                                 href="/contact"
+                                prefetch={true}
                                 className="group w-full sm:w-auto pl-8 pr-2 py-2 bg-primary/20 backdrop-blur-xl border border-primary/30 rounded-full font-bold text-xs uppercase tracking-[0.2em] text-white flex items-center justify-center gap-6 transition-all hover:bg-primary/30 active:scale-95 shadow-[0_0_20px_rgba(139,92,246,0.15)] whitespace-nowrap"
                             >
                                 Start a Project
@@ -44,6 +45,7 @@ export function CTASection() {
                             </Link>
                             <Link
                                 href="/services"
+                                prefetch={true}
                                 className="group w-full sm:w-auto pl-8 pr-2 py-2 bg-white/5 border border-white/10 text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-6 transition-all hover:bg-white/10 active:scale-95 whitespace-nowrap"
                             >
                                 Our Services

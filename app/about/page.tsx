@@ -59,12 +59,10 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h2 className="text-xl md:text-3xl font-condensed font-bold text-white uppercase tracking-wider">Who We Are</h2>
+            <h2 className="text-xl md:text-3xl font-condensed font-bold text-white uppercase tracking-wider">Premier Digital Studio</h2>
             <p className="text-base md:text-2xl text-white/50 max-w-3xl mx-auto leading-relaxed font-medium">
-              We are a team of passionate software engineers, designers, and digital creators dedicated
-              to building intuitive designs and reliable software solutions.
-              Our work blends UX research, visual design, and robust development to ensure every
-              product is not only beautiful but also functional and scalable.
+              Lumora Triad is a premier digital agency specializing in custom web development, high-end UI/UX design, and strategic branding for visionary brands.
+              Our team of expert developers and designers combines UX research with robust engineering to deliver scalable software solutions that drive real results.
             </p>
           </motion.div>
         </div>
@@ -165,7 +163,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
                 { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/lumo.ratraid/?hl=en" },
-                { name: "X (Twitter)", icon: XIcon, href: "https://x.com/LumoraTraid" },
+                { name: "X", icon: XIcon, href: "https://x.com/LumoraTraid" },
                 { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/lumoratriad/" },
                 { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/profile.php?id=61586286665509" }
               ].map((social) => (

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export function ShowcaseSection() {
@@ -18,7 +19,7 @@ export function ShowcaseSection() {
                         </span>
                         <h2 className="text-4xl md:text-7xl font-bold text-white uppercase tracking-tight leading-none">
                             PRECISION <span className="text-primary italic">MOCKUPS</span><br />
-                            <span className="text-white/10 stroke-text">DRIVING RESULTS.</span>
+                            <span className="text-white/30 stroke-text">DRIVING RESULTS.</span>
                         </h2>
                         <p className="text-lg md:text-2xl text-white/50 font-medium leading-relaxed max-w-xl">
                             We translate your business goals into a visual language that converts.
@@ -56,9 +57,11 @@ export function ShowcaseSection() {
                             transition={{ duration: 0.8, ease: "circOut" }}
                             className="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.3)]"
                         >
-                            <img
+                            <Image
                                 src="/corporate-business-website.png"
                                 alt="Product Mockup"
+                                width={800}
+                                height={600}
                                 className="w-full aspect-[4/3] object-cover"
                             />
                         </motion.div>

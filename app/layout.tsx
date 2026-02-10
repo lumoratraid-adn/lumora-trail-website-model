@@ -3,12 +3,14 @@ import type { Metadata } from "next"
 import { Space_Grotesk, Inter, Bebas_Neue } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
-import { WhatsAppChatbot } from "@/components/whatsapp-chatbot"
 import { Header } from "@/components/header"
-import { ScrollToTop } from "@/components/scroll-to-top"
-import { SceneBackground } from "@/components/scene-background"
 import { Preloader } from "@/components/preloader"
+import dynamic from "next/dynamic"
 import "./globals.css"
+
+const SceneBackground = dynamic(() => import("@/components/scene-background").then(mod => mod.SceneBackground), { ssr: false })
+const WhatsAppChatbot = dynamic(() => import("@/components/whatsapp-chatbot").then(mod => mod.WhatsAppChatbot), { ssr: false })
+const ScrollToTop = dynamic(() => import("@/components/scroll-to-top").then(mod => mod.ScrollToTop), { ssr: false })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -122,6 +124,10 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-sans antialiased bg-[#0E0F13] text-white selection:bg-primary selection:text-white">
         <Preloader />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>

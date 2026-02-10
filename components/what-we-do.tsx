@@ -102,8 +102,10 @@ export function WhatWeDo() {
                             <span className="text-primary text-[11px] font-black uppercase tracking-[0.6em]">Capabilities</span>
                         </motion.div>
                         <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                             className="text-6xl md:text-8xl font-sans font-bold tracking-tighter leading-[0.85] text-white uppercase"
                         >
                             Our <span className="text-primary italic">Expertise</span>
@@ -164,7 +166,7 @@ export function WhatWeDo() {
                                             prefetch={true}
                                             className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.4em] text-white/40 group-hover:text-primary transition-all group/btn"
                                         >
-                                            Read More
+                                            Read More <span className="sr-only">about {item.title}</span>
                                             <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:scale-110">
                                                 <ArrowRight className="w-3 h-3 text-white transition-transform group-hover/btn:translate-x-1" />
                                             </div>

@@ -50,6 +50,7 @@ export function WhatsAppChatbot() {
             {/* Chat Button */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Close WhatsApp Chat" : "Open WhatsApp Chat"}
                 className="fixed bottom-6 right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-[0_10px_40px_rgba(37,211,102,0.4)] flex items-center justify-center transition-all duration-300 hover:scale-110"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}

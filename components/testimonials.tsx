@@ -51,7 +51,7 @@ export function Testimonials() {
                   LT
                 </div>
                 <div>
-                  <h4 className="font-sans font-bold text-xl tracking-tight text-white uppercase group-hover:text-primary transition-colors">Lumora Triad</h4>
+                  <h3 className="font-sans font-bold text-xl tracking-tight text-white uppercase group-hover:text-primary transition-colors">Lumora Triad</h3>
                   <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] mt-1 group-hover:text-primary/40 transition-colors">Founding Team</p>
                 </div>
               </div>

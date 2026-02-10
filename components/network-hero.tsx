@@ -8,59 +8,18 @@ import { motion } from "framer-motion"
 import { ArrowUpRight, Globe2 } from "lucide-react"
 import Link from "next/link"
 
-function NetworkGlobe() {
-    const groupRef = useRef<THREE.Group>(null)
+import dynamic from "next/dynamic"
 
-    const lines = useMemo(() => {
-        const temp = []
-        for (let i = 0; i < 20; i++) {
-            const radius = 4 + Math.random() * 3
-            const speed = 0.1 + Math.random() * 0.2
-            const color = i % 2 === 0 ? "#6366f1" : "#a855f7"
-            temp.push({ radius, speed, color, offset: Math.random() * Math.PI * 2 })
-        }
-        return temp
-    }, [])
-
-    useFrame((state) => {
-        if (groupRef.current) {
-            groupRef.current.rotation.y += 0.002
-        }
-    })
-
-    return (
-        <group ref={groupRef}>
-            {/* Orbit Lines */}
-            {lines.map((line, i) => (
-                <mesh key={i} rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}>
-                    <ringGeometry args={[line.radius, line.radius + 0.015, 96]} />
-                    <meshBasicMaterial color={line.color} transparent opacity={0.35} side={THREE.DoubleSide} />
-                </mesh>
-            ))}
-
-            {/* Floating Nodes */}
-            {Array.from({ length: 16 }).map((_, i) => (
-                <Float key={i} speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-                    <mesh position={[(Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12]}>
-                        <sphereGeometry args={[0.025, 16, 16]} />
-                        <meshBasicMaterial color="#ffffff" opacity={0.9} transparent />
-                    </mesh>
-                </Float>
-            ))}
-        </group>
-    )
-}
+const NetworkCanvas = dynamic(() => import("./network-canvas"), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-[#0E0F13]" />
+})
 
 export function NetworkHero() {
     return (
         <section className="relative h-[80vh] md:h-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <Canvas dpr={[1, 1.5]}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
-                    <ambientLight intensity={0.5} />
-                    <pointLight position={[10, 10, 10]} intensity={1} color="#6366f1" />
-                    <NetworkGlobe />
-                </Canvas>
+                <NetworkCanvas />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center justify-center h-full pt-10 md:pt-40">

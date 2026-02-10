@@ -7,10 +7,10 @@ export function Preloader() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        // Reduced from 2600ms to 1800ms for a snappier response while keeping the premium feel
+        // Reduced from 1800ms to 600ms for a much snappier response
         const timer = setTimeout(() => {
             setLoading(false)
-        }, 1800)
+        }, 600)
 
         return () => clearTimeout(timer)
     }, [])
@@ -24,7 +24,7 @@ export function Preloader() {
                         opacity: 0,
                         scale: 1.05,
                         filter: "blur(15px)",
-                        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                        transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
                     }}
                     className="fixed inset-0 z-[99999] bg-[#0E0F13] flex items-center justify-center overflow-hidden"
                 >

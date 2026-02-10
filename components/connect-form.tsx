@@ -1,22 +1,12 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle2, Loader2, MessageCircle, X, ArrowRight } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Toast } from "./ui/toast"
 import { Canvas } from "@react-three/fiber"
-import { StarField } from "@/components/scene-background"
+import { StarField } from "@/components/scene-canvas"
 
 export function ConnectForm() {
     const [mounted, setMounted] = useState(false)
@@ -96,7 +86,7 @@ export function ConnectForm() {
                     <div className="mb-12 text-center space-y-6">
                         <h2 className="text-4xl md:text-8xl font-condensed font-bold text-white uppercase tracking-tight leading-[0.9]">
                             LET&apos;S <span className="text-primary italic">BUILD</span><br />
-                            <span className="text-white/10 stroke-text">YOUR NEXT BIG THING.</span>
+                            <span className="text-white/30 stroke-text">YOUR NEXT BIG THING.</span>
                         </h2>
                         <p className="max-w-xl mx-auto text-lg md:text-xl text-white/50 font-medium leading-relaxed px-4">
                             Have an idea or a project in mind? We respond to all
@@ -147,8 +137,9 @@ export function ConnectForm() {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2 group">
-                                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Your Name</label>
+                                        <label htmlFor="name" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Your Name</label>
                                         <input
+                                            id="name"
                                             type="text"
                                             required
                                             value={name}
@@ -158,8 +149,9 @@ export function ConnectForm() {
                                         />
                                     </div>
                                     <div className="space-y-2 group">
-                                        <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Phone Number</label>
+                                        <label htmlFor="phone" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Phone Number</label>
                                         <input
+                                            id="phone"
                                             type="tel"
                                             required
                                             value={phone}
@@ -171,8 +163,9 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Email Address</label>
+                                    <label htmlFor="email" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Email Address</label>
                                     <input
+                                        id="email"
                                         type="email"
                                         required
                                         value={email}
@@ -183,9 +176,10 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Service Interest</label>
+                                    <label htmlFor="service" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Service Interest</label>
                                     <div className="relative">
                                         <select
+                                            id="service"
                                             value={serviceSelected}
                                             onChange={(e) => setServiceSelected(e.target.value)}
                                             className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition-all appearance-none cursor-pointer"
@@ -200,8 +194,9 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Project Details</label>
+                                    <label htmlFor="message" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Project Details</label>
                                     <textarea
+                                        id="message"
                                         required
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}

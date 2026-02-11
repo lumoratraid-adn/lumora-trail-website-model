@@ -19,7 +19,7 @@ export function ShowcaseSection() {
                         </span>
                         <h2 className="text-4xl md:text-7xl font-bold text-white uppercase tracking-tight leading-none">
                             PRECISION <span className="text-primary italic">MOCKUPS</span><br />
-                            <span className="text-white/30 stroke-text">DRIVING RESULTS.</span>
+                            <span className="text-white/50 stroke-text">DRIVING RESULTS.</span>
                         </h2>
                         <p className="text-lg md:text-2xl text-white/50 font-medium leading-relaxed max-w-xl">
                             We translate your business goals into a visual language that converts.

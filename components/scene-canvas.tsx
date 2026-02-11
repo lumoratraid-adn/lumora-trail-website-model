@@ -9,7 +9,7 @@ export function StarField() {
     const ref = useRef<THREE.Points>(null)
 
     const [positions, colors] = useMemo(() => {
-        const count = 1200
+        const count = 600
         const pos = new Float32Array(count * 3)
         const col = new Float32Array(count * 3)
         for (let i = 0; i < count; i++) {
@@ -51,7 +51,7 @@ export function StarField() {
 
 export default function SceneCanvas() {
     return (
-        <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
+        <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance" }}>
             <StarField />
         </Canvas>
     )

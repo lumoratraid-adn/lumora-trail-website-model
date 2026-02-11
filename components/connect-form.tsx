@@ -86,7 +86,7 @@ export function ConnectForm() {
                     <div className="mb-12 text-center space-y-6">
                         <h2 className="text-4xl md:text-8xl font-condensed font-bold text-white uppercase tracking-tight leading-[0.9]">
                             LET&apos;S <span className="text-primary italic">BUILD</span><br />
-                            <span className="text-white/30 stroke-text">YOUR NEXT BIG THING.</span>
+                            <span className="text-white/50 stroke-text">YOUR NEXT BIG THING.</span>
                         </h2>
                         <p className="max-w-xl mx-auto text-lg md:text-xl text-white/50 font-medium leading-relaxed px-4">
                             Have an idea or a project in mind? We respond to all
@@ -137,7 +137,7 @@ export function ConnectForm() {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2 group">
-                                        <label htmlFor="name" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Your Name</label>
+                                        <label htmlFor="name" className="text-[11px] font-bold tracking-[0.2em] text-white/50 uppercase pl-1 group-focus-within:text-primary transition-colors">Your Name</label>
                                         <input
                                             id="name"
                                             type="text"
@@ -149,7 +149,7 @@ export function ConnectForm() {
                                         />
                                     </div>
                                     <div className="space-y-2 group">
-                                        <label htmlFor="phone" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Phone Number</label>
+                                        <label htmlFor="phone" className="text-[11px] font-bold tracking-[0.2em] text-white/50 uppercase pl-1 group-focus-within:text-primary transition-colors">Phone Number</label>
                                         <input
                                             id="phone"
                                             type="tel"
@@ -163,7 +163,7 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label htmlFor="email" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Email Address</label>
+                                    <label htmlFor="email" className="text-[11px] font-bold tracking-[0.2em] text-white/50 uppercase pl-1 group-focus-within:text-primary transition-colors">Email Address</label>
                                     <input
                                         id="email"
                                         type="email"
@@ -176,7 +176,7 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label htmlFor="service" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Service Interest</label>
+                                    <label htmlFor="service" className="text-[11px] font-bold tracking-[0.2em] text-white/50 uppercase pl-1 group-focus-within:text-primary transition-colors">Service Interest</label>
                                     <div className="relative">
                                         <select
                                             id="service"
@@ -194,7 +194,7 @@ export function ConnectForm() {
                                 </div>
 
                                 <div className="space-y-2 group">
-                                    <label htmlFor="message" className="text-[11px] font-bold tracking-[0.2em] text-white/30 uppercase pl-1 group-focus-within:text-primary transition-colors">Project Details</label>
+                                    <label htmlFor="message" className="text-[11px] font-bold tracking-[0.2em] text-white/50 uppercase pl-1 group-focus-within:text-primary transition-colors">Project Details</label>
                                     <textarea
                                         id="message"
                                         required

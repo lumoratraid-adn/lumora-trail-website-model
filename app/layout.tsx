@@ -16,18 +16,21 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
   weight: ["400", "500", "600", "700"],
+  display: 'swap',
 })
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"],
+  display: 'swap',
 })
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-condensed",
   weight: "400",
+  display: 'swap',
 })
 
 const baseUrl = "https://www.lumoratriad.in"

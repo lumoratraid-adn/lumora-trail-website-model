@@ -24,7 +24,7 @@ export function CTASection() {
 
                         <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white uppercase leading-[1] md:leading-[0.9] tracking-tighter px-4">
                             READY TO BRING YOUR<br />
-                            <span className="text-primary italic">VISION</span> <span className="text-white/30 stroke-text">TO LIFE?</span>
+                            <span className="text-primary italic">VISION</span> <span className="text-white/50 stroke-text">TO LIFE?</span>
                         </h2>
 
                         <p className="max-w-2xl mx-auto text-base md:text-2xl text-white/50 font-medium leading-relaxed px-6">

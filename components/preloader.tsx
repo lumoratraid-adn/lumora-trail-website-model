@@ -10,7 +10,7 @@ export function Preloader() {
         // Reduced from 1800ms to 600ms for a much snappier response
         const timer = setTimeout(() => {
             setLoading(false)
-        }, 600)
+        }, 10)
 
         return () => clearTimeout(timer)
     }, [])

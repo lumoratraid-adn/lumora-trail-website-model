@@ -7,7 +7,6 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 const NetworkHero = dynamic(() => import("@/components/network-hero").then(mod => mod.NetworkHero), {
-  ssr: false,
   loading: () => <div className="h-[80vh] md:h-screen bg-[#0E0F13]" />
 })
 const WhyChooseUs = dynamic(() => import("@/components/why-choose-us").then(mod => mod.WhyChooseUs))

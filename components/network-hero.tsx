@@ -57,7 +57,7 @@ export function NetworkHero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1 }}
-                        className="text-[9px] md:text-[11px] text-white/40 max-w-2xl mx-auto font-black leading-relaxed tracking-[0.3em] uppercase text-center px-6"
+                        className="text-[9px] md:text-[11px] text-white/70 max-w-2xl mx-auto font-black leading-relaxed tracking-[0.3em] uppercase text-center px-6"
                     >
                         Premier Digital Agency Specializing in Web Development, UI/UX Design & Branding solutions.
                     </motion.p>

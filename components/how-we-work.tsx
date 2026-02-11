@@ -127,9 +127,11 @@ export function HowWeWork() {
                                                 {/* Navigation Arrow */}
                                                 <div className="mt-auto pt-10 flex w-full justify-center">
                                                     <motion.button
+                                                        aria-label="Next step"
                                                         whileHover={{ scale: 1.2 }}
                                                         whileTap={{ scale: 0.9 }}
                                                         onClick={() => handleNext(activeStep)}
+
                                                         className="w-12 h-12 rounded-full border bg-primary border-primary flex items-center justify-center text-xl text-white shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all"
                                                     >
                                                         →
@@ -219,6 +221,7 @@ export function HowWeWork() {
                                         <AnimatePresence>
                                             {isLit && (
                                                 <motion.button
+                                                    aria-label={`Go to step ${step.number}`}
                                                     initial={{ opacity: 0, scale: 0.5 }}
                                                     animate={{ opacity: 1, scale: 1.1 }}
                                                     exit={{ opacity: 0, scale: 0.5 }}

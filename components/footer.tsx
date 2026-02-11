@@ -176,7 +176,7 @@ export function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-white/5 text-[10px] font-bold text-white/40 tracking-[0.2em] uppercase">
+        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-white/5 text-[10px] font-bold text-white/60 tracking-[0.2em] uppercase">
           <p>© {currentYear} <span className="text-primary">Lumora Triad</span>. All rights reserved.</p>
           <div className="flex gap-8 mt-6 md:mt-0">
             <Link href="#" className="hover:text-primary transition-colors text-white/60">Privacy Policy</Link>

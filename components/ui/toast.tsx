@@ -39,6 +39,7 @@ export function Toast({ message, isVisible, onClose, duration = 4000 }: ToastPro
                         </div>
                         <button
                             onClick={onClose}
+                            aria-label="Close notification"
                             className="text-white/20 hover:text-white transition-colors p-1"
                         >
                             <X className="w-4 h-4" />

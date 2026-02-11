@@ -4,16 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 
 export function Preloader() {
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        // Reduced from 1800ms to 600ms for a much snappier response
-        const timer = setTimeout(() => {
-            setLoading(false)
-        }, 10)
-
-        return () => clearTimeout(timer)
-    }, [])
+    const [loading, setLoading] = useState(false)
 
     return (
         <AnimatePresence>

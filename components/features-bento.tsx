@@ -1,29 +1,29 @@
 "use client"
 
-import { Cpu, Palette, PenTool, Video } from "lucide-react"
+import { Code, Layout, Palette, PlayCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function FeaturesBento() {
   const features = [
     {
       title: "Website & Software Development",
-      desc: "We engineer high-performance web applications and custom software solutions designed to scale with your business.",
-      icon: Cpu,
+      desc: "We build fast, secure, and scalable websites and custom software that grow with your business.",
+      icon: Code,
     },
     {
       title: "UI / UX Design & Figma Projects",
-      desc: "Precision-crafted user interfaces and seamless experiences that transform how users interact with your digital products.",
+      desc: "We design clean, user-friendly interfaces and smooth experiences that make your digital products easy to use.",
+      icon: Layout,
+    },
+    {
+      title: "Branding & Digital Marketing",
+      desc: "We create strong brand identities and marketing designs that help your business stand out and build trust.",
       icon: Palette,
     },
     {
-      title: "Branding, Logo & Posters",
-      desc: "Compelling visual identities and high-impact marketing assets that establish trust and define your brand authority.",
-      icon: PenTool,
-    },
-    {
       title: "Animations & Creative Design",
-      desc: "Dynamic motion graphics and creative storytelling that bring your brand to life and capture audience attention.",
-      icon: Video,
+      desc: "We create engaging animations and visuals that bring your brand to life and capture attention.",
+      icon: PlayCircle,
     },
   ]
 

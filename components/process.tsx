@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { AnimatedSection } from "@/components/ui/animated-section"
 
 export function Process() {
   const steps = [
@@ -22,38 +22,29 @@ export function Process() {
   ]
 
   return (
-    <section id="process" className="py-24 relative overflow-hidden bg-background">
+    <section id="process" className="py-12 relative overflow-hidden bg-background">
       {/* Background Aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-24"
-        >
+        <AnimatedSection className="text-center mb-12">
           <span className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase mb-6 inline-block">
             Our Workflow
           </span>
-          <h2 className="text-[10vw] md:text-[6vw] font-sans font-semibold tracking-[-0.085em] leading-[0.85] text-white uppercase mb-8 drop-shadow-sm">
+          <h2 className="text-[clamp(3rem,10vw,6vw)] md:text-[6vw] font-sans font-semibold tracking-[-0.085em] leading-[0.85] text-white uppercase mb-8 drop-shadow-sm">
             THE PROCESS
           </h2>
           <p className="text-[10px] md:text-sm text-white/30 max-w-3xl mx-auto font-bold tracking-[0.2em] uppercase px-4">
             A systematic approach to engineering high-performance digital solutions.
           </p>
-        </motion.div>
+        </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, i) => (
-            <motion.div
+            <AnimatedSection
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: i * 0.2 }}
-              viewport={{ once: true }}
-              className="group relative p-10 rounded-[3rem] bg-white/[0.02] backdrop-blur-3xl border border-white/5 hover:border-primary/40 transition-all duration-700 hover:bg-primary/[0.03] flex flex-col items-center text-center"
+              delay={i * 0.2}
+              className="group relative p-8 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-white/[0.02] backdrop-blur-3xl border border-white/5 hover:border-primary/40 transition-all duration-700 hover:bg-primary/[0.03] flex flex-col items-center text-center"
             >
               {/* Massive Background Number */}
               <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[15rem] font-sans font-black text-white/[0.02] leading-none select-none group-hover:text-primary/[0.05] transition-colors duration-700 pointer-events-none">
@@ -77,7 +68,7 @@ export function Process() {
 
               {/* Decorative Glow */}
               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary/10 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

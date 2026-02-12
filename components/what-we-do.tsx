@@ -1,181 +1,114 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Layout, Globe2, Layers, Search, RefreshCw, Target, PlayCircle, ArrowRight, Sparkles } from "lucide-react"
-import Link from "next/link"
-
-const capabilities = [
-    {
-        id: "website-web-app-development",
-        title: "Web Design & Custom Software Development",
-        desc: "Engineering high-performance web applications and custom software solutions designed for global scalability and growth.",
-        icon: Globe2,
-    },
-    {
-        id: "ui-ux-design",
-        title: "Premium UI / UX Design & Figma Projects",
-        desc: "Precision-crafted user interfaces and seamless user experiences that redefine digital interaction and engagement.",
-        icon: Layout,
-    },
-    {
-        id: "branding-logo-digital-marketing",
-        title: "Strategic Branding & Digital Marketing India",
-        desc: "We create strong brand identities and strategic marketing designs that help your business stand out and establish leadership.",
-        icon: Layers,
-    },
-    {
-        id: "seo-online-growth",
-        title: "Advanced SEO & Organic Online Growth",
-        desc: "We improve your website's visibility on Google and search engines to help you reach the right audience organically.",
-        icon: Search,
-    },
-    {
-        id: "website-redesign-maintenance",
-        title: "Website Redesign & Technical Maintenance",
-        desc: "We upgrade outdated websites and provide regular updates to keep them running smoothly, securely, and efficiently.",
-        icon: RefreshCw,
-    },
-    {
-        id: "landing-pages-lead-generation",
-        title: "Landing Pages & Lead Generation Agency",
-        desc: "We design conversion-focused landing pages that turn visitors into leads and loyal customers for your business.",
-        icon: Target,
-    },
-    {
-        id: "animations-creative",
-        title: "Animations & Creative Motion Design",
-        desc: "We create engaging animations and motion graphics that bring your brand to life and capture customer attention.",
-        icon: PlayCircle,
-    },
-]
+import { Code, Layout, Palette, Search, Smartphone, Megaphone, Settings, ArrowUpRight, PlayCircle } from "lucide-react"
+import Image from "next/image"
+import { AnimatedSection, AnimatedText } from "@/components/ui/animated-section"
 
 export function WhatWeDo() {
+    const capabilities = [
+        {
+            icon: Code,
+            title: "Web & Software",
+            desc: "Fast, secure, and scalable websites and custom software.",
+            image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop", // Modern laptop with code
+            dark: true
+        },
+        {
+            icon: Layout,
+            title: "UI / UX Design",
+            desc: "Clean interfaces and smooth user experiences.",
+            image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&h=600&fit=crop", // Design mockups
+            dark: false
+        },
+        {
+            icon: Palette,
+            title: "Branding & Marketing",
+            desc: "Strong identities and effective marketing designs.",
+            image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop", // Brand colors and design
+            dark: true
+        },
+        {
+            icon: Search,
+            title: "SEO & Growth",
+            desc: "Visibility on Google and organic audience reach.",
+            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop", // Analytics dashboard
+            dark: false
+        },
+        {
+            icon: Settings,
+            title: "Redesign & Maintenance",
+            desc: "Upgrading and securing digital assets.",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", // Website redesign workspace
+            dark: true
+        },
+        {
+            icon: Megaphone,
+            title: "Lead Generation",
+            desc: "Focused pages turning visitors into customers.",
+            image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop", // Business growth and leads
+            dark: false
+        },
+        {
+            icon: PlayCircle,
+            title: "Animations",
+            desc: "Engaging visuals that bring brands to life.",
+            image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=800&h=600&fit=crop", // Motion graphics and animation
+            dark: true
+        }
+    ]
+
     return (
-        <section className="relative bg-transparent overflow-hidden py-12 md:py-16">
-            {/* Global Background Integration */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.05)_0%,transparent_70%)] pointer-events-none" />
-            {/* Background Ornaments - "Shattered" Light & Animated Orbs */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-                <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-                <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-                <div className="absolute bottom-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-
-                {/* Animated Floating Orbs - Increased visibility */}
-                <motion.div
-                    animate={{
-                        x: [0, 100, 0],
-                        y: [0, -50, 0],
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 blur-[130px] rounded-full opacity-60"
-                />
-                <motion.div
-                    animate={{
-                        x: [0, -80, 0],
-                        y: [0, 60, 0],
-                        scale: [1, 1.3, 1],
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute bottom-1/4 -right-20 w-[30rem] h-[30rem] bg-violet-500/10 blur-[150px] rounded-full opacity-50"
-                />
-                <motion.div
-                    animate={{
-                        opacity: [0.2, 0.4, 0.2],
-                    }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.03)_0%,transparent_100%)]"
-                />
-            </div>
-
-            <div className="container mx-auto relative z-10 px-6 lg:px-12">
-                <div className="flex flex-col lg:flex-row items-end justify-between mb-12 gap-8">
-                    <div className="space-y-6 max-w-2xl text-left">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="flex items-center gap-4"
-                        >
-                            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
-                            <span className="text-primary text-[11px] font-black uppercase tracking-[0.6em]">Capabilities</span>
-                        </motion.div>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="text-6xl md:text-8xl font-sans font-bold tracking-tighter leading-[0.85] text-white uppercase"
-                        >
-                            Our <span className="text-primary italic">Expertise</span>
-                        </motion.h2>
+        <section className="py-12 md:py-24 bg-background relative overflow-hidden border-t border-foreground/5">
+            <div className="container mx-auto px-6 relative z-10">
+                <AnimatedText className="flex flex-col md:flex-row items-baseline justify-between mb-16 gap-8">
+                    <h2 className="text-[clamp(3rem,12vw,10rem)] font-michroma font-normal tracking-tight text-foreground uppercase leading-[0.85]">
+                        Draw <br />
+                        <span className="font-serif italic text-primary lowercase tracking-tighter">anything</span>
+                    </h2>
+                    <div className="max-w-xs space-y-6">
+                        <span className="text-[10px] font-michroma tracking-[0.5em] text-primary uppercase">Expertise</span>
+                        <p className="text-xl text-foreground/40 italic font-medium leading-[1.2]">
+                            Architecting the digital foundation for visionary brands across 7 core domains.
+                        </p>
                     </div>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-white/30 text-lg md:text-xl font-medium max-w-sm leading-relaxed"
-                    >
-                        Blending classic precision with modern digital technology to build your brand&apos;s future.
-                    </motion.p>
-                </div>
+                </AnimatedText>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
-                    {capabilities.map((item, index) => {
-                        const Icon = item.icon
-                        const isEven = index % 2 === 0
+                {/* Vertical Monolithic Grid for 7 items */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/10 border border-foreground/10 rounded-[2rem] md:rounded-[3rem] overflow-hidden">
+                    {capabilities.map((cap, i) => (
+                        <AnimatedSection
+                            key={i}
+                            delay={i * 0.1}
+                            className={`group relative p-8 md:p-12 transition-all duration-500 flex flex-col justify-between min-h-[350px] md:min-h-[500px] overflow-hidden ${i === 6 ? 'lg:col-span-2' : ''}`}
+                        >
+                            {/* Background Image */}
+                            <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700">
+                                <Image
+                                    src={cap.image || "/placeholder.svg"}
+                                    alt={cap.title}
+                                    fill
+                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80" />
+                            </div>
 
-                        return (
-                            <motion.div
-                                key={item.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{
-                                    duration: 0.8,
-                                    delay: index * 0.1,
-                                    ease: [0.16, 1, 0.3, 1]
-                                }}
-                                viewport={{ once: true }}
-                                className={`group relative flex flex-col p-8 md:p-10 bg-white/[0.02] border border-white/5 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden transition-all duration-700 hover:bg-black hover:border-primary/40 hover:-translate-y-2 ${isEven ? "lg:translate-y-8" : ""
-                                    }`}
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                                <div className="relative z-10 flex flex-col h-full">
-                                    <div className="flex justify-between items-start mb-8">
-                                        <div className="w-12 h-12 rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 transition-all group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40">
-                                            <Icon className="w-6 h-6 text-white/40 group-hover:text-primary transition-colors duration-500" />
-                                        </div>
-                                        <span className="text-[10px] font-black text-white/5 uppercase tracking-[0.4em] group-hover:text-primary/10 transition-colors">
-                                            0{index + 1}
-                                        </span>
-                                    </div>
-
-                                    <div className="flex-1 space-y-4">
-                                        <h3 className="text-lg md:text-xl font-sans font-bold text-white uppercase tracking-tight leading-tight transition-all duration-500 group-hover:text-primary">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-xs md:text-sm text-white/30 font-medium leading-relaxed group-hover:text-white/60 transition-colors duration-500">
-                                            {item.desc}
-                                        </p>
-                                    </div>
-
-                                    <div className="mt-8 pt-6 border-t border-white/5">
-                                        <Link
-                                            href={`/services/${item.id}`}
-                                            prefetch={true}
-                                            className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.4em] text-white/40 group-hover:text-primary transition-all group/btn"
-                                        >
-                                            Read More <span className="sr-only">about {item.title}</span>
-                                            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:scale-110">
-                                                <ArrowRight className="w-3 h-3 text-white transition-transform group-hover/btn:translate-x-1" />
-                                            </div>
-                                        </Link>
-                                    </div>
+                            <div className={`relative z-10 space-y-12 transition-colors duration-500 ${cap.dark ? 'text-foreground' : 'text-foreground'} group-hover:text-white`}>
+                                <div className="flex justify-between items-start">
+                                    <cap.icon className="w-12 h-12" />
+                                    <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 translate-x-2 group-hover:translate-x-0 transition-all duration-500" />
                                 </div>
-                            </motion.div>
-                        )
-                    })}
+                                <div className="space-y-6">
+                                    <h3 className="text-xl md:text-3xl font-michroma tracking-[0.1em] uppercase leading-none">{cap.title}</h3>
+                                    <p className="text-[11px] font-medium leading-relaxed uppercase tracking-[0.2em] opacity-60 group-hover:opacity-100 transition-opacity max-w-[80%]">
+                                        {cap.desc}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="relative z-10 pt-8 border-t border-current opacity-20 group-hover:opacity-100">
+                                <span className="text-[10px] font-michroma tracking-widest">0{i + 1}</span>
+                            </div>
+                        </AnimatedSection>
+                    ))}
                 </div>
             </div>
         </section>

@@ -14,26 +14,22 @@ const techStack = [
     {
         category: "AI & Innovation",
         icon: Cpu,
-        description: "Integrating intelligence into digital experiences.",
-        tools: ["LLMs (OpenAI, Anthropic)", "Prompt Engineering", "AI Tools & Automation", "LangChain", "Vector Databases"]
+        description: "Integrating intelligence into digital experiences. We leverage the power of artificial intelligence to create adaptive systems that learn and evolve.",
     },
     {
         category: "Frontend Engineering",
         icon: Layout,
-        description: "Crafting premium user interfaces and experiences.",
-        tools: ["React.js (Expert)", "TypeScript", "Next.js", "Tailwind CSS", "UI/UX Design (Figma)"]
+        description: "Crafting premium user interfaces and experiences. We focus on fluid animations, responsive layouts, and pixel-perfect design implementation.",
     },
     {
         category: "Backend & Systems",
         icon: Server,
-        description: "Architecting scalable and secure server-side logic.",
-        tools: ["Python / Django", "Node.js / NestJS", "PHP / Laravel", "PostgreSQL / MySQL"]
+        description: "Architecting scalable and secure server-side logic. Our systems are built for high availability, data integrity, and lightning-fast performance.",
     },
     {
         category: "DevOps & Logic",
         icon: Terminal,
-        description: "Streamlining deployment and application flow.",
-        tools: ["Docker / Vercel", "Git / GitHub Actions", "JWT / RBAC", "System Design"]
+        description: "Streamlining deployment and application flow. We ensure your digital infrastructure is robust, automated, and ready for global scale.",
     }
 ]
 
@@ -49,7 +45,7 @@ export function TechEcosystem() {
                 <div className="max-w-7xl mx-auto">
 
                     {/* Header */}
-                    <div className="mb-20 space-y-4">
+                    <div className="mb-10 space-y-4">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -82,7 +78,7 @@ export function TechEcosystem() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="group p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/[0.05] hover:border-primary/40 transition-all duration-500 hover:bg-white/[0.04]"
+                                    className="group p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.02] border border-white/[0.05] hover:border-primary/40 transition-all duration-500 hover:bg-white/[0.04]"
                                 >
                                     <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-500">
                                         <Icon className="w-6 h-6" />
@@ -91,18 +87,9 @@ export function TechEcosystem() {
                                     <h3 className="text-xl font-black text-white uppercase mb-2 tracking-tight">
                                         {stack.category}
                                     </h3>
-                                    <p className="text-sm text-white/40 font-bold mb-6 italic leading-snug">
+                                    <p className="text-sm text-white/40 font-bold italic leading-snug">
                                         {stack.description}
                                     </p>
-
-                                    <ul className="space-y-3 pt-6 border-t border-white/5">
-                                        {stack.tools.map((tool) => (
-                                            <li key={tool} className="flex items-center gap-3 text-sm font-bold text-white/60 uppercase tracking-tight">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                                {tool}
-                                            </li>
-                                        ))}
-                                    </ul>
                                 </motion.div>
                             )
                         })}
@@ -113,9 +100,9 @@ export function TechEcosystem() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mt-24 p-1 rounded-[3rem] bg-white/5 border border-white/[0.03]"
+                        className="mt-8 md:mt-12 p-1 rounded-[2rem] md:rounded-[3rem] bg-white/5 border border-white/[0.03]"
                     >
-                        <div className="bg-[#0a0a0a] rounded-[2.8rem] px-8 py-10 flex flex-col lg:flex-row items-center justify-between gap-8 border border-white/5">
+                        <div className="bg-[#0a0a0a] rounded-[1.8rem] md:rounded-[2.8rem] px-6 md:px-8 py-8 md:py-10 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 border border-white/5">
                             <div className="flex items-center gap-6">
                                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                                     <Zap className="w-8 h-8 text-primary" />

@@ -23,7 +23,7 @@ export function Services() {
   ]
 
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-20 items-start">
           <motion.div
@@ -36,7 +36,7 @@ export function Services() {
             <span className="text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase bg-muted/20 border border-border px-4 py-1.5 rounded-full shadow-sm mb-6 inline-block">
               Expertise
             </span>
-            <h2 className="text-4xl md:text-6xl mb-8 leading-[1.1] font-serif text-foreground">
+            <h2 className="text-4xl md:text-6xl mb-4 leading-[1.1] font-serif text-foreground">
               Redefining success in the <span className="text-primary italic font-medium">digital</span> space
             </h2>
           </motion.div>

@@ -4,36 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.12 0.02 260);
-  /* #0E0F13 approx */
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.15 0.02 260 / 0.3);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.12 0.02 260);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.6 0.25 270);
-  /* Indigo */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.85 0.1 180);
-  /* Soft Cyan/Mint */
-  --secondary-foreground: oklch(0.1 0 0);
-  --muted: oklch(0.2 0.02 260);
-  --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.5 0.3 280);
-  /* Violet */
+  --background: #050505;
+  /* Deep Black #0E0F13 approx */
+  --foreground: oklch(0.98 0.01 250);
+  /* Near White */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 120);
+  --popover: oklch(0.97 0.02 95);
+  --popover-foreground: oklch(0.15 0.02 120);
+  --primary: oklch(0.85 0.25 145);
+  /* High-impact Lime Green */
+  --primary-foreground: oklch(0.15 0.02 120);
+  --secondary: oklch(0.6 0.25 35);
+  /* Burnt Red (Arctic Red) */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.9 0.02 95);
+  --muted-foreground: oklch(0.4 0.02 120);
+  --accent: oklch(0.15 0.02 120);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.6 0.25 35);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.02 260);
-  --input: oklch(0.25 0.02 260);
-  --ring: oklch(0.6 0.25 270);
-  --radius: 1rem;
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.8 0.02 120);
+  --input: oklch(0.8 0.02 120);
+  --ring: oklch(0.85 0.25 145);
+  --radius: 2rem;
 }
 
 @theme inline {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui;
   --font-heading: var(--font-heading), "Space Grotesk", sans-serif;
   --font-condensed: var(--font-condensed), "Bebas Neue", sans-serif;
+  --font-serif: var(--font-serif), "Fraunces", serif;
+  --font-michroma: var(--font-michroma), "Michroma", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -53,20 +55,19 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 6px);
-  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 12px);
+  --radius-md: calc(var(--radius) - 8px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 8px);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground font-sans;
-    background-color: #0E0F13;
     overflow-x: hidden;
     width: 100%;
   }
@@ -82,33 +83,90 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-bold leading-tight tracking-tight;
+    @apply font-michroma font-normal leading-tight tracking-[0.05em] uppercase;
   }
 }
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] shadow-2xl;
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl;
   }
 
-  .glow-violet {
-    filter: drop-shadow(0 0 30px oklch(0.5 0.3 280 / 0.4));
+  .glass-card-hover {
+    @apply hover:bg-white/[0.06] hover:border-primary/30 transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-1;
   }
 
-  .glow-indigo {
-    filter: drop-shadow(0 0 30px oklch(0.6 0.25 270 / 0.4));
+  .text-glow {
+    text-shadow: 0 0 20px rgba(var(--primary), 0.5);
   }
 
   .section-spacing {
-    @apply py-8 sm:py-16 px-6;
+    @apply py-24 md:py-32 px-6;
   }
 
-  .text-reveal {
-    overflow: hidden;
-    display: block;
+  .bg-arctic {
+    background-color: #F6F7EB;
   }
 
-  .bg-cinematic {
-    background: radial-gradient(circle at 50% 50%, #1a1b23 0%, #0E0F13 100%);
+  .bg-sage {
+    background-color: #1A1D1A;
   }
+
+  /* Full width container - removes side gaps */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1920px;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+}
+
+/* Custom Animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

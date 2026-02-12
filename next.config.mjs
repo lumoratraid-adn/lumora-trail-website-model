@@ -19,12 +19,11 @@ const nextConfig = {
     '.trycloudflare.com',
   ],
   productionBrowserSourceMaps: false,
-  swcMinify: true,
   poweredByHeader: false,
   compress: true,
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons', '@react-three/fiber', '@react-three/drei', 'three'],
-    optimizeCss: true,
+    optimizeCss: false,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

@@ -1,98 +1,82 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ShieldCheck, Zap, Award, Star } from "lucide-react"
-
-const reasons = [
-    {
-        title: "Expertise",
-        desc: "We are known for our highly skilled developers delivering high-end digital products with precision.",
-        icon: Award,
-        label: "01"
-    },
-    {
-        title: "Quality",
-        desc: "Meticulous attention to detail in design and pixel-perfect implementation for your brand.",
-        icon: Star,
-        label: "02"
-    },
-    {
-        title: "Performance",
-        desc: "Blazing fast loading speeds and optimized code for the best user experience globally.",
-        icon: Zap,
-        label: "03"
-    },
-    {
-        title: "Reliability",
-        desc: "Scalable architecture and ongoing support to ensure your product grows with you safely.",
-        icon: ShieldCheck,
-        label: "04"
-    }
-]
+import { Shield, Sparkles, Target, Users } from "lucide-react"
+import { AnimatedSection, AnimatedText } from "@/components/ui/animated-section"
 
 export function WhyChooseUs() {
+    const reasons = [
+        {
+            icon: Shield,
+            title: "Reliability",
+            desc: "Architecting stable systems that withstand global scale.",
+            color: "text-primary"
+        },
+        {
+            icon: Target,
+            title: "Precision",
+            desc: "Every pixel and line of code is meticulously crafted.",
+            color: "text-secondary"
+        },
+        {
+            icon: Sparkles,
+            title: "Innovation",
+            desc: "Stay ahead of market trends.",
+            color: "text-foreground"
+        },
+        {
+            icon: Users,
+            title: "Strategy",
+            desc: "Thinking beyond development for long-term growth.",
+            color: "text-primary"
+        }
+    ]
+
     return (
-        <section className="section-spacing relative bg-transparent overflow-hidden">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="mb-16 text-center space-y-3">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="flex items-center justify-center gap-3 mb-4"
-                    >
-                        <span className="w-6 h-[1.5px] bg-primary rounded-full" />
-                        <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em]">The Edge</span>
-                        <span className="w-6 h-[1.5px] bg-primary rounded-full" />
-                    </motion.div>
+        <section className="py-12 md:py-24 bg-foreground text-background relative overflow-hidden">
+            {/* Animated Background Orbs (Inverted for Dark on Light/Light on Dark contrast) */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px] animate-pulse" />
+                <div className="absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+            </div>
 
-                    <motion.h2
-                        initial={{ opacity: 0, y: 15 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-4xl md:text-6xl font-sans font-bold tracking-tight leading-none text-white uppercase"
-                    >
-                        The <span className="text-primary italic">Lumora</span> Edge
-                    </motion.h2>
-                </div>
+            {/* Grid Pattern Overlay */}
+            <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:80px_80px]" />
+            </div>
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-24 items-start">
+                    <AnimatedText className="lg:col-span-6 space-y-16">
+                        <div className="space-y-12">
+                            <span className="text-[10px] font-michroma tracking-[0.5em] text-primary uppercase">Why Us</span>
+                            <h2 className="text-[clamp(3rem,10vw,9rem)] font-michroma font-normal tracking-tight uppercase leading-[0.85]">
+                                Peak <br />
+                                <span className="font-serif italic text-primary lowercase tracking-tighter">Authority</span>
+                            </h2>
+                            <p className="text-xl md:text-4xl font-medium leading-[1.1] max-w-xl opacity-60">
+                                We architect the digital future through disciplined engineering and visceral design.
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-12">
+                            <div className="w-24 h-px bg-background/20" />
+                            <span className="text-[10px] font-michroma tracking-widest opacity-40 uppercase">A Digital Frontier Studio</span>
+                        </div>
+                    </AnimatedText>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 max-w-6xl mx-auto">
-                    {reasons.map((reason, index) => {
-                        const Icon = reason.icon
-                        return (
-                            <motion.div
-                                key={reason.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group min-h-[260px] md:min-h-[300px] p-6 md:p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-primary/40 hover:bg-white/[0.04] transition-all duration-500 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
-                            >
-                                {/* Decorative Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                                <div className="relative z-10 flex flex-col items-center w-full mb-6">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 transition-all group-hover:bg-primary/20 group-hover:border-primary/30 group-hover:scale-110 mb-3">
-                                        <Icon className="w-5 h-5 md:w-6 md:h-6 text-white/70 group-hover:text-primary transition-colors duration-300" />
+                    <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-px bg-background/10 border border-background/10 rounded-[2rem] md:rounded-[3rem] overflow-hidden">
+                        {reasons.map((reason, i) => (
+                            <AnimatedSection delay={i * 0.1} key={i} className="group p-8 md:p-12 bg-foreground hover:bg-background hover:text-foreground transition-all duration-500">
+                                <div className="space-y-12">
+                                    <reason.icon className={`w-12 h-12 ${reason.color} group-hover:text-primary transition-colors`} />
+                                    <div className="space-y-6">
+                                        <h3 className="text-2xl font-michroma tracking-widest uppercase leading-none">{reason.title}</h3>
+                                        <p className="text-[11px] uppercase tracking-[0.2em] font-medium leading-relaxed opacity-40 group-hover:opacity-60 transition-opacity">
+                                            {reason.desc}
+                                        </p>
                                     </div>
-                                    <span className="text-[10px] md:text-xs font-black tracking-[0.2em] text-white/20 group-hover:text-primary/40 transition-colors uppercase">
-                                        {reason.label}
-                                    </span>
                                 </div>
-
-                                <div className="relative z-10 space-y-3 text-center">
-                                    <h3 className="text-lg md:text-xl font-sans font-bold tracking-tight text-white uppercase group-hover:text-primary transition-colors duration-300">
-                                        {reason.title}
-                                    </h3>
-                                    <div className="w-6 h-[2px] bg-white/10 group-hover:w-full group-hover:bg-primary/50 transition-all duration-500 mx-auto" />
-                                    <p className="text-[11px] md:text-[13px] text-white/40 font-medium leading-relaxed group-hover:text-white/70 transition-colors px-1">
-                                        {reason.desc}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        )
-                    })}
+                            </AnimatedSection>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

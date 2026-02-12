@@ -4,13 +4,13 @@ import { Space_Grotesk, Inter, Bebas_Neue } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
-import { Preloader } from "@/components/preloader"
 import dynamic from "next/dynamic"
 import "./globals.css"
 
-const SceneBackground = dynamic(() => import("@/components/scene-background").then(mod => mod.SceneBackground), { ssr: false })
-const WhatsAppChatbot = dynamic(() => import("@/components/whatsapp-chatbot").then(mod => mod.WhatsAppChatbot), { ssr: false })
-const ScrollToTop = dynamic(() => import("@/components/scroll-to-top").then(mod => mod.ScrollToTop), { ssr: false })
+const WhatsAppChatbot = dynamic(() => import("@/components/whatsapp-chatbot").then(mod => mod.WhatsAppChatbot))
+const ScrollToTop = dynamic(() => import("@/components/scroll-to-top").then(mod => mod.ScrollToTop))
+const Preloader = dynamic(() => import("@/components/preloader").then(mod => mod.Preloader))
+const SpaceBackground = dynamic(() => import("@/components/ui/space-background").then(mod => mod.SpaceBackground))
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -33,6 +33,22 @@ const bebasNeue = Bebas_Neue({
   display: 'swap',
 })
 
+import { Michroma, Fraunces } from "next/font/google"
+const michroma = Michroma({
+  subsets: ["latin"],
+  variable: "--font-michroma",
+  weight: "400",
+  display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
+  display: 'swap',
+  style: ['normal', 'italic']
+})
+
 const baseUrl = "https://www.lumoratriad.in"
 
 export const metadata: Metadata = {
@@ -42,7 +58,7 @@ export const metadata: Metadata = {
     template: "%s | Lumora Triad",
   },
   description:
-    "Lumora Triad is a premier digital agency specializing in custom web development, UI/UX design, and strategic branding. We build high-performance digital solutions for startups and businesses.",
+    "Lumora Triad is a premier digital agency for custom web development, UI/UX design, and branding. We build high-performance solutions for visionary brands.",
   keywords: [
     "Web Development",
     "UI/UX Design",
@@ -124,19 +140,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable} ${michroma.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="font-sans antialiased bg-[#0E0F13] text-white selection:bg-primary selection:text-white">
-        <Preloader />
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          <SceneBackground />
+      <body className="font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+          <Preloader />
           <ScrollToTop />
           <Header />
+          <SpaceBackground />
           {children}
           <WhatsAppChatbot />
         </ThemeProvider>

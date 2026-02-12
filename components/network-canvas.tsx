@@ -30,7 +30,7 @@ function NetworkGlobe() {
             {/* Orbit Lines */}
             {lines.map((line, i) => (
                 <mesh key={i} rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}>
-                    <ringGeometry args={[line.radius, line.radius + 0.015, 64]} />
+                    <ringGeometry args={[line.radius, line.radius + 0.015, 32]} />
                     <meshBasicMaterial color={line.color} transparent opacity={0.35} side={THREE.DoubleSide} />
                 </mesh>
             ))}
@@ -39,7 +39,7 @@ function NetworkGlobe() {
             {Array.from({ length: 8 }).map((_, i) => (
                 <Float key={i} speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
                     <mesh position={[(Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12]}>
-                        <sphereGeometry args={[0.025, 16, 16]} />
+                        <sphereGeometry args={[0.025, 8, 8]} />
                         <meshBasicMaterial color="#ffffff" opacity={0.9} transparent />
                     </mesh>
                 </Float>
@@ -50,7 +50,7 @@ function NetworkGlobe() {
 
 export default function NetworkCanvas() {
     return (
-        <Canvas dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance" }}>
+        <Canvas dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance", stencil: false }}>
             <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1} color="#6366f1" />

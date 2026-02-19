@@ -6,14 +6,14 @@
 :root {
   --background: #050505;
   /* Deep Black #0E0F13 approx */
-  --foreground: oklch(0.98 0.01 250);
-  /* Near White */
+  --foreground: #ffffff;
+  /* Pure White */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.02 120);
   --popover: oklch(0.97 0.02 95);
   --popover-foreground: oklch(0.15 0.02 120);
-  --primary: oklch(0.85 0.25 145);
-  /* High-impact Lime Green */
+  --primary: #eaff03;
+  /* Electric Yellow-Green */
   --primary-foreground: oklch(0.15 0.02 120);
   --secondary: oklch(0.6 0.25 35);
   /* Burnt Red (Arctic Red) */
@@ -26,7 +26,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.8 0.02 120);
   --input: oklch(0.8 0.02 120);
-  --ring: oklch(0.85 0.25 145);
+  --ring: #eaff03;
   --radius: 2rem;
 }
 
@@ -97,7 +97,38 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(var(--primary), 0.5);
+    text-shadow: 0 0 20px rgba(229, 255, 101, 0.5);
+  }
+
+  .gold-glow {
+    text-shadow:
+      0 0 8px rgba(229, 255, 101, 0.9),
+      0 0 20px rgba(229, 255, 101, 0.6),
+      0 0 40px rgba(229, 255, 101, 0.3);
+  }
+
+  .gold-glow-box {
+    box-shadow:
+      0 0 10px rgba(229, 255, 101, 0.5),
+      0 0 30px rgba(229, 255, 101, 0.25),
+      0 0 60px rgba(229, 255, 101, 0.1);
+  }
+
+  /* Premium 3D Silver Chrome Gradient Text */
+  .silver-gradient-text {
+    background: linear-gradient(180deg,
+        #ffffff 0%,
+        #e8e8e8 15%,
+        #a8a8a8 35%,
+        #d0d0d0 50%,
+        #787878 65%,
+        #c0c0c0 80%,
+        #f0f0f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 6px rgba(200, 200, 200, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   }
 
   .section-spacing {
@@ -150,23 +181,4 @@
       padding-right: 4rem;
     }
   }
-}
-
-/* Custom Animations */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
 }

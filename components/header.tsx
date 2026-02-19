@@ -30,33 +30,23 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { name: "HOME", href: "/" },
-    { name: "ABOUT", href: "/about" },
-    { name: "SERVICES", href: "/services" },
-    { name: "CONTACT", href: "/contact" },
+    { name: "THE STUDIO", href: "/about" },
+    { name: "WHAT WE DO", href: "/services" },
+    { name: "CONNECT", href: "/contact" },
   ]
 
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-[9999] flex flex-col transition-transform duration-500 ${hidden && !mobileMenuOpen ? "-translate-y-full" : "translate-y-0"}`}>
-        {/* Top Marquee Banner */}
-        <div className="w-full h-12 bg-primary flex items-center justify-center overflow-hidden relative z-50">
-          <div className="flex items-center gap-8 animate-marquee whitespace-nowrap min-w-full">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-              <span key={i} className="text-[10px] font-michroma tracking-[0.4em] text-primary-foreground uppercase shrink-0">
-                LUMORA TRIAD • WEB ARCHITECTURE • INNOVATION • DIGITAL STUDIO • BRAND IDENTITY • LUMORA TRIAD •
-              </span>
-            ))}
-          </div>
-        </div>
+
 
         {/* Navbar Container */}
         <div className={`relative w-full transition-all duration-500 ${scrolled ? "h-16 md:h-20" : "h-20 md:h-24"}`}>
           {/* Background Layer */}
           <div
             className={`absolute inset-0 transition-all duration-500 border-b ${scrolled
-              ? "bg-background/95 backdrop-blur-xl border-foreground/10 shadow-lg"
-              : "bg-background/80 backdrop-blur-md border-foreground/5"
+              ? "bg-background/90 backdrop-blur-xl border-foreground/10 shadow-lg"
+              : "bg-transparent border-transparent"
               }`}
           />
 
@@ -82,7 +72,7 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-[10px] xl:text-[11px] font-michroma uppercase tracking-[0.25em] text-foreground/70 hover:text-primary transition-all relative group py-2"
+                  className="text-[10px] xl:text-[11px] font-michroma uppercase tracking-[0.25em] text-white hover:text-primary transition-all relative group py-2"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />

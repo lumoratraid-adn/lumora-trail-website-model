@@ -1,100 +1,91 @@
 "use client"
+
 import { AnimatedSection, AnimatedText } from "@/components/ui/animated-section"
-import Image from "next/image"
 import { motion } from "framer-motion"
+import { Shield, Zap, Globe, Cpu } from "lucide-react"
 
-type MockupItem =
-    | { type: "image"; src: string }
-    | { type: "code"; content: string }
-
-const mockups: MockupItem[] = [
-    { type: "image", src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop" },
-    { type: "code", content: "const app = () => {\n  return (\n    <div>\n      Hello\n    </div>\n  )\n}" },
-    { type: "image", src: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=400&h=300&fit=crop" },
-    { type: "code", content: ".hero {\n  display: flex;\n  background: #000;\n  color: #4ade80;\n}" },
-    { type: "image", src: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop" },
-    { type: "code", content: "function getData() {\n  fetch('/api')\n    .then(res => \n      res.json()\n    )\n}" },
-    { type: "image", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" },
-    { type: "code", content: "SELECT * FROM\n  users\nWHERE\n  active = true\nLIMIT 10;" },
+const brandValues = [
+    { icon: Shield, title: "Precision", desc: "Every pixel engineered with architectural discipline." },
+    { icon: Zap, title: "Velocity", desc: "High-performance systems optimized for global speed." },
+    { icon: Globe, title: "Scale", desc: "Infinite growth potential built into every foundation." },
+    { icon: Cpu, title: "Logic", desc: "Bespoke digital logic tailored to visionary goals." },
 ]
 
 export function MissionVision() {
     return (
-        <section className="py-12 md:py-24 relative overflow-hidden border-t border-foreground/5">
-            {/* Animated Mockup Background Grid with Code & Images */}
-            <div className="absolute inset-0 z-0 opacity-[0.35] md:opacity-[0.50] pointer-events-none">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 p-4 md:p-6 lg:p-12 rotate-2 md:rotate-3 scale-105 md:scale-110">
-                    {Array.from({ length: 16 }).map((_, i) => {
-                        const mockup = mockups[i % mockups.length]
-                        return (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: [0.7, 1, 0.7], y: 0 }}
-                                transition={{
-                                    duration: 4,
-                                    delay: i * 0.15,
-                                    repeat: Infinity,
-                                    repeatType: "reverse"
-                                }}
-                                className="aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden border-2 border-white/20 md:border-white/30 backdrop-blur-sm shadow-2xl"
-                                style={{
-                                    boxShadow: '0 0 30px rgba(74, 222, 128, 0.15), 0 10px 40px rgba(0, 0, 0, 0.3)'
-                                }}
-                            >
-                                {mockup.type === "image" ? (
-                                    <div className="relative w-full h-full">
-                                        <Image
-                                            src={mockup.src}
-                                            alt="Service mockup"
-                                            fill
-                                            className="object-cover brightness-150 contrast-110"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                                    </div>
-                                ) : (
-                                    <div className="w-full h-full bg-gradient-to-br from-[#0d0d0d] to-[#1a1a1a] p-3 md:p-4 flex flex-col gap-1 border-t border-primary/10">
-                                        <div className="flex gap-1 md:gap-1.5 mb-2">
-                                            <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-red-400/60" />
-                                            <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-yellow-400/60" />
-                                            <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-green-400/60" />
-                                        </div>
-                                        <pre className="text-[6px] md:text-[7px] lg:text-[9px] font-mono text-primary leading-relaxed overflow-hidden">
-                                            {mockup.content}
-                                        </pre>
-                                    </div>
-                                )}
-                            </motion.div>
-                        )
-                    })}
-                </div>
+        <section className="py-32 md:py-48 relative overflow-hidden bg-[#050505] border-t border-white/[0.05]">
+
+            {/* AMBIENT VISUALS */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-primary/[0.03] blur-[150px] rounded-full" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-primary/[0.02] blur-[200px] rounded-full" />
+
+                {/* Subtle horizontal scanning line */}
+                <motion.div
+                    animate={{ y: ["0%", "100%", "0%"] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.01] to-transparent h-20 w-full opacity-50"
+                />
             </div>
-            <div className="container mx-auto px-6">
-                <div className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-16">
 
-                    <AnimatedText className="space-y-8 flex flex-col items-center">
-                        <span className="inline-flex items-center gap-3 px-6 py-2 bg-foreground text-background rounded-full text-[10px] font-michroma tracking-[0.4em] uppercase">
-                            Ambition
-                        </span>
-                        <h2 className="text-[clamp(2.5rem,10vw,9rem)] font-michroma font-normal text-foreground uppercase leading-[0.85] tracking-tight">
-                            Build <span className="font-serif italic text-primary lowercase tracking-tighter">exceptional</span> <br />
-                            Standard<span className="text-primary">.</span>
-                        </h2>
-                    </AnimatedText>
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-7xl mx-auto">
 
-                    <AnimatedSection delay={0.2} className="w-full max-w-3xl">
-                        <p className="text-xl md:text-3xl text-foreground/40 leading-relaxed font-medium italic">
-                            Transforming visionary concepts into high-performance digital ecosystems through disciplined architecture.
-                        </p>
+                    {/* CORE MISSION STATEMENT */}
+                    <div className="grid lg:grid-cols-12 gap-20 items-center">
 
-                        <div className="mt-16 flex justify-center items-center gap-10">
-                            <div className="w-20 h-px bg-foreground/10" />
-                            <p className="text-lg md:text-xl text-primary font-michroma tracking-[0.3em] uppercase">
-                                Lumora Frontier
-                            </p>
-                            <div className="w-20 h-px bg-foreground/10" />
+                        <div className="lg:col-span-8 space-y-12">
+                            <AnimatedText className="space-y-6">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-px bg-primary/40" />
+                                    <span className="text-[10px] font-michroma tracking-[0.55em] text-primary uppercase">The Mission</span>
+                                </div>
+                                <h2 className="text-[clamp(1.8rem,7.5vw,7.4rem)] font-michroma font-normal text-white uppercase leading-[0.9] tracking-tight">
+                                    Engineering <span className="font-serif italic text-primary lowercase tracking-tighter">exceptional</span> <br className="hidden md:block" />
+                                    Digital Logic<span className="text-primary">.</span>
+                                </h2>
+                            </AnimatedText>
+
+                            <AnimatedSection delay={0.2} className="max-w-2xl">
+                                <p className="text-xl md:text-3xl text-white/40 leading-relaxed font-medium italic">
+                                    "We don't just build websites; we architect high-fidelity digital ecosystems that serve as the foundation for visionary brand dominance."
+                                </p>
+
+                                <div className="mt-16 flex items-center gap-8">
+                                    <div className="flex -space-x-3">
+                                        {[1, 2, 3].map(i => (
+                                            <div key={i} className="w-12 h-12 rounded-full border-2 border-background bg-white/5 backdrop-blur-md flex items-center justify-center">
+                                                <div className="w-2 h-2 rounded-full bg-primary/40 animate-pulse" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="text-[10px] font-michroma tracking-[0.4em] text-white/20 uppercase">Founding Architecture Team</p>
+                                </div>
+                            </AnimatedSection>
                         </div>
-                    </AnimatedSection>
+
+                        {/* FLOATING VALUE CARDS */}
+                        <div className="lg:col-span-4 grid grid-cols-1 gap-4">
+                            {brandValues.map((value, i) => (
+                                <AnimatedSection
+                                    key={i}
+                                    delay={i * 0.1 + 0.3}
+                                    className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:border-primary/20 hover:bg-white/[0.04] transition-all duration-700 group"
+                                >
+                                    <div className="flex items-start gap-6">
+                                        <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                                            <value.icon className="w-5 h-5 text-white/20 group-hover:text-primary transition-colors" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h3 className="text-sm font-michroma text-white/60 group-hover:text-white transition-colors uppercase tracking-widest">{value.title}</h3>
+                                            <p className="text-[11px] text-white/20 font-medium leading-relaxed">{value.desc}</p>
+                                        </div>
+                                    </div>
+                                </AnimatedSection>
+                            ))}
+                        </div>
+
+                    </div>
 
                 </div>
             </div>

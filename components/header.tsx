@@ -4,24 +4,24 @@ import Link from "next/link"
 import Image from "next/image"
 import * as React from "react"
 import { useState, useEffect, useRef } from "react"
-import { Menu, X, ArrowUpRight } from "lucide-react"
+import { Menu, X, ArrowUpRight, Home } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const lastScrollY = useRef(0)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY
       setScrolled(currentY > 50)
-
-      // Show on scroll up, hide on scroll down
       if (currentY > lastScrollY.current && currentY > 100) {
-        setHidden(true) // scrolling down
+        setHidden(true)
       } else {
-        setHidden(false) // scrolling up
+        setHidden(false)
       }
       lastScrollY.current = currentY
     }
@@ -30,71 +30,71 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { name: "THE STUDIO", href: "/about" },
-    { name: "WHAT WE DO", href: "/services" },
+    { name: "HOME", href: "/", icon: Home },
+    { name: "STUDIO", href: "/about" },
+    { name: "SERVICES", href: "/services" },
     { name: "CONNECT", href: "/contact" },
   ]
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
 
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-[9999] flex flex-col transition-transform duration-500 ${hidden && !mobileMenuOpen ? "-translate-y-full" : "translate-y-0"}`}>
 
-
         {/* Navbar Container */}
-        <div className={`relative w-full transition-all duration-500 ${scrolled ? "h-16 md:h-20" : "h-20 md:h-24"}`}>
+        <div className={`relative w-full transition-all duration-500 ${scrolled ? "h-16 md:h-18" : "h-20 md:h-24"}`}>
           {/* Background Layer */}
           <div
             className={`absolute inset-0 transition-all duration-500 border-b ${scrolled
-              ? "bg-background/90 backdrop-blur-xl border-foreground/10 shadow-lg"
+              ? "bg-black/80 backdrop-blur-2xl border-white/8 shadow-xl shadow-black/20"
               : "bg-transparent border-transparent"
               }`}
           />
 
           <div className="w-full h-full px-4 md:px-6 lg:px-8 xl:px-12 relative z-10 flex items-center justify-between max-w-[2000px] mx-auto">
-            {/* Logo - Left Corner */}
-            <Link
-              href="/"
-              className="flex items-center gap-2 group shrink-0"
-            >
-              <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 group-hover:scale-110 transition-transform duration-300">
-                <Image
-                  src="/logo.svg"
-                  alt="Lumora Triad"
-                  fill
-                  className="object-contain"
-                />
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 group shrink-0">
+              <div className="relative w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 group-hover:scale-105 transition-transform duration-300">
+                <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain" priority />
               </div>
             </Link>
 
-            {/* Desktop Nav - Center */}
-            <nav className="hidden lg:flex items-center gap-8 xl:gap-10 absolute left-1/2 -translate-x-1/2">
+            {/* Desktop Nav — centered pill */}
+            <nav className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-white/[0.04] border border-white/8 rounded-full px-2 py-1.5 backdrop-blur-md">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-[10px] xl:text-[11px] font-michroma uppercase tracking-[0.25em] text-white hover:text-primary transition-all relative group py-2"
+                  className={`relative px-4 xl:px-5 py-2 rounded-full text-[9px] xl:text-[10px] font-michroma uppercase tracking-[0.22em] transition-all duration-300 flex items-center gap-1.5 ${isActive(item.href)
+                    ? "bg-primary text-black shadow-lg shadow-primary/30"
+                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    }`}
                 >
+                  {item.icon && <item.icon className="w-3 h-3" />}
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
                 </Link>
               ))}
             </nav>
 
-            {/* Actions - Right */}
+            {/* CTA + hamburger */}
             <div className="flex items-center gap-2 md:gap-3">
               <Link
                 href="/contact"
-                className="flex items-center gap-2 pl-3 md:pl-4 pr-1 py-1 md:py-1.5 bg-foreground text-background rounded-full font-michroma text-[7px] md:text-[8px] uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all shadow-xl shadow-foreground/5 group whitespace-nowrap"
+                className="hidden sm:flex items-center gap-2 pl-4 pr-1.5 py-1.5 bg-primary text-black rounded-full font-michroma text-[8px] md:text-[9px] uppercase tracking-[0.2em] hover:bg-white transition-all shadow-lg shadow-primary/20 group whitespace-nowrap"
               >
                 <span>GET LUMORA</span>
-                <div className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 rounded-full bg-background flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-all">
-                  <ArrowUpRight className="w-3 h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 text-foreground group-hover:text-primary" />
+                <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                  <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-black" />
                 </div>
               </Link>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 md:p-2.5 text-foreground lg:hidden hover:bg-foreground/5 rounded-xl transition-all"
+                className="p-2 md:p-2.5 text-white lg:hidden hover:bg-white/5 rounded-xl transition-all"
                 aria-label="Toggle Menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6 md:w-7 md:h-7" /> : <Menu className="w-6 h-6 md:w-7 md:h-7" />}
@@ -106,41 +106,56 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-background z-[10000] transition-all duration-500 ease-in-out ${mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        className={`lg:hidden fixed inset-0 bg-black z-[10000] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${mobileMenuOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible pointer-events-none"
           } flex flex-col p-6 sm:p-12 h-screen overflow-y-auto`}
       >
+        {/* Mobile header row */}
         <div className="flex justify-between items-center mb-16">
-          <Link
-            href="/contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-michroma text-[8px] uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
-          >
-            GET LUMORA
+          <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+            <div className="relative w-24 h-24">
+              <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain" />
+            </div>
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="p-4 bg-foreground/5 rounded-full hover:bg-primary/10 transition-colors"
+            className="p-4 bg-white/5 rounded-full hover:bg-primary/10 transition-colors border border-white/10"
           >
-            <X className="w-10 h-10 text-foreground" />
+            <X className="w-8 h-8 text-white" />
           </button>
         </div>
-        <nav className="flex flex-col gap-8">
-          {navItems.map((item) => (
+
+        <nav className="flex flex-col gap-2">
+          {navItems.map((item, i) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-3xl sm:text-4xl font-michroma text-foreground hover:text-primary transition-all flex items-center justify-between group uppercase tracking-wider"
+              className={`flex items-center justify-between px-6 py-5 rounded-2xl font-michroma text-2xl sm:text-3xl uppercase tracking-wider transition-all duration-300 group ${isActive(item.href) ? "bg-primary text-black" : "text-white hover:bg-white/5"
+                }`}
+              style={{ transitionDelay: `${i * 40}ms` }}
             >
-              <span className="group-hover:translate-x-4 transition-transform duration-500">{item.name}</span>
-              <ArrowUpRight className="w-10 h-10 opacity-10 group-hover:opacity-100 group-hover:text-primary transition-all" />
+              <span className="group-hover:translate-x-2 transition-transform duration-300 flex items-center gap-3">
+                {item.icon && <item.icon className="w-6 h-6" />}
+                {item.name}
+              </span>
+              <ArrowUpRight className={`w-8 h-8 transition-all ${isActive(item.href) ? "opacity-100" : "opacity-10 group-hover:opacity-60"}`} />
             </Link>
           ))}
         </nav>
 
-        <div className="mt-auto py-12 border-t border-foreground/5">
-          <p className="text-[10px] font-michroma tracking-widest text-foreground/40 uppercase mb-4">Inquiries</p>
-          <a href="mailto:lumoratriad@gmail.com" className="text-2xl font-bold text-foreground">lumoratriad@gmail.com</a>
+        <div className="mt-auto py-10 border-t border-white/5 space-y-4">
+          <p className="text-[10px] font-michroma tracking-widest text-white/30 uppercase">Inquiries</p>
+          <a href="mailto:lumoratriad@gmail.com" className="text-xl font-bold text-white hover:text-primary transition-colors">lumoratriad@gmail.com</a>
+          <div className="pt-4">
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black rounded-full font-michroma text-[9px] uppercase tracking-[0.25em] hover:bg-white transition-all"
+            >
+              Start a Project
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </>

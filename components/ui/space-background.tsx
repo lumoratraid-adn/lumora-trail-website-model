@@ -18,7 +18,8 @@ export function SpaceBackground() {
 
         const initStars = () => {
             stars = []
-            const starCount = Math.floor((window.innerWidth * window.innerHeight) / 3000)
+            const isMobile = window.innerWidth < 768
+            const starCount = Math.floor((window.innerWidth * window.innerHeight) / (isMobile ? 6000 : 3000))
             for (let i = 0; i < starCount; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,

@@ -9,7 +9,7 @@ export function Preloader() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false)
-        }, 3500) // 3.5 seconds total duration
+        }, 1200)
 
         return () => clearTimeout(timer)
     }, [])
@@ -21,62 +21,75 @@ export function Preloader() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, filter: "blur(20px)", scale: 1.1 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="fixed inset-0 z-[10000] bg-[#050505] flex items-center justify-center cursor-none"
+                    className="fixed inset-0 z-[10000] bg-[#000000] flex flex-col items-center justify-center cursor-none"
                 >
-                    <div className="relative flex items-center justify-center">
-                        {/* Central Logo Container */}
-                        <div className="relative z-10 flex items-center justify-center w-32 h-32 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden">
-                            {/* Inner Pulsing Core */}
-                            <motion.div
-                                animate={{ opacity: [0.5, 1, 0.5], scale: [0.95, 1.05, 0.95] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute inset-0 bg-primary/5 rounded-full"
-                            />
+                    <div className="relative flex flex-col items-center justify-center">
 
-                            {/* Letters L & T */}
+                        {/* THE WHITE LOGO SYSTEM (EXACT MATCH TO IMAGE) */}
+                        <div className="relative w-64 h-64 flex items-center justify-center">
+
+                            {/* SVG WITH METABALL EFFECT */}
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                                className="relative z-20 font-michroma text-4xl font-bold text-white tracking-widest flex items-center gap-1"
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 1, ease: "easeOut" }}
+                                className="relative z-10"
                             >
-                                <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">L</span>
-                                <span className="text-primary drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]">T</span>
+                                <svg width="220" height="220" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <filter id="goo">
+                                            <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="blur" />
+                                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                                        </filter>
+                                    </defs>
+
+                                    {/* The "Gooey" Group for the connected circles */}
+                                    <g filter="url(#goo)">
+                                        {/* Top Right Circle */}
+                                        <motion.circle
+                                            cx="68" cy="30" r="15" fill="white"
+                                            animate={{ cx: [68, 70, 68], cy: [30, 28, 30] }}
+                                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                        />
+
+                                        {/* Middle Left Circle */}
+                                        <motion.circle
+                                            cx="32" cy="50" r="15" fill="white"
+                                            animate={{ cx: [32, 30, 32], cy: [50, 52, 50] }}
+                                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                                        />
+
+                                        {/* The small bridge support circle (invisible but aids the goo) */}
+                                        <motion.circle
+                                            cx="50" cy="40" r="10" fill="white"
+                                            animate={{ opacity: [0.5, 0.8, 0.5] }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                        />
+                                    </g>
+
+                                    {/* The Detached Circle (Bottom) - NO FILTER */}
+                                    <motion.circle
+                                        cx="55" cy="80" r="14" fill="white"
+                                        animate={{ y: [0, -3, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                    />
+                                </svg>
                             </motion.div>
                         </div>
 
-                        {/* Orbiting Rings */}
-                        {/* Ring 1 - Fast & Tight */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-20px] rounded-full border border-transparent border-t-primary/60 border-r-primary/20"
-                        />
+                        {/* BRAND TEXT (Clean & Spaced) */}
+                        <div className="mt-4 flex flex-col items-center">
+                            <motion.h2
+                                initial={{ opacity: 0, letterSpacing: "1.2em" }}
+                                animate={{ opacity: 1, letterSpacing: "1em" }}
+                                transition={{ duration: 1.2, delay: 0.3 }}
+                                className="text-white font-michroma text-[14px] uppercase tracking-[1em] ml-[1em] whitespace-nowrap"
+                            >
+                                Lumora Triad
+                            </motion.h2>
+                        </div>
 
-                        {/* Ring 2 - Slower & Wider */}
-                        <motion.div
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-40px] rounded-full border border-transparent border-b-white/40 border-l-white/10"
-                        />
-
-                        {/* Ring 3 - Pulse Ring */}
-                        <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1.5, opacity: [0, 0.5, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
-                            className="absolute inset-0 rounded-full border border-primary/30"
-                        />
-
-                        {/* Loading Progress Text */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                            className="absolute -bottom-24 text-[10px] font-michroma uppercase tracking-[0.4em] text-white/40"
-                        >
-                            Initializing System
-                        </motion.div>
                     </div>
                 </motion.div>
             )}

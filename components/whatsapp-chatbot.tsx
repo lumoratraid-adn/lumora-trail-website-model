@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { X, Send } from "lucide-react"
+import { X, Send, ArrowRight } from "lucide-react"
 
 const services = [
     "Website & Software Development",
@@ -23,14 +23,14 @@ export function WhatsAppChatbot() {
     const [isOpen, setIsOpen] = useState(false)
 
     const handleServiceClick = (service: string) => {
-        const message = `Hi Lumora Triad! I'm interested in "${service}". Let's discuss my project!`
+        const message = `Hi! I'm interested in "${service}".`
         const whatsappUrl = `https://wa.me/919947878418?text=${encodeURIComponent(message)}`
         window.open(whatsappUrl, "_blank")
         setIsOpen(false)
     }
 
     const handleGeneralChat = () => {
-        const message = "Hi Lumora Triad! I have an idea for a digital product. Can we connect?"
+        const message = "Hi! Can we connect?"
         const whatsappUrl = `https://wa.me/919947878418?text=${encodeURIComponent(message)}`
         window.open(whatsappUrl, "_blank")
         setIsOpen(false)
@@ -41,70 +41,68 @@ export function WhatsAppChatbot() {
             {/* Chat Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                aria-label={isOpen ? "Close WhatsApp Chat" : "Open WhatsApp Chat"}
-                className="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-[#25D366] text-white rounded-full shadow-[0_10px_40px_rgba(37,211,102,0.4)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+                aria-label={isOpen ? "Close Chat" : "Open Chat"}
+                className="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-primary text-black rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group"
             >
                 {isOpen ? (
                     <X className="w-6 h-6" />
                 ) : (
-                    <WhatsAppIcon className="w-7 h-7" />
+                    <div className="relative">
+                        <WhatsAppIcon className="w-7 h-7" />
+                        <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-primary rounded-full animate-pulse" />
+                    </div>
                 )}
             </button>
 
             {/* Chat Window */}
             {isOpen && (
                 <div
-                    className="fixed bottom-24 right-6 z-[9999] w-[90vw] sm:w-[380px] bg-[#0E0F13] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden backdrop-blur-3xl animate-in fade-in zoom-in duration-300"
+                    className="fixed bottom-24 right-6 z-[9999] w-[85vw] sm:w-[320px] bg-[#0A0A0A] border border-white/[0.08] rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300"
                 >
                     {/* Header */}
-                    <div className="bg-[#25D366] p-8 flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
-                            <WhatsAppIcon className="w-8 h-8 text-[#25D366]" />
-                        </div>
-                        <div className="flex-1">
-                            <h3 className="text-white font-bold text-xl leading-none mb-1 uppercase tracking-tight">Lumora Triad</h3>
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-white" />
-                                <p className="text-white/80 text-[10px] font-bold uppercase tracking-widest">Active Now</p>
+                    <div className="p-6 bg-gradient-to-br from-primary/20 to-transparent border-b border-white/5">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-black">
+                                <WhatsAppIcon className="w-7 h-7" />
+                            </div>
+                            <div>
+                                <h3 className="text-white font-michroma text-[10px] uppercase tracking-[0.2em]">Studio Connect</h3>
+                                <div className="flex items-center gap-1.5 mt-1">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                                    <span className="text-[8px] font-bold text-white/40 uppercase tracking-widest">Protocol Active</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Chat Body */}
-                    <div className="p-8 space-y-8 max-h-[60vh] overflow-y-auto">
-                        <div className="bg-white/5 border border-white/10 rounded-[2rem] p-6">
-                            <p className="text-sm font-bold text-white mb-2">👋 Hi there!</p>
-                            <p className="text-xs text-white/60 leading-relaxed font-medium">
-                                We&apos;re here to help you build your digital legacy. Which service are you interested in today?
+                    <div className="p-6 space-y-6">
+                        <div className="bg-white/5 rounded-2xl p-4">
+                            <p className="text-[10px] text-white/60 leading-relaxed font-medium">
+                                Architecting a new digital reality? Select a pillar to initiate the dialogue.
                             </p>
                         </div>
 
                         {/* Service Options */}
-                        <div className="space-y-3">
-                            {services.map((service) => (
+                        <div className="grid grid-cols-1 gap-2">
+                            {services.slice(0, 5).map((service) => (
                                 <button
                                     key={service}
                                     onClick={() => handleServiceClick(service)}
-                                    className="w-full text-left px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 group flex items-center justify-between"
+                                    className="w-full text-left px-4 py-3 rounded-xl bg-white/[0.03] border border-white/5 hover:border-primary/30 hover:bg-primary/5 transition-all group flex items-center justify-between"
                                 >
-                                    <span className="text-[11px] font-bold uppercase tracking-wide text-white/60 group-hover:text-primary">{service}</span>
-                                    <Send className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-all" />
+                                    <span className="text-[9px] font-michroma uppercase tracking-wider text-white/40 group-hover:text-primary transition-colors">{service}</span>
+                                    <ArrowRight className="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0" />
                                 </button>
                             ))}
                         </div>
 
-                        {/* General Chat Button */}
                         <button
                             onClick={handleGeneralChat}
-                            className="w-full p-6 bg-[#25D366] text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-all duration-300 flex items-center justify-center gap-4 shadow-xl hover:scale-[1.02] active:scale-95"
+                            className="w-full py-4 bg-primary text-black rounded-xl font-michroma uppercase tracking-widest text-[9px] transition-all hover:brightness-110 active:scale-95 shadow-xl shadow-primary/10"
                         >
-                            <WhatsAppIcon className="w-6 h-6" />
-                            Start Custom Chat
+                            Open Pipeline
                         </button>
-
-                        <p className="text-[9px] font-black text-center text-white/20 uppercase tracking-[0.3em]">
-                            Respond time: ~5 mins
-                        </p>
                     </div>
                 </div>
             )}

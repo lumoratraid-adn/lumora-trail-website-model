@@ -3,121 +3,136 @@
 import { motion } from "framer-motion"
 import {
     Cpu,
-    Layout,
-    Server,
+    Code2,
+    Layers,
+    ShieldCheck,
+    Zap,
     Terminal,
-    Sparkles,
-    Zap
+    Globe2,
+    Sparkles
 } from "lucide-react"
+import { AnimatedSection, AnimatedText } from "@/components/ui/animated-section"
 
-const techStack = [
+const technologies = [
     {
-        category: "AI & Innovation",
-        icon: Cpu,
-        description: "Integrating intelligence into digital experiences. We leverage the power of artificial intelligence to create adaptive systems that learn and evolve.",
+        name: "React / Next.js",
+        icon: Code2,
+        category: "Frontend",
+        desc: "Core engine for lightning-fast, SEO-optimized web experiences.",
+        glow: "shadow-primary/20"
     },
     {
-        category: "Frontend Engineering",
-        icon: Layout,
-        description: "Crafting premium user interfaces and experiences. We focus on fluid animations, responsive layouts, and pixel-perfect design implementation.",
-    },
-    {
-        category: "Backend & Systems",
-        icon: Server,
-        description: "Architecting scalable and secure server-side logic. Our systems are built for high availability, data integrity, and lightning-fast performance.",
-    },
-    {
-        category: "DevOps & Logic",
+        name: "Node.js / Python",
         icon: Terminal,
-        description: "Streamlining deployment and application flow. We ensure your digital infrastructure is robust, automated, and ready for global scale.",
+        category: "Backend",
+        desc: "Scalable server environments handling complex business logic.",
+        glow: "shadow-blue-500/10"
+    },
+    {
+        name: "Figma",
+        icon: Layers,
+        category: "Design",
+        desc: "Pixel-perfect visual systems and interactive prototypes.",
+        glow: "shadow-purple-500/10"
+    },
+    {
+        name: "PostgreSQL",
+        icon: Globe2,
+        category: "Data",
+        desc: "Robust, ACID-compliant database architecture for data integrity.",
+        glow: "shadow-emerald-500/10"
+    },
+    {
+        name: "AI / LLMs",
+        icon: Cpu,
+        category: "Innovation",
+        desc: "Integrating intelligent features and automated workflows.",
+        glow: "shadow-amber-500/10"
+    },
+    {
+        name: "Vercel / AWS",
+        icon: ShieldCheck,
+        category: "Cloud",
+        desc: "Enterprise-grade hosting with global edge delivery.",
+        glow: "shadow-sky-500/10"
     }
 ]
 
 export function TechEcosystem() {
     return (
-        <section className="section-spacing relative bg-[#050505] overflow-hidden border-t border-white/5">
-            {/* Background Architectural Elements */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_#ffffff_1px,_transparent_1px)] bg-[size:40px_40px]" />
+        <section className="py-24 md:py-36 bg-background relative overflow-hidden border-t border-white/[0.05]">
+
+            {/* Background Architecture */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-primary/[0.03] blur-[120px] rounded-full" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:60px_60px]" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-7xl mx-auto">
-
-                    {/* Header */}
-                    <div className="mb-10 space-y-4">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-white/60 uppercase border border-white/5">
-                                <Sparkles className="w-3 h-3 text-primary" />
-                                OUR TECHNOLOGY STACK
-                            </span>
-                        </motion.div>
-
-                        <h2 className="text-[clamp(2rem,6vw,4.5rem)] font-black tracking-tighter text-white uppercase leading-[0.9]">
-                            THE TOOLS OF<br />
-                            <span className="text-primary italic">DIGITAL REALITY.</span>
+                <div className="flex flex-col lg:flex-row items-start justify-between gap-16 mb-20">
+                    <AnimatedText className="max-w-3xl space-y-6">
+                        <div className="flex items-center gap-4">
+                            <div className="w-8 h-px bg-primary/50" />
+                            <span className="text-[9px] font-michroma tracking-[0.55em] text-primary uppercase">Modern Stack</span>
+                        </div>
+                        <h2 className="text-[clamp(2.5rem,8vw,6.5rem)] font-michroma text-white uppercase leading-[0.9] tracking-tight">
+                            The Tools of <br />
+                            <span className="font-serif italic text-primary lowercase tracking-tighter">Digital Reality.</span>
                         </h2>
-                        <p className="max-w-2xl text-lg text-white/60 font-medium">
-                            We leverage an elite stack of modern technologies to build high-performance,
-                            scalable, and future-ready digital solutions.
+                    </AnimatedText>
+
+                    <AnimatedSection delay={0.2} className="lg:max-w-md">
+                        <p className="text-xl text-white/35 font-medium leading-relaxed italic">
+                            We don't just use tools; we architect ecosystems that combine performance, scalability, and pure aesthetic.
                         </p>
-                    </div>
+                    </AnimatedSection>
+                </div>
 
-                    {/* Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {techStack.map((stack, idx) => {
-                            const Icon = stack.icon
-                            return (
-                                <motion.div
-                                    key={stack.category}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="group p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.02] border border-white/[0.05] hover:border-primary/40 transition-all duration-500 hover:bg-white/[0.04]"
-                                >
-                                    <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-500">
-                                        <Icon className="w-6 h-6" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {technologies.map((tech, i) => (
+                        <AnimatedSection
+                            key={tech.name}
+                            delay={i * 0.08}
+                            className="group relative"
+                        >
+                            <div className="p-8 rounded-[2.5rem] border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-500 h-full flex flex-col items-start gap-8">
+                                {/* Icon Header */}
+                                <div className="flex items-center justify-between w-full">
+                                    <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/30 transition-all duration-500">
+                                        <tech.icon className="w-6 h-6 text-white/30 group-hover:text-primary transition-colors duration-500" />
                                     </div>
-
-                                    <h3 className="text-xl font-black text-white uppercase mb-2 tracking-tight">
-                                        {stack.category}
-                                    </h3>
-                                    <p className="text-sm text-white/40 font-bold italic leading-snug">
-                                        {stack.description}
-                                    </p>
-                                </motion.div>
-                            )
-                        })}
-                    </div>
-
-                    {/* Bottom Banner */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mt-8 md:mt-12 p-1 rounded-[2rem] md:rounded-[3rem] bg-white/5 border border-white/[0.03]"
-                    >
-                        <div className="bg-[#0a0a0a] rounded-[1.8rem] md:rounded-[2.8rem] px-6 md:px-8 py-8 md:py-10 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 border border-white/5">
-                            <div className="flex items-center gap-6">
-                                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                    <Zap className="w-8 h-8 text-primary" />
+                                    <span className="text-[7px] font-michroma uppercase tracking-[0.3em] text-white/10 group-hover:text-primary/40 transition-colors">
+                                        {tech.category}
+                                    </span>
                                 </div>
-                                <div>
-                                    <h4 className="text-xl font-black text-white uppercase tracking-tight">Need a custom stack?</h4>
-                                    <p className="text-white/60 font-medium">We architect tailored solutions based on your unique business goals.</p>
+
+                                {/* Content */}
+                                <div className="space-y-3">
+                                    <h3 className="text-2xl font-michroma uppercase text-white group-hover:text-primary transition-colors">
+                                        {tech.name}
+                                    </h3>
+                                    <p className="text-sm text-white/30 font-medium leading-relaxed group-hover:text-white/50 transition-colors">
+                                        {tech.desc}
+                                    </p>
+                                </div>
+
+                                {/* Visual line */}
+                                <div className="mt-auto w-full pt-6 border-t border-white/[0.04]">
+                                    <div className="h-px w-0 bg-primary/40 group-hover:w-full transition-all duration-700" />
                                 </div>
                             </div>
-                            <button className="px-10 py-5 bg-primary text-black rounded-2xl font-black uppercase text-sm tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl shadow-primary/10">
-                                Discuss Project Architecture
-                            </button>
-                        </div>
-                    </motion.div>
+                        </AnimatedSection>
+                    ))}
+                </div>
 
+                {/* Bottom Trust Line */}
+                <div className="mt-20 pt-10 border-t border-white/[0.05] flex flex-wrap justify-center gap-x-12 gap-y-6">
+                    {["Lightning Fast", "SEO Optimzied", "Mobile First", "Secure by Design"].map((feature) => (
+                        <div key={feature} className="flex items-center gap-3">
+                            <Zap className="w-3.5 h-3.5 text-primary/40" />
+                            <span className="text-[9px] font-michroma uppercase tracking-[0.4em] text-white/20">{feature}</span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

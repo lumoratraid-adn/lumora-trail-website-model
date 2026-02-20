@@ -12,7 +12,7 @@ export function Testimonials() {
               <div className="w-2 h-2 rounded-full bg-primary" />
               <span className="text-[10px] font-black tracking-[0.4em] text-white/80 uppercase">OUR STORY</span>
             </div>
-            <h2 className="text-[clamp(2.5rem,8vw,8rem)] font-sans font-bold text-white uppercase tracking-tighter leading-[0.85]">
+            <h2 className="text-[clamp(2.25rem,7.2vw,7.2rem)] font-sans font-bold text-white uppercase tracking-tighter leading-[0.85]">
               FRIENDS. FOUNDERS. <br />
               <span className="text-primary italic">INNOVATORS.</span>
             </h2>

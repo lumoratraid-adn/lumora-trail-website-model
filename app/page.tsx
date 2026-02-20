@@ -4,8 +4,6 @@ import type { Metadata } from "next"
 import { NetworkHero } from "@/components/network-hero"
 import { MissionVision } from "@/components/mission-vision"
 import { TechEcosystem } from "@/components/tech-ecosystem"
-import { Process } from "@/components/process"
-
 import { WhatWeDo } from "@/components/what-we-do"
 import { ShowcaseSection } from "@/components/showcase-section"
 import { Footer } from "@/components/footer"
@@ -31,9 +29,7 @@ export default function Home() {
         <WhatWeDo />
         <WhyChooseUs />
         <ShowcaseSection />
-        <TechEcosystem />
         <HowWeWork />
-        <Process />
         <Testimonials />
         <CTASection />
         <ConnectForm />

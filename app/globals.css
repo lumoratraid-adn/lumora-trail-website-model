@@ -143,24 +143,16 @@
     background-color: #1A1D1A;
   }
 
-  /* Full width container - removes side gaps */
   .container {
     width: 100%;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
@@ -169,16 +161,30 @@
 
   @media (min-width: 1280px) {
     .container {
-      padding-left: 3rem;
-      padding-right: 3rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
     }
   }
 
   @media (min-width: 1536px) {
     .container {
-      max-width: 1920px;
-      padding-left: 4rem;
-      padding-right: 4rem;
+      max-width: 2100px;
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+
+  /* Optimize for Speed: Performance Tweaks */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Disable heavy hover effects on mobile for speed */
+  @media (hover: none) {
+    .glass-card-hover:hover {
+      transform: none !important;
     }
   }
 }

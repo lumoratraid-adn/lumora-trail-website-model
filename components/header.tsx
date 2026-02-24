@@ -30,9 +30,9 @@ export function Header() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Works", href: "/works" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -51,31 +51,31 @@ export function Header() {
         <div
           className={`w-full transition-all duration-300 ${
             scrolled
-              ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
+              ? "bg-background/80 backdrop-blur-xl border-b border-border"
               : "bg-transparent"
           }`}
         >
           <div className="container mx-auto flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 group-hover:scale-105 transition-transform duration-300">
-                <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain" priority />
+              <div className="relative w-8 h-8 md:w-9 md:h-9 group-hover:scale-105 transition-transform duration-300">
+                <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain invert" priority />
               </div>
-              <span className="font-heading font-semibold text-base md:text-lg text-foreground tracking-tight">
+              <span className="font-heading font-semibold text-sm md:text-base text-foreground tracking-tight uppercase">
                 Lumora Triad
               </span>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            {/* Desktop Nav - pill style like the image */}
+            <nav className="hidden lg:flex items-center bg-secondary/80 backdrop-blur-md rounded-full px-1.5 py-1.5 border border-border">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
+                  className={`px-4 py-1.5 text-sm font-medium transition-all duration-200 rounded-full ${
                     isActive(item.href)
-                      ? "text-foreground bg-secondary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -87,10 +87,10 @@ export function Header() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-foreground/90 transition-colors"
+                className="hidden sm:flex items-center gap-2 px-5 py-2 bg-foreground text-background rounded-full text-sm font-medium hover:bg-foreground/80 transition-colors"
               >
-                Get in Touch
-                <ArrowUpRight className="w-4 h-4" />
+                Get Started
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
 
               <button
@@ -116,10 +116,10 @@ export function Header() {
         {/* Mobile header */}
         <div className="flex justify-between items-center px-5 h-16 border-b border-border">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2.5">
-            <div className="relative w-10 h-10">
-              <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain" />
+            <div className="relative w-8 h-8">
+              <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain invert" />
             </div>
-            <span className="font-heading font-semibold text-base text-foreground">Lumora Triad</span>
+            <span className="font-heading font-semibold text-sm text-foreground uppercase">Lumora Triad</span>
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
@@ -138,8 +138,8 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center justify-between px-4 py-4 rounded-xl text-lg font-medium transition-colors ${
                 isActive(item.href)
-                  ? "bg-secondary text-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                  ? "bg-accent/10 text-accent"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
               }`}
             >
               {item.name}
@@ -156,7 +156,7 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-foreground text-background rounded-xl text-sm font-medium hover:bg-foreground/90 transition-colors"
+            className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-accent text-accent-foreground rounded-xl text-sm font-medium hover:bg-accent/90 transition-colors"
           >
             Start a Project
             <ArrowUpRight className="w-4 h-4" />

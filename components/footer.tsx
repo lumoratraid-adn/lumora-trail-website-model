@@ -27,21 +27,21 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-foreground text-background relative z-10">
+    <footer className="bg-secondary border-t border-border relative z-10">
       {/* Main Footer */}
       <div className="container mx-auto pt-16 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-5 sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="relative w-10 h-10">
+              <div className="relative w-8 h-8">
                 <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain invert" />
               </div>
-              <span className="font-heading font-semibold text-lg text-background tracking-tight">
+              <span className="font-heading font-semibold text-sm text-foreground tracking-tight uppercase">
                 Lumora Triad
               </span>
             </Link>
-            <p className="text-background/60 text-sm leading-relaxed max-w-xs">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               A premier digital agency delivering high-performance web development, design, and growth solutions for visionary brands.
             </p>
             {/* Social Icons */}
@@ -56,7 +56,7 @@ export function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-background/10 flex items-center justify-center text-background/60 hover:bg-background/20 hover:text-background transition-colors"
+                  className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-accent/10 hover:text-accent transition-colors"
                   aria-label={s.label}
                 >
                   {s.icon}
@@ -67,11 +67,11 @@ export function Footer() {
 
           {/* Services */}
           <div className="space-y-5">
-            <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-background/40">Services</h3>
+            <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-muted-foreground">Services</h3>
             <ul className="space-y-3">
               {services.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -81,11 +81,11 @@ export function Footer() {
 
           {/* Pages */}
           <div className="space-y-5">
-            <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-background/40">Company</h3>
+            <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-muted-foreground">Company</h3>
             <ul className="space-y-3">
               {pages.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-background/60 hover:text-background transition-colors flex items-center gap-2 group">
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group">
                     {item.name}
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
                   </Link>
@@ -96,20 +96,20 @@ export function Footer() {
 
           {/* Contact */}
           <div className="space-y-5">
-            <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-background/40">Contact</h3>
+            <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-muted-foreground">Contact</h3>
             <ul className="space-y-4">
               {contactInfo.map((info, i) => (
                 <li key={i}>
                   <a href={info.href} className="flex items-center gap-3 group">
-                    <info.icon className="w-4 h-4 text-background/40 group-hover:text-accent transition-colors shrink-0" />
-                    <span className="text-sm text-background/60 group-hover:text-background transition-colors">
+                    <info.icon className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors shrink-0" />
+                    <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                       {info.text}
                     </span>
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="pt-2 flex gap-3 text-xs text-background/30">
+            <div className="pt-2 flex gap-3 text-xs text-muted-foreground/50">
               <span>India</span>
               <span>|</span>
               <span>UAE</span>
@@ -119,14 +119,14 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-background/10">
+      <div className="border-t border-border">
         <div className="container mx-auto py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-background/40">
+          <p className="text-xs text-muted-foreground/60">
             2026 Lumora Triad. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-xs text-background/40 hover:text-background transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-xs text-background/40 hover:text-background transition-colors">Terms of Service</Link>
+            <Link href="#" className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

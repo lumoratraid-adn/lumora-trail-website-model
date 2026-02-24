@@ -1,13 +1,10 @@
-import dynamic from "next/dynamic"
 import type { Metadata } from "next"
 
 import { NetworkHero } from "@/components/network-hero"
 import { MissionVision } from "@/components/mission-vision"
-import { TechEcosystem } from "@/components/tech-ecosystem"
 import { WhatWeDo } from "@/components/what-we-do"
-import { ShowcaseSection } from "@/components/showcase-section"
-import { Footer } from "@/components/footer"
 import { WhyChooseUs } from "@/components/why-choose-us"
+import { ShowcaseSection } from "@/components/showcase-section"
 import { HowWeWork } from "@/components/how-we-work"
 import { Testimonials } from "@/components/testimonials"
 import { CTASection } from "@/components/cta-section"
@@ -21,21 +18,16 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main>
       <NetworkHero />
-
-      <div className="relative z-10">
-        <MissionVision />
-        <WhatWeDo />
-        <WhyChooseUs />
-        <ShowcaseSection />
-        <HowWeWork />
-        <Testimonials />
-        <CTASection />
-        <ConnectForm />
-      </div>
-
-      <Footer />
+      <MissionVision />
+      <WhatWeDo />
+      <WhyChooseUs />
+      <ShowcaseSection />
+      <HowWeWork />
+      <Testimonials />
+      <CTASection />
+      <ConnectForm />
     </main>
   )
 }

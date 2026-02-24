@@ -4,38 +4,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #050505;
-  /* Deep Black #0E0F13 approx */
-  --foreground: #ffffff;
-  /* Pure White */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 120);
-  --popover: oklch(0.97 0.02 95);
-  --popover-foreground: oklch(0.15 0.02 120);
-  --primary: #eaff03;
-  /* Electric Yellow-Green */
-  --primary-foreground: oklch(0.15 0.02 120);
-  --secondary: oklch(0.6 0.25 35);
-  /* Burnt Red (Arctic Red) */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.9 0.02 95);
-  --muted-foreground: oklch(0.4 0.02 120);
-  --accent: oklch(0.15 0.02 120);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.6 0.25 35);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.8 0.02 120);
-  --input: oklch(0.8 0.02 120);
-  --ring: #eaff03;
-  --radius: 2rem;
+  --background: #fafaf8;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --primary-foreground: #fafaf8;
+  --secondary: #f0efe9;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0efe9;
+  --muted-foreground: #6b6b6b;
+  --accent: #c8553a;
+  --accent-foreground: #ffffff;
+  --destructive: #c8553a;
+  --destructive-foreground: #ffffff;
+  --border: #e5e4df;
+  --input: #e5e4df;
+  --ring: #1a1a1a;
+  --radius: 0.75rem;
 }
 
 @theme inline {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui;
   --font-heading: var(--font-heading), "Space Grotesk", sans-serif;
-  --font-condensed: var(--font-condensed), "Bebas Neue", sans-serif;
   --font-serif: var(--font-serif), "Fraunces", serif;
-  --font-michroma: var(--font-michroma), "Michroma", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -55,10 +49,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 12px);
-  --radius-md: calc(var(--radius) - 8px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 8px);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer base {
@@ -83,69 +77,18 @@
   h4,
   h5,
   h6 {
-    @apply font-michroma font-normal leading-tight tracking-[0.05em] uppercase;
+    @apply font-heading font-semibold leading-tight tracking-tight;
   }
 }
 
 @layer utilities {
-  .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl;
-  }
-
-  .glass-card-hover {
-    @apply hover:bg-white/[0.06] hover:border-primary/30 transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-1;
-  }
-
-  .text-glow {
-    text-shadow: 0 0 20px rgba(229, 255, 101, 0.5);
-  }
-
-  .gold-glow {
-    text-shadow:
-      0 0 8px rgba(229, 255, 101, 0.9),
-      0 0 20px rgba(229, 255, 101, 0.6),
-      0 0 40px rgba(229, 255, 101, 0.3);
-  }
-
-  .gold-glow-box {
-    box-shadow:
-      0 0 10px rgba(229, 255, 101, 0.5),
-      0 0 30px rgba(229, 255, 101, 0.25),
-      0 0 60px rgba(229, 255, 101, 0.1);
-  }
-
-  /* Premium 3D Silver Chrome Gradient Text */
-  .silver-gradient-text {
-    background: linear-gradient(180deg,
-        #ffffff 0%,
-        #e8e8e8 15%,
-        #a8a8a8 35%,
-        #d0d0d0 50%,
-        #787878 65%,
-        #c0c0c0 80%,
-        #f0f0f0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none;
-    filter: drop-shadow(0 0 6px rgba(200, 200, 200, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-  }
-
   .section-spacing {
-    @apply py-24 md:py-32 px-6;
-  }
-
-  .bg-arctic {
-    background-color: #F6F7EB;
-  }
-
-  .bg-sage {
-    background-color: #1A1D1A;
+    @apply py-20 md:py-28 px-6;
   }
 
   .container {
     width: 100%;
-    max-width: 100%;
+    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.25rem;
@@ -161,30 +104,14 @@
 
   @media (min-width: 1280px) {
     .container {
-      padding-left: 4rem;
-      padding-right: 4rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
-  @media (min-width: 1536px) {
-    .container {
-      max-width: 2100px;
-      padding-left: 6rem;
-      padding-right: 6rem;
-    }
-  }
-
-  /* Optimize for Speed: Performance Tweaks */
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
-    }
-  }
-
-  /* Disable heavy hover effects on mobile for speed */
-  @media (hover: none) {
-    .glass-card-hover:hover {
-      transform: none !important;
     }
   }
 }

@@ -1,43 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, Inter, Bebas_Neue } from "next/font/google"
+import { Inter, Fraunces } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
-import dynamic from "next/dynamic"
+import { Footer } from "@/components/footer"
 import "./globals.css"
-
-const WhatsAppChatbot = dynamic(() => import("@/components/whatsapp-chatbot").then(mod => mod.WhatsAppChatbot))
-const ScrollToTop = dynamic(() => import("@/components/scroll-to-top").then(mod => mod.ScrollToTop))
-const Preloader = dynamic(() => import("@/components/preloader").then(mod => mod.Preloader))
-const SpaceBackground = dynamic(() => import("@/components/ui/space-background").then(mod => mod.SpaceBackground))
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["400", "500", "600", "700"],
-  display: 'swap',
-})
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"],
-  display: 'swap',
-})
-
-const bebasNeue = Bebas_Neue({
-  subsets: ["latin"],
-  variable: "--font-condensed",
-  weight: "400",
-  display: 'swap',
-})
-
-import { Michroma, Fraunces } from "next/font/google"
-const michroma = Michroma({
-  subsets: ["latin"],
-  variable: "--font-michroma",
-  weight: "400",
   display: 'swap',
 })
 
@@ -47,6 +19,14 @@ const fraunces = Fraunces({
   weight: ["400", "500", "600", "700"],
   display: 'swap',
   style: ['normal', 'italic']
+})
+
+import { Space_Grotesk } from "next/font/google"
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+  display: 'swap',
 })
 
 const baseUrl = "https://www.lumoratriad.in"
@@ -140,7 +120,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable} ${michroma.variable} ${fraunces.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -148,14 +128,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
-          <Preloader />
-          <ScrollToTop />
-          <Header />
-          <SpaceBackground />
-          {children}
-          <WhatsAppChatbot />
-        </ThemeProvider>
+        <Header />
+        {children}
+        <Footer />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -166,7 +141,7 @@ export default function RootLayout({
               "alternateName": ["Lumora", "Lumora Triad Agency", "Lumora Tech"],
               "url": "https://www.lumoratriad.in",
               "logo": "https://www.lumoratriad.in/icon.svg",
-              "description": "Premium Digital Agency for Web Development, UI/UX Design, and strategic Branding. Visit our website: https://www.lumoratriad.in",
+              "description": "Premium Digital Agency for Web Development, UI/UX Design, and strategic Branding.",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN"
@@ -182,40 +157,6 @@ export default function RootLayout({
                 "https://www.instagram.com/lumoratriad",
                 "https://www.linkedin.com/company/lumoratriad",
                 "https://twitter.com/lumoratriad"
-              ],
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://www.lumoratriad.in/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.lumoratriad.in"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "About",
-                  "item": "https://www.lumoratriad.in/about"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Services",
-                  "item": "https://www.lumoratriad.in/services"
-                }
               ]
             }),
           }}
@@ -225,4 +166,3 @@ export default function RootLayout({
     </html>
   )
 }
-

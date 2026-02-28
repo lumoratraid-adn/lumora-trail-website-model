@@ -12,12 +12,12 @@ export function Testimonials() {
               <div className="w-2 h-2 rounded-full bg-primary" />
               <span className="text-[10px] font-black tracking-[0.4em] text-white/80 uppercase">OUR STORY</span>
             </div>
-            <h2 className="text-[clamp(2.25rem,7.2vw,7.2rem)] font-sans font-bold text-white uppercase tracking-tighter leading-[0.85]">
+            <h2 className="text-[12vw] sm:text-[10vw] md:text-7xl font-michroma font-normal text-white uppercase tracking-tighter leading-[0.85]">
               FRIENDS. FOUNDERS. <br />
-              <span className="text-primary italic">INNOVATORS.</span>
+              <span className="text-primary">INNOVATORS.</span>
             </h2>
-            <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed max-w-lg">
-              We started as a team of friends with a shared dream: to build a unique space in the tech world where everything is possible.
+            <p className="text-lg md:text-xl text-white/30 font-bold leading-relaxed max-w-lg uppercase">
+              WE STARTED AS A TEAM OF FRIENDS WITH A SHARED DREAM: TO BUILD A UNIQUE SPACE IN THE TECH WORLD WHERE EVERYTHING IS POSSIBLE.
             </p>
           </AnimatedText>
 
@@ -29,8 +29,8 @@ export function Testimonials() {
                 </svg>
               </div>
 
-              <p className="text-lg md:text-3xl font-medium leading-[1.4] mb-8 md:mb-12 text-white font-sans tracking-tight">
-                &quot;Lumora Triad began as a circle of friends with a single dream: to carve out our own space in the tech landscape. We built this studio to prove that everything is possible when you&apos;re in the right group of innovators. We&apos;re here to turn your biggest ideas into digital reality.&quot;
+              <p className="text-[14px] md:text-3xl font-bold leading-[1.6] mb-8 md:mb-12 text-white/80 font-michroma tracking-tight uppercase">
+                &quot;LUMORA TRIAD BEGAN AS A CIRCLE OF FRIENDS WITH A SINGLE DREAM: TO CARVE OUT OUR OWN SPACE IN THE TECH LANDSCAPE. WE BUILT THIS STUDIO TO PROVE THAT EVERYTHING IS POSSIBLE WHEN YOU&apos;RE IN THE RIGHT GROUP OF INNOVATORS. WE&apos;RE HERE TO TURN YOUR BIGGEST IDEAS INTO DIGITAL REALITY.&quot;
               </p>
 
               <div className="flex items-center gap-6 pt-12 border-t border-white/5">

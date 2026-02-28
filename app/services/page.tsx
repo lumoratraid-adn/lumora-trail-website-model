@@ -1,229 +1,391 @@
 "use client"
 
-import { Code, Palette, TrendingUp, Settings, CheckCircle2, ArrowUpRight, Globe, Layout, Search, Megaphone, PlayCircle, Mail, Sparkles, Zap, ArrowRight } from "lucide-react"
+import { Code, Palette, TrendingUp, Settings, ArrowUpRight, Sparkles, Zap, ArrowRight, Share2, Cpu, Globe, Search, ShieldCheck, Database, PlayCircle, Fingerprint, Activity, Server, Layout, MessageSquare, CheckCircle2, Target } from "lucide-react"
 import { Footer } from "@/components/footer"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import { AnimatedSection, AnimatedText } from "@/components/ui/animated-section"
 
 const pillars = [
   {
     id: "build",
-    number: "01",
-    label: "Build",
+    label: "Development",
     icon: Code,
-    tagline: "We build the systems your business needs.",
-    intro: "From custom platforms to scalable software — we engineer high-performance foundations.",
-    accent: "text-primary",
-    border: "border-primary/20",
-    bg: "bg-primary/5",
-    glow: "bg-primary/10",
+    tagline: "Software & Systems Architecture",
+    desc: "Engineering high-performance foundations with architecture-first logic.",
     services: [
-      { name: "Business Websites", desc: "Clean, professional, and SEO-optimized.", items: ["Landing Pages", "Multi-page Sites"] },
-      { name: "E-Commerce", desc: "Robust stores with seamless checkout.", items: ["Stripe Integration", "Order Mgmt"] },
-      { name: "Web Applications", desc: "Custom SaaS and complex platforms.", items: ["Dashboards", "User Auth"] },
-      { name: "Custom Software", desc: "Bespoke tools for your workflow.", items: ["Automation", "Integrations"] },
-    ]
+      { name: "Business Websites", items: ["Landing Pages", "Multi-page Sites"], icon: Layout },
+      { name: "E-Commerce", items: ["Stripe Integration", "Order Mgmt"], icon: Globe },
+      { name: "Web Applications", items: ["Dashboards", "User Auth"], icon: Cpu },
+      { name: "Custom Software", items: ["Automation", "Integrations"], icon: Settings },
+    ],
+    widget: "status"
   },
   {
     id: "design",
-    number: "02",
-    label: "Design",
-    icon: Palette,
-    tagline: "We make your business look modern.",
-    intro: "Visual identities and user interfaces that build trust and command attention.",
-    accent: "text-violet-400",
-    border: "border-violet-500/20",
-    bg: "bg-violet-500/5",
-    glow: "bg-violet-500/10",
+    label: "UI/UX Design",
+    icon: Layout,
+    tagline: "High-Fidelity Interface Design",
+    desc: "User-centric clickable prototypes and smooth product logic.",
     services: [
-      { name: "UI / UX Design", desc: "User-friendly and researched layouts.", items: ["Figma Files", "Prototyping"] },
-      { name: "Logo & Branding", desc: "Complete visual identity systems.", items: ["Styleguides", "Logo Design"] },
-      { name: "Creative Graphics", desc: "Marketing visuals and ad creatives.", items: ["Social Assets", "Banners"] },
-      { name: "Animations", desc: "Interactive motion and logo animations.", items: ["Lottie", "Explainer Videos"] },
-    ]
+      { name: "UI Design", items: ["Figma Files", "System Design"], icon: Palette },
+      { name: "UX Research", items: ["User Flows", "Wireframing"], icon: MessageSquare },
+      { name: "Prototyping", items: ["Clickable Demos", "Interaction"], icon: PlayCircle },
+      { name: "App Design", items: ["iOS/Android", "Web Apps"], icon: Cpu },
+    ],
+    widget: "palette"
   },
   {
-    id: "grow",
-    number: "03",
-    label: "Grow",
-    icon: TrendingUp,
-    tagline: "We bring more customers to you.",
-    intro: "SEO and lead generation strategies designed to scale your audience and conversion.",
-    accent: "text-amber-400",
-    border: "border-amber-500/20",
-    bg: "bg-amber-500/5",
-    glow: "bg-amber-500/10",
+    id: "branding",
+    label: "Branding",
+    icon: Palette,
+    tagline: "Visual Identity & Strategy",
+    desc: "Crafting strong identities that build business authority.",
     services: [
-      { name: "SEO Optimization", desc: "Rank higher on Google organically.", items: ["Keyword Strategy", "Technical SEO"] },
-      { name: "Lead Generation", desc: "High-converting landing page funnels.", items: ["Lead Forms", "A/B Testing"] },
-      { name: "Traffic Growth", desc: "Scale your monthly visitor count.", items: ["Content Strategy", "Backlinks"] },
-      { name: "Conversion Rate", desc: "Turn more browsers into buyers.", items: ["Heatmaps", "Copywriting"] },
-    ]
+      { name: "Logo Design", items: ["Primary Logos", "Submarks"], icon: Fingerprint },
+      { name: "Color Strategy", items: ["Moodboards", "Palettes"], icon: Palette },
+      { name: "Styleguides", items: ["Typography", "Usage Rules"], icon: Settings },
+      { name: "Visual Assets", items: ["Posters", "Banners"], icon: Sparkles },
+    ],
+    widget: "identity"
+  },
+  {
+    id: "seo",
+    label: "SEO Mastery",
+    icon: TrendingUp,
+    tagline: "Organic Growth Engineering",
+    desc: "Scaling market authority through precision technical SEO.",
+    services: [
+      { name: "Technical SEO", items: ["Core Vitals", "Indexing"], icon: Search },
+      { name: "Keyword Strategy", items: ["Research", "Intent Mapping"], icon: Target },
+      { name: "Content Audit", items: ["Optimization", "Gaps"], icon: Activity },
+      { name: "Growth Logs", items: ["Backlinks", "Analytics"], icon: Database },
+    ],
+    widget: "chart"
   },
   {
     id: "support",
-    number: "04",
     label: "Support",
-    icon: Settings,
-    tagline: "We take care of it all after launch.",
-    intro: "Maintenance, security, and updates to keep your digital asset at peak performance.",
-    accent: "text-sky-400",
-    border: "border-sky-500/20",
-    bg: "bg-sky-500/5",
-    glow: "bg-sky-500/10",
+    icon: ShieldCheck,
+    tagline: "Asset Lifecycle Management",
+    desc: "Continuous security, speed tuning, and enterprise maintenance.",
     services: [
-      { name: "Maintenance", desc: "Regular care and monitoring.", items: ["Bug Fixes", "Uptime Monitoring"] },
-      { name: "Security", desc: "Backups and threat protection.", items: ["Daily Backups", "SSL/WAF"] },
-      { name: "Speed Tuning", desc: "Lightning fast load times.", items: ["CDN Setup", "Code Minification"] },
-      { name: "Tech Support", desc: "Human help when you need it.", items: ["Consultation", "Fast Fixes"] },
-    ]
+      { name: "Maintenance", items: ["Bug Fixes", "Uptime"], icon: Server },
+      { name: "Security", items: ["Daily Backups", "WAF"], icon: ShieldCheck },
+      { name: "Speed Tuning", items: ["CDN Setup", "Minification"], icon: Zap },
+      { name: "Consultation", items: ["Tech Advice", "Fast Fixes"], icon: MessageSquare },
+    ],
+    widget: "security"
+  },
+  {
+    id: "leadgen",
+    label: "Lead Gen",
+    icon: Target,
+    tagline: "Conversion Optimization",
+    desc: "Data-driven funnels designed to turn clicks into customers.",
+    services: [
+      { name: "Funnel Build", items: ["Landing Pages", "Opt-ins"], icon: Layout },
+      { name: "Ad Design", items: ["Static Ads", "Video Ads"], icon: PlayCircle },
+      { name: "Copywriting", items: ["Hooks", "Closing Copy"], icon: MessageSquare },
+      { name: "A/B Testing", items: ["Heatmaps", "Validation"], icon: Activity },
+    ],
+    widget: "funnel"
+  },
+  {
+    id: "animations",
+    label: "Animations",
+    icon: Sparkles,
+    tagline: "Motion & Visual FX",
+    desc: "Cinematic movement and high-fidelity web interactions.",
+    services: [
+      { name: "Web Animations", items: ["Lottie", "Framer Motion"], icon: Zap },
+      { name: "Motion Graphics", items: ["Explainer Videos", "Ads"], icon: PlayCircle },
+      { name: "Logo Motion", items: ["Intros", "Loading states"], icon: Fingerprint },
+      { name: "Visual FX", items: ["Particle Systems", "Glows"], icon: Sparkles },
+    ],
+    widget: "playback"
   }
 ]
 
 export default function ServicesPage() {
   return (
-    <main className="relative bg-[#020202]">
+    <main className="relative min-h-screen bg-background text-white overflow-hidden uppercase">
+      {/* Background Texture/Noise */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grain-y.com/assets/images/grain.png')]" />
 
-      {/* ─── SCENIC HERO ─── */}
-      <section className="relative pt-40 pb-20 md:pt-52 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 blur-[150px] opacity-40 rounded-full" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        </div>
+      {/* Subtle Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full opacity-50" />
+      <div className="absolute top-[20%] right-[-10%] w-[30%] h-[30%] bg-primary/5 blur-[100px] rounded-full opacity-30" />
 
-        <div className="container mx-auto px-6 relative z-10">
-          <AnimatedText className="max-w-5xl space-y-8">
-            <div className="inline-flex items-center gap-4 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-3xl">
-              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-[10px] font-michroma tracking-[0.45em] text-primary uppercase">Elite Capabilities</span>
-            </div>
-            <h1 className="text-[clamp(2.6rem,8.25vw,7.85rem)] font-michroma text-white uppercase leading-[0.85] tracking-tight">
-              Tools of<br />
-              <span className="font-serif italic text-primary lowercase tracking-tighter">Growth.</span>
+      <div className="container mx-auto px-6 relative z-10 pt-40">
+
+        {/* ─── TECHNICAL HERO ─── */}
+        <div className="max-w-4xl space-y-8 mb-32">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="inline-flex items-center gap-4 px-5 py-2 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md"
+          >
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-[10px] font-michroma tracking-[0.45em] text-white/50 uppercase font-bold">OUR SERVICES</span>
+          </motion.div>
+
+          <AnimatedText>
+            <h1 className="text-[clamp(2.5rem,7.5vw,7.5rem)] font-bold tracking-tight text-white leading-[0.9] mb-8 uppercase">
+              OUR <br />
+              <span className="text-primary tracking-tight uppercase">SERVICES.</span>
             </h1>
-            <p className="text-lg md:text-2xl text-white/35 max-w-3xl leading-relaxed font-medium italic">
-              A comprehensive ecosystem of services grouped into 4 strategic pillars. No matter the goal, we have the mechanism to build it.
+            <p className="text-xl md:text-2xl text-white/30 max-w-3xl leading-relaxed font-bold uppercase">
+              WE PROVIDE A COMPREHENSIVE TECHNICAL ECOSYSTEM ENGINEERED FOR MAXIMUM PERFORMANCE AND ARCHITECTURAL INTEGRITY.
             </p>
           </AnimatedText>
-
-          {/* Quick Link Strip */}
-          <div className="mt-16 flex flex-wrap gap-4">
-            {pillars.map(p => (
-              <a key={p.id} href={`#${p.id}`} className="px-6 py-3 rounded-xl border border-white/5 bg-white/[0.02] text-[9px] font-michroma uppercase tracking-[0.3em] text-white/40 hover:text-primary hover:border-primary/40 transition-all">
-                {p.number} {p.label}
-              </a>
-            ))}
-          </div>
         </div>
-      </section>
 
-      {/* ─── DYNAMIC PILLAR GRID ─── */}
-      <section className="pb-32">
-        <div className="container mx-auto px-6 space-y-32">
-          {pillars.map((pillar, pIdx) => (
-            <AnimatedSection key={pillar.id} id={pillar.id} className="relative group">
-              {/* Sticky Vertical Number (Desktop Only) */}
-              <div className="absolute -left-16 top-0 hidden xl:block">
-                <span className={`text-9xl font-michroma opacity-[0.03] select-none ${pillar.accent}`}>{pillar.number}</span>
-              </div>
+        {/* ─── DYNAMIC PILLAR SECTIONS ─── */}
+        <div className="space-y-48 pb-40">
+          {pillars.map((pillar, index) => (
+            <AnimatedSection key={pillar.id} className="relative group">
 
-              <div className="grid lg:grid-cols-12 gap-12 items-start">
-                {/* Left: Pillar Intro (4 cols) */}
-                <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center ${pillar.bg} ${pillar.border}`}>
-                        <pillar.icon className={`w-6 h-6 ${pillar.accent}`} />
+              <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+
+                {/* LEFT: Pillar Identity & Dashboard Widget */}
+                <div className="lg:w-1/3 lg:sticky lg:top-32 space-y-12">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-6">
+                      <div className="w-16 h-16 rounded-3xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_30px_rgba(74,222,128,0.1)]">
+                        <pillar.icon className="w-8 h-8 text-primary" />
                       </div>
-                      <h2 className={`text-4xl font-michroma uppercase tracking-widest ${pillar.accent}`}>
-                        {pillar.label}
-                      </h2>
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">Pillar 0{index + 1}</span>
+                        <h2 className="text-5xl font-bold text-white uppercase tracking-tighter">{pillar.label}</h2>
+                      </div>
                     </div>
-                    <p className="text-[11px] font-michroma uppercase tracking-[0.45em] text-white/20">{pillar.tagline}</p>
+                    <p className="text-xl text-white/30 font-bold leading-relaxed uppercase">{pillar.desc}</p>
                   </div>
-                  <p className="text-lg text-white/40 font-medium leading-relaxed italic">
-                    {pillar.intro}
-                  </p>
-                  <Link href="/contact" className={`inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-michroma text-[9px] uppercase tracking-[0.4em] border transition-all hover:scale-105 ${pillar.bg} ${pillar.border} ${pillar.accent}`}>
-                    Start a Project
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
 
-                {/* Right: Services Grid (8 cols) */}
-                <div className="lg:col-span-8 grid sm:grid-cols-2 gap-4">
-                  {pillar.services.map((service, sIdx) => (
-                    <div
-                      key={sIdx}
-                      className="p-8 rounded-[2.5rem] border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/15 transition-all duration-500 relative overflow-hidden group/service"
-                    >
-                      {/* Accent Glow */}
-                      <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[80px] opacity-0 group-hover/service:opacity-100 transition-opacity duration-500 ${pillar.glow}`} />
+                  {/* DYNAMIC WIDGET */}
+                  <div className="p-8 rounded-[3rem] border border-white/[0.08] bg-card shadow-2xl relative overflow-hidden group/widget">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-20" />
 
-                      <div className="relative z-10 space-y-6">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-michroma uppercase tracking-wider text-white group-hover/service:text-primary transition-colors">
-                            {service.name}
-                          </h3>
-                          <div className="w-8 h-8 rounded-full border border-white/5 flex items-center justify-center opacity-20">
-                            <Zap className={`w-3 h-3 ${pillar.accent}`} />
+                    {pillar.widget === "status" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">System Health</span>
+                          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="text-[8px] font-bold text-emerald-500 uppercase tracking-widest">Optimized</span>
                           </div>
                         </div>
-                        <p className="text-sm text-white/35 font-medium leading-relaxed">
-                          {service.desc}
-                        </p>
+                        <div className="flex justify-center py-4">
+                          <div className="relative w-40 h-40 flex items-center justify-center">
+                            <svg className="w-full h-full -rotate-90">
+                              <circle cx="80" cy="80" r="70" className="stroke-white/5 fill-none stroke-[8]" />
+                              <motion.circle
+                                cx="80"
+                                cy="80"
+                                r="70"
+                                className="stroke-primary fill-none stroke-[8]"
+                                initial={{ strokeDasharray: "0 440" }}
+                                whileInView={{ strokeDasharray: "400 440" }}
+                                transition={{ duration: 2 }}
+                              />
+                            </svg>
+                            <div className="absolute flex flex-col items-center">
+                              <span className="text-4xl font-mono font-bold text-white">100<span className="text-primary">%</span></span>
+                              <span className="text-[8px] text-white/20 uppercase tracking-widest font-bold">Reliability</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-                        <div className="space-y-2.5 pt-4 border-t border-white/[0.04]">
-                          {service.items.map(inc => (
-                            <div key={inc} className="flex items-center gap-3">
-                              <CheckCircle2 className={`w-3.5 h-3.5 ${pillar.accent} opacity-40`} />
-                              <span className="text-[10px] font-michroma uppercase tracking-[0.15em] text-white/20 group-hover/service:text-white/50 transition-colors">{inc}</span>
+                    {pillar.widget === "palette" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Visual Spectrum</span>
+                          <Palette className="w-4 h-4 text-primary/40" />
+                        </div>
+                        <div className="grid grid-cols-4 gap-3">
+                          {[1, 0.8, 0.5, 0.2].map(op => (
+                            <div key={op} className="aspect-square rounded-2xl bg-primary shadow-lg" style={{ opacity: op }} />
+                          ))}
+                        </div>
+                        <div className="h-2 w-full bg-white/5 rounded-full relative p-0.5 mt-4">
+                          <motion.div initial={{ width: 0 }} whileInView={{ width: "65%" }} className="h-full bg-primary rounded-full transition-all" />
+                        </div>
+                      </div>
+                    )}
+
+                    {pillar.widget === "identity" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Brand DNA</span>
+                          <Fingerprint className="w-4 h-4 text-primary/40" />
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="aspect-square rounded-2xl border border-white/10 flex items-center justify-center group/logo hover:bg-primary/5 transition-colors">
+                            <div className="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center">
+                              <div className="w-4 h-4 bg-primary rounded-full animate-pulse" />
+                            </div>
+                          </div>
+                          <div className="aspect-square rounded-2xl border border-white/10 flex items-center justify-center p-4">
+                            <div className="w-full h-full border-l-2 border-b-2 border-primary/20 rounded-bl-xl" />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {pillar.widget === "chart" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Performance Curve</span>
+                          <TrendingUp className="w-4 h-4 text-emerald-400" />
+                        </div>
+                        <div className="h-32 flex items-end gap-1.5 px-2">
+                          {[40, 60, 45, 80, 55, 95, 75, 90].map((h, i) => (
+                            <motion.div
+                              key={i}
+                              className="flex-1 bg-primary/20 border-t border-primary/40 rounded-t-lg"
+                              initial={{ height: 0 }}
+                              whileInView={{ height: `${h}%` }}
+                              transition={{ delay: i * 0.1 }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {pillar.widget === "security" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Defense Grid</span>
+                          <ShieldCheck className="w-4 h-4 text-primary" />
+                        </div>
+                        <div className="space-y-3">
+                          {[1, 2, 3].map(i => (
+                            <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                              <div className="h-1 flex-1 bg-white/5 rounded-full overflow-hidden">
+                                <motion.div className="h-full bg-white/20" initial={{ width: 0 }} whileInView={{ width: `${80 - (i * 10)}%` }} />
+                              </div>
                             </div>
                           ))}
                         </div>
                       </div>
-                    </div>
+                    )}
+
+                    {pillar.widget === "funnel" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Lead Path</span>
+                          <Target className="w-4 h-4 text-primary/40" />
+                        </div>
+                        <div className="space-y-2">
+                          {[1, 0.7, 0.4, 0.2].map((w, i) => (
+                            <motion.div
+                              key={i}
+                              style={{ width: `${w * 100}%` }}
+                              className="h-6 bg-primary/10 border-l border-primary/30 rounded-r-lg flex items-center px-3"
+                              initial={{ scaleX: 0 }}
+                              whileInView={{ scaleX: 1 }}
+                              transition={{ delay: i * 0.1 }}
+                            >
+                              <div className="w-1 h-1 rounded-full bg-primary" />
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {pillar.widget === "playback" && (
+                      <div className="space-y-8 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interactive Motion</span>
+                          <Sparkles className="w-4 h-4 text-primary/40 shadow-[0_0_10px_rgba(74,222,128,0.5)]" />
+                        </div>
+                        <div className="flex justify-center items-center py-6">
+                          <div className="relative group/play">
+                            <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150 group-hover/play:scale-[2] transition-transform duration-1000" />
+                            <div className="w-24 h-24 rounded-full border-2 border-primary/20 flex items-center justify-center relative z-10">
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-0 border-t-2 border-primary rounded-full"
+                              />
+                              <PlayCircle className="w-10 h-10 text-primary" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* RIGHT: Detailed Service Modules Grid */}
+                <div className="lg:w-2/3 grid sm:grid-cols-2 gap-6 w-full">
+                  {pillar.services.map((service, sIdx) => (
+                    <motion.div
+                      key={service.name}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: sIdx * 0.1 }}
+                      className="p-10 rounded-[3rem] border border-white/[0.08] bg-[#140E24] hover:bg-white/[0.02] hover:border-primary/30 transition-all duration-700 group/service relative overflow-hidden shadow-2xl"
+                    >
+                      <div className="relative z-10 space-y-8">
+                        <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-primary group-hover/service:scale-110 group-hover/service:bg-primary/10 transition-all">
+                          <service.icon className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-3xl font-bold text-white uppercase tracking-tight group-hover/service:text-primary">{service.name}</h3>
+                        <div className="grid grid-cols-1 gap-4">
+                          {service.items.map((item) => (
+                            <div key={item} className="flex items-center gap-4">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover/service:bg-primary transition-all" />
+                              <span className="text-[12px] font-bold text-white/40 uppercase tracking-[0.2em] group-hover/service:text-white">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <Link href="/contact" className="flex items-center gap-4 pt-4 text-[10px] font-bold text-primary uppercase tracking-[0.3em] opacity-40 group-hover/service:opacity-100 transition-opacity">
+                          Discuss Project
+                          <ArrowRight className="w-4 h-4 group-hover/service:translate-x-2 transition-transform" />
+                        </Link>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
+
               </div>
             </AnimatedSection>
           ))}
         </div>
-      </section>
 
-      {/* ─── FINAL PERSUASION ─── */}
-      <section className="py-24 md:py-32 border-t border-white/[0.05] bg-primary/[0.01]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center space-y-12">
-            <AnimatedText className="space-y-6">
-              <h2 className="text-4xl md:text-7xl font-michroma text-white uppercase leading-[0.9]">
-                Ready to build the<br />
-                <span className="font-serif italic text-primary lowercase tracking-tighter">Future?</span>
-              </h2>
-              <p className="text-xl text-white/35 italic font-medium">
-                No complicated tiers. Just high-performance engineering for businesses that want an edge.
-              </p>
-            </AnimatedText>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link
-                href="/contact"
-                className="group w-full sm:w-auto px-10 py-5 bg-primary text-black rounded-2xl font-michroma text-[10px] uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl shadow-primary/20 flex items-center justify-center gap-4"
-              >
-                Get Started
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="mailto:lumoratriad@gmail.com"
-                className="group w-full sm:w-auto px-10 py-5 border border-white/10 text-white/60 rounded-2xl font-michroma text-[10px] uppercase tracking-[0.4em] hover:border-primary/40 hover:text-white transition-all flex items-center justify-center gap-3"
-              >
-                <Mail className="w-4 h-4" />
-                Discuss Goals
-              </a>
+        {/* ─── FINAL PERSUASION ─── */}
+        <section className="py-20 md:py-40 relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="p-16 md:p-24 rounded-[4rem] border border-white/[0.1] bg-[#06030D] relative overflow-hidden group shadow-2xl"
+          >
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16 text-center md:text-left">
+              <div className="max-w-2xl space-y-8">
+                <h2 className="text-5xl md:text-8xl font-bold text-white uppercase leading-none tracking-tighter">
+                  READY TO <br />
+                  <span className="text-primary tracking-tight uppercase">EXECUTE?</span>
+                </h2>
+                <p className="text-xl text-white/30 leading-relaxed font-bold uppercase">
+                  OUR ARCHITECTURE IS READY. YOUR VISION IS THE FINAL MISSING PIECE OF THE PROTOCOL.
+                </p>
+              </div>
+              <div className="flex flex-col gap-6 w-full md:w-auto">
+                <Link href="/contact" className="px-14 py-7 bg-primary text-black rounded-[2.5rem] text-[12px] uppercase tracking-[0.45em] hover:bg-white transition-all shadow-2xl shadow-primary/30 flex items-center justify-center gap-5">
+                  Get Started
+                  <ArrowRight className="w-6 h-6" />
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </section>
+
+      </div>
 
       <Footer />
     </main>

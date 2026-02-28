@@ -24,13 +24,13 @@ export function CTASection() {
                                 <span className="text-[9px] font-michroma tracking-[0.45em] text-primary uppercase">Ready to start?</span>
                             </div>
 
-                            <h2 className="text-[clamp(2.5rem,10vw,9.5rem)] font-michroma font-normal text-white uppercase leading-[0.85] tracking-tight">
-                                Build Your<br />
-                                <span className="font-serif italic text-primary lowercase tracking-tighter">Legacy.</span>
+                            <h2 className="text-[12vw] sm:text-[10vw] md:text-[7vw] lg:text-7xl xl:text-8xl font-michroma font-normal text-white uppercase leading-[0.9] tracking-tight">
+                                BUILD YOUR<br />
+                                <span className="text-primary uppercase tracking-tighter">LEGACY.</span>
                             </h2>
 
-                            <p className="max-w-2xl mx-auto text-lg md:text-2xl text-white/35 font-medium leading-relaxed italic">
-                                Transforming visionary concepts into high-performance digital ecosystems. Let's build something you're proud of.
+                            <p className="max-w-[280px] md:max-w-2xl mx-auto text-sm md:text-2xl text-white/30 font-bold leading-relaxed uppercase">
+                                TRANSFORMING VISIONARY CONCEPTS INTO HIGH-PERFORMANCE DIGITAL ECOSYSTEMS.
                             </p>
                         </AnimatedText>
 
@@ -38,18 +38,17 @@ export function CTASection() {
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                             <Link
                                 href="/contact"
-                                className="group w-full sm:w-auto flex items-center justify-center gap-4 px-10 py-5 bg-primary text-black rounded-2xl font-michroma text-[10px] uppercase tracking-[0.35em] hover:bg-white transition-all shadow-2xl shadow-primary/30 hover:scale-105"
+                                className="group w-full sm:w-auto flex items-center justify-center gap-4 px-10 py-5 bg-primary text-black rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all shadow-2xl shadow-primary/30 active:scale-95"
                             >
-                                <MessageSquare className="w-4 h-4" />
-                                Start a Project
+                                START A PROJECT
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
                             <a
                                 href="mailto:lumoratriad@gmail.com"
-                                className="group w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 border border-white/15 text-white/60 rounded-2xl font-michroma text-[10px] uppercase tracking-[0.35em] hover:border-primary/50 hover:text-white backdrop-blur-sm bg-white/[0.02] transition-all"
+                                className="group w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 border border-white/10 text-white/40 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] hover:border-primary/50 hover:text-white backdrop-blur-sm bg-white/[0.01] transition-all active:scale-95"
                             >
                                 <Mail className="w-4 h-4" />
-                                Email Us Directly
+                                EMAIL US
                             </a>
                         </div>
 

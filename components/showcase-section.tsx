@@ -9,7 +9,7 @@ const showcaseItems = [
         number: "01",
         category: "Web Development",
         title: "E-Commerce Platform",
-        desc: "A high-performance online store with seamless checkout, inventory management, and a conversion-optimised storefront.",
+        desc: "A HIGH-PERFORMANCE ONLINE STORE WITH SEAMLESS CHECKOUT, INVENTORY MANAGEMENT, AND A CONVERSION-OPTIMISED STOREFRONT.",
         tags: ["Next.js", "Stripe", "Postgres"],
         icon: Code,
         span: "md:col-span-7",
@@ -39,7 +39,7 @@ const showcaseItems = [
         number: "02",
         category: "UI / UX Design",
         title: "Mobile App Design",
-        desc: "Clean, user-centric app interface designed in Figma with smooth user flows and developer-ready assets.",
+        desc: "CLEAN, USER-CENTRIC APP INTERFACE DESIGNED IN FIGMA WITH SMOOTH USER FLOWS AND DEVELOPER-READY ASSETS.",
         tags: ["Figma", "Prototyping", "iOS"],
         icon: Layout,
         span: "md:col-span-5",
@@ -71,7 +71,7 @@ const showcaseItems = [
         number: "03",
         category: "Branding",
         title: "Brand Identity System",
-        desc: "A complete visual identity from logo design to colour palette, typography, and brand guidelines.",
+        desc: "A COMPLETE VISUAL IDENTITY FROM LOGO DESIGN TO COLOUR PALETTE, TYPOGRAPHY, AND BRAND GUIDELINES.",
         tags: ["Logo", "Guidelines", "Print"],
         icon: Palette,
         span: "md:col-span-5",
@@ -106,7 +106,7 @@ const showcaseItems = [
         number: "04",
         category: "SEO & Growth",
         title: "Organic Traffic Growth",
-        desc: "Keyword strategy, technical SEO, and content optimisation that delivered measurable search ranking improvements.",
+        desc: "KEYWORD STRATEGY, TECHNICAL SEO, AND CONTENT OPTIMISATION THAT DELIVERED MEASURABLE SEARCH RANKING IMPROVEMENTS.",
         tags: ["SEO", "Analytics", "Content"],
         icon: Search,
         span: "md:col-span-7",
@@ -140,7 +140,7 @@ const showcaseItems = [
 
 export function ShowcaseSection() {
     return (
-        <section className="py-16 md:py-32 bg-background overflow-hidden relative border-t border-white/[0.05]">
+        <section className="py-24 md:py-48 bg-background overflow-hidden relative border-t border-white/[0.05]">
 
             {/* Subtle background */}
             <div className="absolute inset-0 pointer-events-none">
@@ -150,20 +150,20 @@ export function ShowcaseSection() {
             <div className="container mx-auto px-6 relative z-10">
 
                 {/* Section Header */}
-                <AnimatedText className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-12 mb-20">
+                <AnimatedText className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 md:gap-12 mb-16 md:mb-24 px-2">
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <div className="w-8 h-px bg-primary/50" />
+                            <div className="w-8 h-px bg-primary/40" />
                             <span className="text-[9px] font-michroma tracking-[0.55em] text-primary uppercase">Our Work</span>
                         </div>
-                        <h2 className="text-[clamp(2.25rem,7.5vw,6.4rem)] font-michroma font-normal tracking-tight leading-[0.85] text-white uppercase">
-                            Where <span className="font-serif italic text-primary lowercase tracking-tighter">Vision</span><br />
-                            Meets Reality<span className="text-primary">.</span>
+                        <h2 className="text-[12vw] sm:text-[10vw] md:text-7xl font-michroma font-normal tracking-tight leading-[0.85] text-white uppercase">
+                            WHERE <span className="text-primary uppercase tracking-tighter">VISION</span><br />
+                            MEETS REALITY<span className="text-primary">.</span>
                         </h2>
                     </div>
                     <div className="lg:max-w-sm space-y-4 lg:pb-4">
-                        <p className="text-lg md:text-xl text-white/35 font-medium leading-relaxed italic">
-                            A curated selection of digital experiences crafted for brands that refuse to blend in.
+                        <p className="text-lg md:text-xl text-white/35 font-bold leading-relaxed uppercase">
+                            A CURATED SELECTION OF DIGITAL EXPERIENCES CRAFTED FOR BRANDS THAT REFUSE TO BLEND IN.
                         </p>
                         <Link
                             href="/contact"
@@ -193,33 +193,35 @@ export function ShowcaseSection() {
                                 </div>
 
                                 {/* Info overlay */}
-                                <div className="absolute top-0 left-0 right-0 p-8 flex items-start justify-between z-10">
-                                    <div className="space-y-2.5">
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-[9px] font-michroma text-white/10">{item.number}</span>
-                                            <div className="w-7 h-7 rounded-xl bg-white/[0.04] border border-white/[0.07] flex items-center justify-center group-hover:bg-primary/15 group-hover:border-primary/25 transition-all duration-500 shadow-lg">
-                                                <item.icon className="w-3.5 h-3.5 text-white/30 group-hover:text-primary transition-colors duration-500" />
+                                <div className="absolute top-0 left-0 right-0 p-8 md:p-10 flex flex-col justify-between h-full z-10">
+                                    <div className="flex items-start justify-between">
+                                        <div className="space-y-3">
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-[8px] md:text-[9px] font-michroma text-white/10">{item.number}</span>
+                                                <div className="w-7 h-7 rounded-xl bg-white/[0.04] border border-white/[0.07] flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-500 shadow-lg">
+                                                    <item.icon className="w-3.5 h-3.5 text-white/30 group-hover:text-primary transition-colors duration-500" />
+                                                </div>
+                                                <span className="text-[8px] md:text-[9px] font-michroma uppercase tracking-[0.3em] text-white/30 group-hover:text-primary transition-colors">{item.category}</span>
                                             </div>
-                                            <span className="text-[9px] font-michroma uppercase tracking-[0.3em] text-white/30 group-hover:text-white/50 transition-colors">{item.category}</span>
+                                            <h3 className="text-xl md:text-2xl font-michroma uppercase text-white/80 group-hover:text-white transition-colors duration-500 leading-tight">{item.title}</h3>
                                         </div>
-                                        <h3 className="text-xl md:text-2xl font-michroma uppercase text-white group-hover:text-primary transition-colors duration-500 leading-tight">{item.title}</h3>
+
+                                        {/* Tags - visible on larger md screens */}
+                                        <div className="hidden lg:flex gap-1.5 flex-wrap justify-end max-w-[160px]">
+                                            {item.tags.map((tag) => (
+                                                <span key={tag} className="px-3 py-1.5 rounded-full text-[7px] font-michroma uppercase tracking-[0.2em] bg-white/[0.04] border border-white/[0.07] text-white/20 group-hover:border-primary/20 group-hover:text-primary transition-all duration-500">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
 
-                                    {/* Tags - visible on larger md screens */}
-                                    <div className="hidden lg:flex gap-1.5 flex-wrap justify-end max-w-[160px]">
-                                        {item.tags.map((tag) => (
-                                            <span key={tag} className="px-3 py-1.5 rounded-full text-[7px] font-michroma uppercase tracking-[0.2em] bg-white/[0.04] border border-white/[0.07] text-white/20 group-hover:border-primary/20 group-hover:text-primary/50 transition-all duration-500">
-                                                {tag}
-                                            </span>
-                                        ))}
+                                    {/* Description — persistent on mobile, hover-only on desktop */}
+                                    <div className="mt-auto">
+                                        <p className="text-[9px] md:text-xs text-white/30 md:text-white/0 md:group-hover:text-white/40 transition-all duration-500 md:translate-y-4 md:group-hover:translate-y-0 font-michroma leading-relaxed max-w-sm uppercase bg-black/40 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-4 md:p-0 rounded-2xl md:rounded-none border border-white/5 md:border-none">
+                                            {item.desc}
+                                        </p>
                                     </div>
-                                </div>
-
-                                {/* Description — persistent on mobile, hover-only on desktop */}
-                                <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                                    <p className="text-[11px] md:text-xs text-white/40 md:text-white/0 md:group-hover:text-white/45 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0 font-medium leading-relaxed max-w-xs bg-black/40 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-3 md:p-0 rounded-2xl border border-white/5 md:border-none">
-                                        {item.desc}
-                                    </p>
                                 </div>
                             </div>
                         </AnimatedSection>
@@ -236,7 +238,7 @@ export function ShowcaseSection() {
                                 <div className="space-y-4">
                                     <span className="text-[10px] font-michroma tracking-[0.5em] text-primary/60 uppercase block">Ready to create yours?</span>
                                     <h3 className="text-4xl md:text-6xl font-michroma text-white uppercase group-hover:text-primary transition-colors duration-500 leading-[0.9]">
-                                        Build something <br className="hidden md:block" /><span className="font-serif italic text-primary lowercase tracking-tighter">great.</span>
+                                        BUILD SOMETHING <br className="hidden md:block" /><span className="text-primary uppercase tracking-tighter">GREAT.</span>
                                     </h3>
                                 </div>
                                 <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary/40 group-hover:bg-primary/10 transition-all duration-500 shrink-0 shadow-2xl">

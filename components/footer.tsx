@@ -26,7 +26,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-[#020202] text-white pt-24 pb-12 overflow-hidden border-t border-white/[0.05] relative z-10">
+    <footer className="bg-[#030303] text-white pt-24 pb-12 overflow-hidden border-t border-white/[0.05] relative z-10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col space-y-20">
 
@@ -39,8 +39,8 @@ export function Footer() {
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                   <h3 className="text-[9px] font-michroma tracking-[0.5em] text-white uppercase">Identity</h3>
                 </div>
-                <p className="text-xl font-serif italic leading-relaxed text-white max-w-sm">
-                  The high-performance technical ecosystem for visionary brands.
+                <p className="text-xl font-bold leading-relaxed text-white max-w-sm uppercase">
+                  THE HIGH-PERFORMANCE TECHNICAL ECOSYSTEM FOR VISIONARY BRANDS.
                 </p>
                 <div className="flex gap-4 pt-4">
                   {/* Social Icons */}
@@ -132,7 +132,7 @@ export function Footer() {
               className="w-full text-center"
             >
               <h2 className="text-[clamp(0.75rem,6vw,9rem)] font-michroma font-normal tracking-[-0.05em] uppercase leading-none select-none text-white/5 whitespace-nowrap">
-                Lumora Triad
+                LUMORA TRIAD
               </h2>
             </motion.div>
           </div>

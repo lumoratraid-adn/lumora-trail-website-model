@@ -1,200 +1,174 @@
 "use client"
 
-import { ArrowRight, ArrowUpRight, Sparkles, ChevronDown } from "lucide-react"
-import Link from "next/link"
-import { motion, type Variants } from "framer-motion"
+import { ArrowRight, Mail } from "lucide-react"
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-
-const services = [
-    "Web Development",
-    "UI / UX Design",
-    "Branding",
-    "Consultancy",
-    "Cloud Logic",
-    "Maintenance",
-]
 
 export function NetworkHero() {
     const [startAnimation, setStartAnimation] = useState(false)
-    const [activeService, setActiveService] = useState(0)
 
-    const [stars, setStars] = useState<{ left: string; top: string; delay: number }[]>([])
-
-    // Sync with preloader and generate stars only on client to avoid hydration mismatch
     useEffect(() => {
-        const timer = setTimeout(() => setStartAnimation(true), 1300)
-
-        // Generate stars data once on client mount
-        const generatedStars = [...Array(20)].map(() => ({
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            delay: Math.random() * 5
-        }))
-        setStars(generatedStars)
-
+        const timer = setTimeout(() => setStartAnimation(true), 100)
         return () => clearTimeout(timer)
     }, [])
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveService((prev) => (prev + 1) % services.length)
-        }, 2000)
-        return () => clearInterval(interval)
-    }, [])
-
-    const container: Variants = {
+    const containerVariants = {
         hidden: {},
-        show: { transition: { staggerChildren: 0.15 } },
+        visible: { transition: { staggerChildren: 0.12 } }
     }
 
-    const item: Variants = {
-        hidden: { opacity: 0, y: 100, rotateX: -30 },
-        show: {
-            opacity: 1, y: 0, rotateX: 0,
-            transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
-        },
+    const itemVariants = {
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
     }
 
     return (
-        <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-[#020202]">
+        <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#030303] overflow-hidden font-michroma uppercase">
 
-            {/* CINEMATIC BACKGROUND SYSTEM */}
-            <div className="absolute inset-0 z-0">
-                {/* Core Gradient */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(234,255,3,0.08)_0%,transparent_60%)]" />
-
-                {/* Moving Nebula Haze */}
-                <motion.div
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.5, 0.3],
-                        x: [-20, 20, -20],
-                        y: [-20, 20, -20]
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] bg-[radial-gradient(circle_at_30%_30%,rgba(234,255,3,0.03)_0%,transparent_50%)]"
-                />
-
-                {/* Grid Overlay with Perspective */}
-                <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
-                </div>
-
-                {/* Top Lighting */}
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-            </div>
-
-            {/* FLOATING DEBRIS (STARS) */}
+            {/* ─── BACKGROUND ─── */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                {stars.map((star, i) => (
+                {/* Ambient glow — desktop only for perf */}
+                <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-white/[0.03] rounded-full blur-[120px]" />
+
+                {/* Mobile ambient glow */}
+                <div className="md:hidden absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-white/[0.05] rounded-full blur-[80px]" />
+
+                {/* Fine grid */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:32px_32px]" />
+
+                {/* Subtle vignette */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#030303_100%)]" />
+
+                {/* Slow floating particles — reduced on mobile */}
+                {[...Array(12)].map((_, i) => (
                     <motion.div
                         key={i}
-                        initial={{ opacity: 0 }}
-                        animate={{
-                            opacity: [0.2, 0.5, 0.2],
-                            y: [-10, 10, -10]
-                        }}
-                        transition={{ duration: 5 + star.delay, repeat: Infinity }}
-                        className="absolute w-1 h-1 bg-white/20 rounded-full"
-                        style={{
-                            left: star.left,
-                            top: star.top
-                        }}
+                        className="absolute hidden md:block w-px h-px bg-white/30 rounded-full"
+                        style={{ left: `${10 + i * 7}%`, top: `${15 + (i % 5) * 15}%` }}
+                        animate={{ y: [0, -30, 0], opacity: [0.1, 0.5, 0.1] }}
+                        transition={{ duration: 6 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
                     />
                 ))}
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 pt-20">
-                <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+            {/* ─── MAIN CONTENT ─── */}
+            <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-8 md:px-12 flex flex-col items-center">
 
-                    {/* MASSIVE CINEMATIC HEADLINE */}
-                    <motion.div
-                        variants={container}
-                        initial="hidden"
-                        animate={startAnimation ? "show" : "hidden"}
-                        className="perspective-[2000px]"
-                    >
-                        <h1 className="text-[clamp(2.1rem,6.75vw,6.2rem)] font-michroma uppercase leading-[0.82] tracking-[-0.03em] flex flex-col items-center">
-                            <div className="overflow-hidden mb-2">
-                                <motion.span variants={item} className="block text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-                                    Architecting
-                                </motion.span>
-                            </div>
-                            <div className="overflow-hidden mb-2 flex flex-col sm:flex-row items-center gap-4 md:gap-8">
-                                <motion.span variants={item} className="block font-serif italic text-primary lowercase tracking-tighter">
-                                    digital
-                                </motion.span>
-                                <motion.span variants={item} className="block text-white/10 [-webkit-text-stroke:1px_rgba(255,255,255,0.2)]">
-                                    worlds
-                                </motion.span>
-                            </div>
-                            <div className="overflow-hidden">
-                                <motion.span variants={item} className="block text-white">
-                                    for visionaries<span className="text-primary">.</span>
-                                </motion.span>
-                            </div>
-                        </h1>
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={startAnimation ? "visible" : "hidden"}
+                    className="w-full flex flex-col items-center text-center gap-0"
+                >
+
+                    {/* ── STATUS BADGE ── */}
+                    <motion.div variants={itemVariants} className="mb-8 md:mb-10">
+                        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                            <span className="text-[9px] tracking-[0.4em] text-white/50">SYSTEM ACTIVE · TRIAD OS v4.5</span>
+                        </div>
                     </motion.div>
 
-                    {/* STUDIO TAGLINE */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={startAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 1, delay: 0.8 }}
-                        className="mt-12 text-base md:text-xl text-white/30 max-w-2xl mx-auto leading-relaxed font-medium italic"
+                    {/* ── HEADLINE ── */}
+                    <motion.h1
+                        variants={itemVariants}
+                        className="mb-6 md:mb-8 font-michroma leading-[0.88] select-none w-full text-center px-2"
                     >
-                        "The standard for high-performance engineering meets cinematic design fidelity."
+                        {/* clamp: min 2rem | fluid 6.5vw | max 6.5rem
+                            At 360px mobile → ~23px fluid < 2rem min → 2rem (32px) → "LUMORA TRIAD" ≈ 290px ✓
+                            At 1440px desktop → 6.5% × 1440 = 93.6px → capped at 6.5rem (104px) ✓ */}
+                        <span
+                            className="inline tracking-[-0.03em] text-white"
+                            style={{ fontSize: "clamp(2rem, 6.5vw, 6.5rem)" }}
+                        >
+                            LUMORA
+                        </span>
+                        <span
+                            className="inline tracking-[-0.03em] ml-[0.25em]"
+                            style={{
+                                fontSize: "clamp(2rem, 6.5vw, 6.5rem)",
+                                color: "transparent",
+                                WebkitTextStroke: "1px rgba(255,255,255,0.35)",
+                            }}
+                        >
+                            TRIAD
+                        </span>
+                    </motion.h1>
+
+
+                    {/* ── TAGLINE ── */}
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-[11px] sm:text-[12px] md:text-[13px] tracking-[0.35em] text-white/30 max-w-xs sm:max-w-md md:max-w-2xl leading-loose mb-10 md:mb-14 px-4"
+                    >
+                        THE SUPREME ARCHITECTURAL ENGINE FOR HIGH-END DIGITAL LEGACY
                     </motion.p>
 
-                    {/* ACTION HUB */}
+                    {/* ── EMAIL INPUT ── */}
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={startAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                        transition={{ duration: 1, delay: 1.2 }}
-                        className="mt-16 flex flex-col sm:flex-row items-center gap-6"
+                        variants={itemVariants}
+                        className="w-full max-w-sm sm:max-w-md px-4 sm:px-0"
                     >
-                        <Link
-                            href="/contact"
-                            className="group relative px-10 py-6 bg-primary text-black rounded-full font-michroma text-[9px] uppercase tracking-[0.45em] overflow-hidden transition-all hover:scale-105 active:scale-95 flex items-center gap-4"
-                        >
-                            <div className="absolute inset-x-0 bottom-0 h-1 bg-black/10 transition-all duration-[3000ms] group-hover:w-full w-0" />
-                            <span>Initiate project</span>
-                            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
-                        </Link>
+                        <div className="relative group">
+                            {/* Glow ring on focus */}
+                            <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-white/0 via-white/15 to-white/0 opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 blur-sm" />
 
-                        <Link
-                            href="/services"
-                            className="group flex items-center gap-4 px-10 py-6 border border-white/10 text-white/40 rounded-full font-michroma text-[8px] uppercase tracking-[0.45em] hover:text-white hover:border-white/25 transition-all bg-white/[0.02]"
-                        >
-                            <span>Our protocol</span>
-                            <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-all group-hover:rotate-45" />
-                        </Link>
+                            <div className="relative flex flex-col sm:flex-row items-stretch gap-0 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
+                                {/* Icon */}
+                                <div className="hidden sm:flex items-center px-5 border-r border-white/[0.07]">
+                                    <Mail className="w-4 h-4 text-white/20" />
+                                </div>
+
+                                {/* Input */}
+                                <input
+                                    type="email"
+                                    placeholder="YOUR EMAIL ADDRESS"
+                                    className="flex-1 bg-transparent border-none outline-none text-white text-[10px] tracking-[0.25em] px-5 py-5 sm:py-0 placeholder:text-white/20 min-w-0"
+                                />
+
+                                {/* Divider on mobile */}
+                                <div className="sm:hidden h-px bg-white/[0.07] mx-4" />
+
+                                {/* CTA Button */}
+                                <button className="group/btn flex items-center justify-center gap-2.5 px-6 py-4 sm:py-0 sm:m-1.5 bg-white text-black rounded-xl sm:rounded-xl font-michroma text-[9px] tracking-[0.35em] hover:bg-white/90 active:scale-95 transition-all relative overflow-hidden shrink-0 uppercase">
+                                    <span className="relative z-10">CONNECT</span>
+                                    <ArrowRight className="w-3 h-3 relative z-10 group-hover/btn:translate-x-0.5 transition-transform" />
+                                </button>
+                            </div>
+
+                            {/* Label below */}
+                            <p className="mt-4 text-center text-[8px] tracking-[0.35em] text-white/15">
+                                NO SPAM · UNSUBSCRIBE ANYTIME
+                            </p>
+                        </div>
                     </motion.div>
 
-                </div>
+                </motion.div>
             </div>
 
-            {/* SCROLL MANIFESTO INDICATOR */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 1, delay: 1.8 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5"
-            >
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-px bg-white/10" />
-                    <span className="text-[9px] font-michroma tracking-[0.6em] text-white/10 uppercase">Discover Mission</span>
-                    <div className="w-12 h-px bg-white/10" />
+            {/* ─── DESKTOP SIDEBAR LABELS ─── */}
+            <div className="absolute left-6 bottom-8 hidden xl:flex flex-col gap-3 select-none">
+                <div className="flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full bg-white/20 animate-pulse" />
+                    <span className="text-[8px] tracking-[0.4em] text-white/15 font-mono">SECURE: AES_CRYPT</span>
                 </div>
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center bg-white/[0.02]"
-                >
-                    <ChevronDown className="w-4 h-4 text-primary/40" />
-                </motion.div>
-            </motion.div>
+                <span className="text-[8px] tracking-[0.4em] text-white/15 font-mono">TRIAD_OS_ACTIVE</span>
+            </div>
 
+            <div className="absolute right-6 bottom-8 hidden xl:flex flex-col gap-3 items-end select-none">
+                <span className="text-[8px] tracking-[0.4em] text-white/15 font-mono">COORD: 10.85 N / 76.27 E</span>
+                <span className="text-[8px] tracking-[0.4em] text-white/15 font-mono">SYSTEM_STABLE</span>
+            </div>
+
+            {/* ─── BOTTOM FADE ─── */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#030303] to-transparent z-10 pointer-events-none" />
+
+            <style jsx global>{`
+                @keyframes scan {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(400%); }
+                }
+            `}</style>
         </section>
     )
 }

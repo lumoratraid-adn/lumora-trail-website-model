@@ -50,17 +50,18 @@ export function Header() {
           {/* Background Layer */}
           <div
             className={`absolute inset-0 transition-all duration-500 border-b ${scrolled
-              ? "bg-black/80 backdrop-blur-2xl border-white/8 shadow-xl shadow-black/20"
+              ? "bg-[#030303]/80 backdrop-blur-2xl border-white/8 shadow-xl shadow-black/20"
               : "bg-transparent border-transparent"
               }`}
           />
 
           <div className="w-full h-full px-4 md:px-6 lg:px-8 xl:px-12 relative z-10 flex items-center justify-between max-w-[2000px] mx-auto">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group shrink-0">
-              <div className="relative w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 group-hover:scale-105 transition-transform duration-300">
-                <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain" priority />
-              </div>
+            <Link href="/" className="flex flex-col group shrink-0">
+              <span className="text-lg md:text-xl font-michroma text-white tracking-[-0.05em] leading-none uppercase group-hover:text-primary transition-colors">
+                LUMORA TRIAD
+              </span>
+              <span className="text-[7px] font-michroma text-white/20 tracking-[0.5em] uppercase mt-1">DIGITAL STUDIO</span>
             </Link>
 
             {/* Desktop Nav — centered pill */}
@@ -70,7 +71,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   className={`relative px-4 xl:px-5 py-2 rounded-full text-[9px] xl:text-[10px] font-michroma uppercase tracking-[0.22em] transition-all duration-300 flex items-center gap-1.5 ${isActive(item.href)
-                    ? "bg-primary text-black shadow-lg shadow-primary/30"
+                    ? "bg-white text-black shadow-lg shadow-white/30"
                     : "text-white/60 hover:text-white hover:bg-white/5"
                     }`}
                 >
@@ -84,7 +85,7 @@ export function Header() {
             <div className="flex items-center gap-2 md:gap-3">
               <Link
                 href="/contact"
-                className="hidden sm:flex items-center gap-2 pl-4 pr-1.5 py-1.5 bg-primary text-black rounded-full font-michroma text-[8px] md:text-[9px] uppercase tracking-[0.2em] hover:bg-white transition-all shadow-lg shadow-primary/20 group whitespace-nowrap"
+                className="hidden sm:flex items-center gap-2 pl-4 pr-1.5 py-1.5 bg-white text-black rounded-full font-michroma text-[8px] md:text-[9px] uppercase tracking-[0.2em] hover:bg-white/90 transition-all shadow-lg shadow-white/20 group whitespace-nowrap"
               >
                 <span>GET LUMORA</span>
                 <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-all">
@@ -106,15 +107,16 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-black z-[10000] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${mobileMenuOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible pointer-events-none"
+        className={`lg:hidden fixed inset-0 bg-[#030303] z-[10000] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${mobileMenuOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible pointer-events-none"
           } flex flex-col p-6 sm:p-12 h-screen overflow-y-auto`}
       >
         {/* Mobile header row */}
         <div className="flex justify-between items-center mb-16">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-            <div className="relative w-24 h-24">
-              <Image src="/logo.svg" alt="Lumora Triad" fill className="object-contain" />
-            </div>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex flex-col">
+            <span className="text-2xl font-michroma text-white tracking-[-0.05em] uppercase leading-none">
+              LUMORA TRIAD
+            </span>
+            <span className="text-[10px] font-michroma text-white/20 tracking-[0.5em] uppercase mt-2">DIGITAL STUDIO</span>
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
@@ -130,7 +132,7 @@ export function Header() {
               key={item.name}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center justify-between px-6 py-5 rounded-2xl font-michroma text-2xl sm:text-3xl uppercase tracking-wider transition-all duration-300 group ${isActive(item.href) ? "bg-primary text-black" : "text-white hover:bg-white/5"
+              className={`flex items-center justify-between px-6 py-5 rounded-2xl font-michroma text-2xl sm:text-3xl uppercase tracking-wider transition-all duration-300 group ${isActive(item.href) ? "bg-white text-black" : "text-white hover:bg-white/5"
                 }`}
               style={{ transitionDelay: `${i * 40}ms` }}
             >
@@ -150,7 +152,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black rounded-full font-michroma text-[9px] uppercase tracking-[0.25em] hover:bg-white transition-all"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-michroma text-[9px] uppercase tracking-[0.25em] hover:bg-white/80 transition-all"
             >
               Start a Project
               <ArrowUpRight className="w-4 h-4" />

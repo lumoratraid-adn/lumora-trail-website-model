@@ -2,16 +2,12 @@ import dynamic from "next/dynamic"
 import type { Metadata } from "next"
 
 import { NetworkHero } from "@/components/network-hero"
-import { MissionVision } from "@/components/mission-vision"
-import { TechEcosystem } from "@/components/tech-ecosystem"
 import { WhatWeDo } from "@/components/what-we-do"
 import { ShowcaseSection } from "@/components/showcase-section"
-import { Footer } from "@/components/footer"
-import { WhyChooseUs } from "@/components/why-choose-us"
 import { HowWeWork } from "@/components/how-we-work"
 import { Testimonials } from "@/components/testimonials"
 import { CTASection } from "@/components/cta-section"
-import { ConnectForm } from "@/components/connect-form"
+import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Lumora Triad | Premium Digital Studio",
@@ -22,17 +18,24 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="relative">
+      {/* ─── HERO ─── */}
       <NetworkHero />
 
       <div className="relative z-10">
-        <MissionVision />
+        {/* ─── SERVICES PREVIEW (CARDS) ─── */}
         <WhatWeDo />
-        <WhyChooseUs />
+
+        {/* ─── FEATURED PROJECTS ─── */}
         <ShowcaseSection />
+
+        {/* ─── PROCESS ─── */}
         <HowWeWork />
+
+        {/* ─── TESTIMONIALS ─── */}
         <Testimonials />
+
+        {/* ─── CTA BANNER ─── */}
         <CTASection />
-        <ConnectForm />
       </div>
 
       <Footer />

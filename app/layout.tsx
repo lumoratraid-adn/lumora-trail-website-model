@@ -10,7 +10,6 @@ import "./globals.css"
 const WhatsAppChatbot = dynamic(() => import("@/components/whatsapp-chatbot").then(mod => mod.WhatsAppChatbot))
 const ScrollToTop = dynamic(() => import("@/components/scroll-to-top").then(mod => mod.ScrollToTop))
 const Preloader = dynamic(() => import("@/components/preloader").then(mod => mod.Preloader))
-const SpaceBackground = dynamic(() => import("@/components/ui/space-background").then(mod => mod.SpaceBackground))
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -58,21 +57,18 @@ export const metadata: Metadata = {
     template: "%s | Lumora Triad",
   },
   description:
-    "Lumora Triad is a premier digital agency for custom web development, UI/UX design, and branding. We build high-performance solutions for visionary brands.",
+    "Lumora Triad: India's premier digital studio for high-performance web development, premium UI/UX design, and strategic branding. We architect scalable digital infrastructure for visionary global brands.",
   keywords: [
-    "Web Development",
-    "UI/UX Design",
-    "Branding",
-    "Digital Agency",
-    "Software Development",
+    "High-Performance Web Development",
+    "Premium UI/UX Design",
+    "Strategic Branding Agency",
+    "Next.js Development India",
+    "Custom Software Solutions",
+    "Digital Legacy Architect",
     "Lumora Triad",
-    "Lumora Triad India",
-    "Lumora Triad Kerala",
-    "Digital Agency India",
-    "Website Design India",
-    "Custom Web Solutions",
-    "App Development",
-    "Best Web Development Agency",
+    "Scaleable Infrastructure Design",
+    "Luxury Digital Agency",
+    "Enterprise Web Solutions"
   ],
   authors: [{ name: "Lumora Triad", url: baseUrl }],
   creator: "Lumora Triad",
@@ -152,7 +148,6 @@ export default function RootLayout({
           <Preloader />
           <ScrollToTop />
           <Header />
-          <SpaceBackground />
           {children}
           <WhatsAppChatbot />
         </ThemeProvider>

@@ -27,7 +27,7 @@ export function SpaceBackground() {
                     size: Math.random() * 1.5,
                     speed: Math.random() * 0.2 + 0.05,
                     opacity: Math.random(),
-                    color: Math.random() > 0.7 ? "#a5f3fc" : "#ffffff" // 30% chance of cyan tint
+                    color: Math.random() > 0.7 ? "#a5fccf" : "#ffffff" // 30% chance of mint tint
                 })
             }
         }
@@ -46,30 +46,29 @@ export function SpaceBackground() {
                 canvas.width * 0.5, canvas.height * 0.5, 0,
                 canvas.width * 0.5, canvas.height * 0.5, canvas.width
             )
-            gradient.addColorStop(0, "#080b14") // Very dark blue/black center
-            gradient.addColorStop(0.4, "#050505") // Fading to black
+            gradient.addColorStop(0, "#0B0716") // Deep violet center
+            gradient.addColorStop(0.4, "#06030D") // Fading out
             gradient.addColorStop(1, "#000000") // Pure black edges
 
             ctx.fillStyle = gradient
             ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-            // Add subtle Sky Blue Galaxy Haze (Top Right & Bottom Left)
-            // Haze 1: Sky Blue
+            // Add subtle Cyan Galaxy Haze (Top Right)
             const haze1 = ctx.createRadialGradient(
                 canvas.width * 0.8, canvas.height * 0.2, 0,
                 canvas.width * 0.8, canvas.height * 0.2, canvas.width * 0.6
             )
-            haze1.addColorStop(0, "rgba(14, 165, 233, 0.04)") // Sky blue, very faint
+            haze1.addColorStop(0, "rgba(74, 222, 128, 0.05)") // Brand Mint
             haze1.addColorStop(1, "transparent")
             ctx.fillStyle = haze1
             ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-            // Haze 2: Deep Purple/Blue
+            // Haze 2: Electric Violet (Bottom Left)
             const haze2 = ctx.createRadialGradient(
                 canvas.width * 0.2, canvas.height * 0.8, 0,
                 canvas.width * 0.2, canvas.height * 0.8, canvas.width * 0.7
             )
-            haze2.addColorStop(0, "rgba(139, 92, 246, 0.03)") // Purple/Blue mix, very faint
+            haze2.addColorStop(0, "rgba(167, 139, 250, 0.04)") // Soft Violet
             haze2.addColorStop(1, "transparent")
             ctx.fillStyle = haze2
             ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -79,7 +78,7 @@ export function SpaceBackground() {
             stars.forEach((star) => {
                 ctx.fillStyle = star.color === "#ffffff"
                     ? `rgba(255, 255, 255, ${star.opacity})`
-                    : `rgba(165, 243, 252, ${star.opacity})` // Cyan tint with opacity
+                    : `rgba(165, 252, 207, ${star.opacity})` // Mint tint with opacity
 
                 ctx.beginPath()
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)

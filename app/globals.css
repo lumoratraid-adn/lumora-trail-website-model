@@ -4,29 +4,26 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #050505;
-  /* Deep Black #0E0F13 approx */
+  --background: #030303;
   --foreground: #ffffff;
-  /* Pure White */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 120);
-  --popover: oklch(0.97 0.02 95);
-  --popover-foreground: oklch(0.15 0.02 120);
-  --primary: #eaff03;
-  /* Electric Yellow-Green */
-  --primary-foreground: oklch(0.15 0.02 120);
-  --secondary: oklch(0.6 0.25 35);
-  /* Burnt Red (Arctic Red) */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.9 0.02 95);
-  --muted-foreground: oklch(0.4 0.02 120);
-  --accent: oklch(0.15 0.02 120);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.6 0.25 35);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.8 0.02 120);
-  --input: oklch(0.8 0.02 120);
-  --ring: #eaff03;
+  --card: #16112E;
+  --card-foreground: #ffffff;
+  --popover: #16112E;
+  --popover-foreground: #ffffff;
+  --primary: #4ADE80;
+  /* Vibrant Mint Green from Image */
+  --primary-foreground: #000000;
+  --secondary: #1E1638;
+  --secondary-foreground: #ffffff;
+  --muted: #1E1638;
+  --muted-foreground: #94A3B8;
+  --accent: #4ADE80;
+  --accent-foreground: #000000;
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --border: #2D234F;
+  --input: #2D234F;
+  --ring: #4ADE80;
   --radius: 2rem;
 }
 
@@ -83,7 +80,15 @@
   h4,
   h5,
   h6 {
-    @apply font-michroma font-normal leading-tight tracking-[0.05em] uppercase;
+    @apply font-michroma font-bold leading-tight tracking-[0.1em] uppercase;
+  }
+
+  p,
+  span,
+  select,
+  input,
+  textarea {
+    @apply uppercase tracking-widest;
   }
 }
 
@@ -97,21 +102,21 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(229, 255, 101, 0.5);
+    text-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
   }
 
   .gold-glow {
     text-shadow:
-      0 0 8px rgba(229, 255, 101, 0.9),
-      0 0 20px rgba(229, 255, 101, 0.6),
-      0 0 40px rgba(229, 255, 101, 0.3);
+      0 0 8px rgba(74, 222, 128, 0.8),
+      0 0 20px rgba(74, 222, 128, 0.4),
+      0 0 40px rgba(74, 222, 128, 0.2);
   }
 
   .gold-glow-box {
     box-shadow:
-      0 0 10px rgba(229, 255, 101, 0.5),
-      0 0 30px rgba(229, 255, 101, 0.25),
-      0 0 60px rgba(229, 255, 101, 0.1);
+      0 0 10px rgba(74, 222, 128, 0.3),
+      0 0 30px rgba(74, 222, 128, 0.15),
+      0 0 60px rgba(74, 222, 128, 0.05);
   }
 
   /* Premium 3D Silver Chrome Gradient Text */

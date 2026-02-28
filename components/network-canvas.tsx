@@ -13,7 +13,7 @@ function NetworkGlobe() {
         for (let i = 0; i < 12; i++) {
             const radius = 4 + Math.random() * 3
             const speed = 0.1 + Math.random() * 0.2
-            const color = i % 2 === 0 ? "#6366f1" : "#a855f7"
+            const color = i % 2 === 0 ? "#4ade80" : "#a78bfa"
             temp.push({ radius, speed, color, offset: Math.random() * Math.PI * 2 })
         }
         return temp
@@ -53,7 +53,7 @@ export default function NetworkCanvas() {
         <Canvas dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance", stencil: false }}>
             <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
             <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} color="#6366f1" />
+            <pointLight position={[10, 10, 10]} intensity={2} color="#4ade80" />
             <NetworkGlobe />
         </Canvas>
     )
